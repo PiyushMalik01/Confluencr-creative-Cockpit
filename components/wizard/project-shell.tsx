@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { StepCard } from './step-card';
 import { Step1Brief } from './step-1-brief';
 import { Step2StyleReport } from './step-2-style-report';
@@ -8,6 +8,8 @@ import { Step3Angles } from './step-3-angles';
 import { Step4Concepts } from './step-4-concepts';
 import { Step5ImageGen } from './step-5-image-gen';
 import { Step6PromptDeck } from './step-6-prompt-deck';
+import { StaleChip } from './stale-chip';
+import type { StalenessMap } from '@/app/api/staleness/route';
 
 const STEPS = [
   { n: 1, title: 'Brief', subtitle: 'Tell the cockpit about your product, audience, and brand.' },
@@ -21,6 +23,19 @@ const STEPS = [
 export function ProjectShell({ projectId, initialStep }: { projectId: string; initialStep: number }) {
   const [activeStep, setActiveStep] = useState(initialStep);
   const [maxStep, setMaxStep] = useState(initialStep);
+  const [staleness, setStaleness] = useState<StalenessMap | null>(null);
+
+  const refreshStaleness = useCallback(() => {
+    fetch(`/api/staleness?projectId=${projectId}`)
+      .then((r) => r.json())
+      .then((d) => setStaleness(d));
+  }, [projectId]);
+
+  useEffect(() => {
+    refreshStaleness();
+    const i = setInterval(refreshStaleness, 8000);
+    return () => clearInterval(i);
+  }, [refreshStaleness]);
 
   function advance(to: number) {
     setActiveStep(to);
@@ -30,6 +45,16 @@ export function ProjectShell({ projectId, initialStep }: { projectId: string; in
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ step: to }),
     });
+    refreshStaleness();
+  }
+
+  function staleFor(step: number): React.ReactNode {
+    if (!staleness) return null;
+    if (step === 2 && staleness.styleReport.exists && staleness.styleReport.stale) return <StaleChip />;
+    if (step === 3 && staleness.angles.exists && staleness.angles.stale) return <StaleChip />;
+    if (step === 4 && staleness.concepts.exists && staleness.concepts.stale) return <StaleChip />;
+    if (step === 6 && staleness.deck.exists && staleness.deck.stale) return <StaleChip />;
+    return null;
   }
 
   return (
@@ -47,6 +72,7 @@ export function ProjectShell({ projectId, initialStep }: { projectId: string; in
             isCompleted={isCompleted}
             isLocked={isLocked}
             onActivate={() => setActiveStep(step.n)}
+            staleChip={staleFor(step.n)}
           >
             {step.n === 1 && (
               <Step1Brief projectId={projectId} onContinue={() => advance(2)} />
