@@ -4,14 +4,24 @@ A web cockpit that turns a brand brief into three on-brand product image concept
 
 Submission for the Confluencr / Walnut Folks **Creative Process Engineer** assignment. The strategic bet is that the marginal cost per brief is zero rupees by default, because the recommended path authenticates against the user's own ChatGPT subscription.
 
-## What's in this repo
+## Submission packet — what to read in what order
+
+| # | Artefact | Path |
+|---|---|---|
+| 1 | **Approach document** (Deliverable 1) | [`APPROACH.pdf`](APPROACH.pdf) |
+| 2 | **Working tool** (Deliverable 2) | [`app/`](app/), [`components/`](components/), [`lib/`](lib/) — Next.js 16 app you can run locally |
+| 3 | **Test run output** with screenshots, brand brief filled in, 3 concept briefs, prompt deck, commentary (Deliverable 3) | [`TEST-RUN.pdf`](TEST-RUN.pdf) |
+| 4 | **Walkthrough video** of the running cockpit end-to-end | [`walkthrough.mp4`](walkthrough.mp4) |
+| 5 | System-generated PDF that the app exports at Step 6 for a Bewakoof brief | [`test-run-doc/system-generated.pdf`](test-run-doc/system-generated.pdf) |
+
+## Source of every artefact
 
 | Path | What it is |
 |---|---|
-| `APPROACH.pdf` | Deliverable #1. The 2-page approach document for the hiring panel. |
 | `Creative Process Engineer - Assignment.pdf` | The original brief from Confluencr. |
 | `approach-doc/` | Source for `APPROACH.pdf` (HTML + Playwright PDF renderer). |
-| `app/`, `components/`, `lib/` | Deliverable #2 + #3. The actual Next.js 16 app. |
+| `test-run-doc/` | Source for `TEST-RUN.pdf` + walkthrough recorder + system PDF output. |
+| `scripts/seed-bewakoof.mjs` | Seed script that inserts a complete Bewakoof project into MongoDB. Run with `node scripts/seed-bewakoof.mjs`. |
 | `docs/superpowers/specs/2026-05-28-confluencr-creative-cockpit-design.md` | Full design spec. |
 | `docs/superpowers/plans/2026-05-28-confluencr-creative-cockpit.md` | Implementation plan. |
 

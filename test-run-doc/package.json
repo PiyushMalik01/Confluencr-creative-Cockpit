@@ -1,0 +1,8 @@
+{
+  "name": "confluencr-test-run-doc",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node generate-pdf.mjs" },
+  "dependencies": { "playwright": "^1.49.0" }
+}

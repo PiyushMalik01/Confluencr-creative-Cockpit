@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react';
 import type { Brief, CompetitorRef, VoiceOpposite } from '@/lib/schemas/brief';
 import type { PaletteEntry, AspectRatio } from '@/lib/schemas/common';
 import {
@@ -219,11 +219,43 @@ function SectionAccordion({
 function ProductSection({ brief, onChange }: { brief: Brief; onChange: (p: Brief['product']) => void }) {
   const p = brief.product;
   const heroPhoto = p.photos[0];
+  const photoKind = heroPhoto?.kind;
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const isOtherCategory = p.category === 'other' || (!!p.category && !CATEGORIES.find((c) => c.value === p.category));
+  const [customCategoryOpen, setCustomCategoryOpen] = useState(isOtherCategory);
 
-  function setHero(kind: 'url' | 'text', value: string) {
-    const fidelityTier = kind === 'text' ? 'low' : 'medium';
-    onChange({ ...p, photos: [{ kind, url: kind === 'url' ? value : undefined, fidelityTier }] });
+  function setHero(kind: 'url' | 'text' | 'upload' | null, value?: string) {
+    if (kind === null) {
+      onChange({ ...p, photos: [] });
+      return;
+    }
+    const fidelityTier = kind === 'text' ? 'low' : kind === 'upload' ? 'high' : 'medium';
+    onChange({
+      ...p,
+      photos: [{ kind, url: kind === 'text' ? undefined : value, fidelityTier }],
+    });
   }
+
+  async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 4 * 1024 * 1024) {
+      alert('Please pick an image under 4 MB.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result as string;
+      setHero('upload', dataUrl);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  const photoModes = [
+    { id: 'url' as const, label: 'URL', icon: '🔗' },
+    { id: 'upload' as const, label: 'Upload', icon: '⬆' },
+    { id: 'text' as const, label: 'Text only', icon: '✎' },
+  ];
 
   return (
     <div className="grid sm:grid-cols-2 gap-4">
@@ -235,18 +267,36 @@ function ProductSection({ brief, onChange }: { brief: Brief; onChange: (p: Brief
         />
       </FieldRow>
       <FieldRow label="Category">
-        <select
-          value={p.category || ''}
-          onChange={(e) => onChange({ ...p, category: e.target.value })}
-          className="w-full rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-input)] px-3 py-2 text-sm"
-        >
-          <option value="">Pick a category…</option>
-          {CATEGORIES.map((c) => (
-            <option key={c.value} value={c.value}>
-              {c.label}
-            </option>
-          ))}
-        </select>
+        <div className="space-y-1.5">
+          <select
+            value={isOtherCategory ? 'other' : p.category || ''}
+            onChange={(e) => {
+              const v = e.target.value;
+              if (v === 'other') {
+                setCustomCategoryOpen(true);
+                onChange({ ...p, category: p.category && !CATEGORIES.find((c) => c.value === p.category) ? p.category : 'other' });
+              } else {
+                setCustomCategoryOpen(false);
+                onChange({ ...p, category: v });
+              }
+            }}
+            className="w-full rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-input)] px-3 py-2 text-sm"
+          >
+            <option value="">Pick a category…</option>
+            {CATEGORIES.map((c) => (
+              <option key={c.value} value={c.value}>
+                {c.label}
+              </option>
+            ))}
+          </select>
+          {customCategoryOpen && (
+            <TextInput
+              value={isOtherCategory && p.category !== 'other' ? p.category || '' : ''}
+              onChange={(v) => onChange({ ...p, category: v.trim() ? v : 'other' })}
+              placeholder="What category? e.g. pet care, stationery, kids"
+            />
+          )}
+        </div>
       </FieldRow>
       <FieldRow label="One-liner" className="sm:col-span-2">
         <TextInput
@@ -260,38 +310,80 @@ function ProductSection({ brief, onChange }: { brief: Brief; onChange: (p: Brief
         label="Hero photo"
         className="sm:col-span-2"
         hint={
-          heroPhoto?.kind === 'url'
+          photoKind === 'url'
             ? 'High fidelity — fetched from URL'
-            : heroPhoto?.kind === 'text'
-              ? 'Lower fidelity — AI will invent a product representation'
-              : 'Paste a public URL OR continue without photo'
+            : photoKind === 'upload'
+              ? 'Highest fidelity — your real product file'
+              : photoKind === 'text'
+                ? 'Lower fidelity — AI will invent a product representation'
+                : 'URL · Upload · or Text-only'
         }
       >
         <div className="space-y-2">
-          <div className="flex gap-2">
+          <div className="inline-flex rounded-md border border-[color:var(--color-border)] p-0.5">
+            {photoModes.map((m) => {
+              const active = photoKind === m.id;
+              return (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => {
+                    if (active) {
+                      setHero(null);
+                    } else if (m.id === 'upload') {
+                      fileInputRef.current?.click();
+                    } else if (m.id === 'text') {
+                      setHero('text');
+                    } else {
+                      setHero('url', '');
+                    }
+                  }}
+                  className={cn(
+                    'inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1 text-xs transition-colors',
+                    active
+                      ? 'bg-[color:var(--color-foreground)] text-[color:var(--color-background)]'
+                      : 'text-[color:var(--color-muted-foreground)] hover:bg-[color:var(--color-muted)] hover:text-[color:var(--color-foreground)]'
+                  )}
+                >
+                  <span>{m.icon}</span>
+                  {m.label}
+                  {active && <span className="ml-1 opacity-60">×</span>}
+                </button>
+              );
+            })}
+          </div>
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            onChange={handleFileUpload}
+            className="hidden"
+          />
+
+          {photoKind === 'url' && (
             <TextInput
-              value={heroPhoto?.kind === 'url' ? heroPhoto.url || '' : ''}
+              value={heroPhoto?.url || ''}
               onChange={(v) => setHero('url', v)}
               placeholder="https://… (direct image URL)"
             />
-            <button
-              type="button"
-              onClick={() => setHero('text', '')}
-              className={cn(
-                'rounded-md border px-3 text-xs whitespace-nowrap transition-colors',
-                heroPhoto?.kind === 'text'
-                  ? 'bg-amber-500/15 border-amber-500/30 text-amber-700 dark:text-amber-300'
-                  : 'border-[color:var(--color-border)] text-[color:var(--color-muted-foreground)] hover:bg-[color:var(--color-muted)]'
-              )}
-            >
-              <ImageIcon className="size-3 inline mr-1" />
-              Text-only
-            </button>
-          </div>
-          {heroPhoto?.kind === 'url' && heroPhoto.url && (
+          )}
+
+          {photoKind === 'text' && (
+            <div className="rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-700 dark:text-amber-300 flex items-center gap-2">
+              <ImageIcon className="size-3.5 shrink-0" />
+              Working without a hero photo. The AI will invent a representation that may not match your actual product. Use URL or Upload for production-grade output.
+            </div>
+          )}
+
+          {(photoKind === 'upload' || photoKind === 'url') && heroPhoto?.url && (
             <div className="rounded-md border border-[color:var(--color-border)] overflow-hidden max-w-xs">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={heroPhoto.url} alt="hero" className="w-full h-32 object-contain bg-[color:var(--color-muted)]" />
+              <img
+                src={heroPhoto.url}
+                alt="hero"
+                className="w-full h-32 object-contain bg-[color:var(--color-muted)]"
+              />
             </div>
           )}
         </div>

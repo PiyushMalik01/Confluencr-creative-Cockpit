@@ -1,5 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { projects } from '@/lib/db/collections';
+import {
+  angleProposals,
+  briefs,
+  conceptBriefs,
+  generatedImages,
+  projects,
+  promptDecks,
+  styleReports,
+} from '@/lib/db/collections';
 
 export const runtime = 'nodejs';
 
@@ -19,5 +27,19 @@ export async function PATCH(req: NextRequest, ctx: { params: Promise<{ id: strin
     if (k in body) update[k] = body[k];
   }
   await (await projects()).updateOne({ _id: id }, { $set: update });
+  return NextResponse.json({ ok: true });
+}
+
+export async function DELETE(_: NextRequest, ctx: { params: Promise<{ id: string }> }) {
+  const { id } = await ctx.params;
+  await Promise.allSettled([
+    (await briefs()).deleteMany({ projectId: id }),
+    (await styleReports()).deleteMany({ projectId: id }),
+    (await angleProposals()).deleteMany({ projectId: id }),
+    (await conceptBriefs()).deleteMany({ projectId: id }),
+    (await promptDecks()).deleteMany({ projectId: id }),
+    (await generatedImages()).deleteMany({ projectId: id }),
+  ]);
+  await (await projects()).deleteOne({ _id: id });
   return NextResponse.json({ ok: true });
 }

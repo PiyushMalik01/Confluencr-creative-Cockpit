@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Clock3, Loader2, Plus } from 'lucide-react';
+import { ChevronDown, Clock3, Loader2, Plus, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type ProjectSummary = {
@@ -37,7 +37,9 @@ export function ProjectSwitcher({ currentId, currentName }: { currentId: string;
   const [list, setList] = useState<ProjectSummary[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [confirmNew, setConfirmNew] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState<ProjectSummary | null>(null);
   const [creating, setCreating] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [pos, setPos] = useState<{ top: number; left: number; width: number } | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -90,6 +92,30 @@ export function ProjectSwitcher({ currentId, currentName }: { currentId: string;
       router.push(`/p/${id}`);
     } finally {
       setCreating(false);
+    }
+  }
+
+  async function deleteProject(p: ProjectSummary) {
+    setDeleting(true);
+    try {
+      await fetch(`/api/projects/${p.id}`, { method: 'DELETE' });
+      setConfirmDelete(null);
+      if (p.id === currentId) {
+        // If the user nuked their current brief, fall back to the next one or start fresh
+        const r = await fetch('/api/projects');
+        const list: ProjectSummary[] = await r.json();
+        if (list.length > 0) {
+          router.push(`/p/${list[0].id}`);
+        } else {
+          const nr = await fetch('/api/projects', { method: 'POST' });
+          const { id } = await nr.json();
+          router.push(`/p/${id}`);
+        }
+      } else {
+        refresh();
+      }
+    } finally {
+      setDeleting(false);
     }
   }
 
@@ -150,42 +176,104 @@ export function ProjectSwitcher({ currentId, currentName }: { currentId: string;
                 </div>
               )}
               {list?.map((p) => (
-                <button
+                <div
                   key={p.id}
-                  type="button"
-                  onClick={() => {
-                    setOpen(false);
-                    if (p.id !== currentId) router.push(`/p/${p.id}`);
-                  }}
                   className={cn(
-                    'w-full text-left px-3 py-2 flex items-start gap-2.5 hover:bg-[color:var(--color-muted)] transition-colors border-b border-[color:var(--color-border)]/40 last:border-b-0',
+                    'group w-full flex items-start gap-2.5 hover:bg-[color:var(--color-muted)] transition-colors border-b border-[color:var(--color-border)]/40 last:border-b-0',
                     p.id === currentId && 'bg-[color:var(--color-muted)]/60'
                   )}
                 >
-                  <div className="flex size-7 items-center justify-center rounded-full bg-[color:var(--color-muted)] text-[10px] font-semibold text-[color:var(--color-muted-foreground)] shrink-0">
-                    {p.step}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium truncate">
-                      {p.name || 'Untitled brief'}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOpen(false);
+                      if (p.id !== currentId) router.push(`/p/${p.id}`);
+                    }}
+                    className="flex-1 min-w-0 flex items-start gap-2.5 text-left px-3 py-2"
+                  >
+                    <div className="flex size-7 items-center justify-center rounded-full bg-[color:var(--color-muted)] text-[10px] font-semibold text-[color:var(--color-muted-foreground)] shrink-0">
+                      {p.step}
                     </div>
-                    <div className="text-[11px] text-[color:var(--color-muted-foreground)] flex items-center gap-1.5 mt-0.5">
-                      <Clock3 className="size-2.5" />
-                      <span>{relativeTime(p.lastTouchedAt)}</span>
-                      <span>·</span>
-                      <span>{STEP_LABEL[p.step] || 'Brief'}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-medium truncate">
+                        {p.name || 'Untitled brief'}
+                      </div>
+                      <div className="text-[11px] text-[color:var(--color-muted-foreground)] flex items-center gap-1.5 mt-0.5">
+                        <Clock3 className="size-2.5" />
+                        <span>{relativeTime(p.lastTouchedAt)}</span>
+                        <span>·</span>
+                        <span>{STEP_LABEL[p.step] || 'Brief'}</span>
+                      </div>
                     </div>
-                  </div>
-                  {p.id === currentId && (
-                    <span className="text-[10px] uppercase tracking-wider text-[color:var(--color-muted-foreground)] mt-1">
-                      now
-                    </span>
-                  )}
-                </button>
+                    {p.id === currentId && (
+                      <span className="text-[10px] uppercase tracking-wider text-[color:var(--color-muted-foreground)] mt-1">
+                        now
+                      </span>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setConfirmDelete(p);
+                    }}
+                    aria-label="Delete brief"
+                    className="opacity-0 group-hover:opacity-100 transition-opacity size-7 inline-flex items-center justify-center mr-1.5 mt-1 text-[color:var(--color-muted-foreground)] hover:text-rose-500 rounded-md hover:bg-rose-500/10"
+                  >
+                    <Trash2 className="size-3.5" />
+                  </button>
+                </div>
               ))}
             </div>
           </motion.div>
         </>,
+        document.body
+      )}
+
+      {mounted && confirmDelete && createPortal(
+        <div
+          className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          onClick={() => setConfirmDelete(null)}
+        >
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.15 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-sm rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-background)] shadow-2xl p-5 space-y-4"
+            >
+              <div>
+                <h3 className="text-base font-semibold tracking-tight">Delete this brief?</h3>
+                <p className="text-xs text-[color:var(--color-muted-foreground)] mt-1.5 leading-relaxed">
+                  <span className="font-medium text-[color:var(--color-foreground)]">
+                    {confirmDelete.name || 'Untitled brief'}
+                  </span>
+                  {' '}and every concept, style report, prompt deck, and generated image attached to it will be removed. This cannot be undone.
+                </p>
+              </div>
+              <div className="flex items-center justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setConfirmDelete(null)}
+                  className="rounded-md border border-[color:var(--color-border)] px-3 py-1.5 text-xs hover:bg-[color:var(--color-muted)] transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={() => deleteProject(confirmDelete)}
+                  disabled={deleting}
+                  className="rounded-md bg-rose-500 text-white px-3 py-1.5 text-xs font-medium disabled:opacity-50 hover:opacity-90 transition-opacity inline-flex items-center gap-1.5"
+                >
+                  {deleting ? <Loader2 className="size-3 animate-spin" /> : <Trash2 className="size-3" />}
+                  Delete brief
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>,
         document.body
       )}
 

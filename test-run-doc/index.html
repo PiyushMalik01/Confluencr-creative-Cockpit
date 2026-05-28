@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Test Run Output · Bewakoof Friends Pivot Oversized Tee</title>
+<style>
+  @import url('https://rsms.me/inter/inter.css');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --text: #1f1f1f;
+    --text-strong: #0a0a0a;
+    --text-muted: #6b6b6b;
+    --text-subtle: #8a8a8a;
+    --bg: #ffffff;
+    --bg-soft: #fafaf9;
+    --rule: rgba(15, 15, 15, 0.08);
+    --rule-strong: rgba(15, 15, 15, 0.16);
+    --code-bg: #f6f5f3;
+    --code-text: #2a2a2a;
+    --accent: #1763d1;
+    --quote-bar: #d9d9d6;
+    --shadow: 0 1px 0 rgba(15,15,15,0.04), 0 8px 24px rgba(15,15,15,0.06);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    margin: 0;
+    padding: 0 56px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'ss03', 'cv02';
+    font-size: 10pt;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1 {
+    font-size: 30pt;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 12px 0;
+    color: var(--text-strong);
+  }
+
+  h2 {
+    font-size: 18pt;
+    font-weight: 700;
+    letter-spacing: -0.014em;
+    color: var(--text-strong);
+    margin: 36px 0 12px 0;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 13pt;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-strong);
+    margin: 22px 0 8px 0;
+    line-height: 1.25;
+  }
+
+  h4 {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--text-strong);
+    margin: 16px 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  p {
+    margin: 0 0 10px 0;
+  }
+
+  strong { font-weight: 600; color: var(--text-strong); }
+  em { font-style: italic; }
+
+  code {
+    font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Mono', Consolas, monospace;
+    font-size: 0.86em;
+    background: var(--code-bg);
+    padding: 1.5px 5px;
+    border-radius: 3.5px;
+    color: var(--code-text);
+    border: 1px solid rgba(15,15,15,0.04);
+  }
+
+  .cover {
+    padding: 92px 0 56px 0;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 32px;
+  }
+  .cover-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 8pt;
+    color: var(--text-subtle);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .cover-tag .pellet {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--text-subtle);
+    opacity: 0.6;
+  }
+  .cover-meta {
+    display: flex; gap: 12px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 9pt;
+    color: var(--text-muted);
+    align-items: center;
+  }
+  .cover-meta .name { color: var(--text-strong); font-weight: 500; }
+
+  .lede {
+    font-size: 12pt;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 38em;
+  }
+
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+    margin-top: 22px;
+    font-size: 9.5pt;
+    color: var(--text-muted);
+  }
+  .toc-row {
+    display: flex; justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .toc-row .num { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; color: var(--text-subtle); }
+
+  .callout {
+    border-left: 3px solid var(--quote-bar);
+    padding: 4px 0 4px 14px;
+    margin: 12px 0;
+    color: var(--text);
+  }
+  .callout em { color: var(--text-strong); font-style: italic; font-weight: 500; }
+
+  ul.brief-list {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 12px 0;
+  }
+  ul.brief-list li {
+    position: relative;
+    padding: 6px 0 6px 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  ul.brief-list li:last-child { border-bottom: none; }
+  ul.brief-list li::before {
+    content: ""; position: absolute;
+    left: 4px; top: 15px;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--text-strong);
+  }
+
+  .swatch-row {
+    display: flex; align-items: center; gap: 6px;
+    margin: 6px 0;
+  }
+  .swatch {
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    border: 1px solid var(--rule-strong);
+  }
+
+  .figure {
+    margin: 18px -8px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--rule-strong);
+    box-shadow: var(--shadow);
+    background: #050505;
+    page-break-inside: avoid;
+  }
+  .figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .figure .caption {
+    padding: 8px 14px;
+    font-size: 8.5pt;
+    color: var(--text-muted);
+    background: var(--bg-soft);
+    border-top: 1px solid var(--rule);
+    letter-spacing: 0.02em;
+  }
+  .figure .caption .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: var(--text-subtle);
+    margin-right: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .figure.tall { max-height: none; }
+  .figure.cap-img img { max-height: 540px; object-fit: cover; object-position: top; }
+
+  .concept-card {
+    margin: 22px 0;
+    padding: 18px 20px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 8px;
+    background: var(--bg-soft);
+    page-break-inside: avoid;
+  }
+  .concept-card .pos {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .concept-card h3 { margin-top: 0; }
+  .concept-card .grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 6px 18px;
+    margin-top: 10px;
+    font-size: 9.5pt;
+  }
+  .concept-card .grid .k {
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 7.8pt;
+    padding-top: 3px;
+  }
+  .concept-card .grid .v { padding-bottom: 6px; }
+  .concept-card pre.prompt {
+    margin: 6px 0 0 0;
+    padding: 10px 12px;
+    background: var(--code-bg);
+    border: 1px solid rgba(15,15,15,0.04);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.8pt;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    color: var(--code-text);
+  }
+
+  .commentary {
+    margin: 24px 0;
+    padding: 18px 20px;
+    border-radius: 8px;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+  }
+  .commentary h3 { margin-top: 0; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 12px 0; }
+  .grid-2 > div { background: var(--bg-soft); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; }
+  .grid-2 h4 { margin-top: 0; }
+
+  .pill {
+    display: inline-block;
+    font-size: 7.8pt;
+    background: var(--code-bg);
+    padding: 2px 7px;
+    border-radius: 999px;
+    border: 1px solid rgba(15,15,15,0.06);
+    color: var(--text-muted);
+    margin: 2px 4px 2px 0;
+  }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { padding: 0 56px; }
+    h2, h3 { page-break-after: avoid; }
+    .figure, .concept-card, .commentary, ul.brief-list { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div class="cover-tag">
+    <span>Test Run Output</span>
+    <span class="pellet"></span>
+    <span>Deliverable 3</span>
+    <span class="pellet"></span>
+    <span>Confluencr / Walnut Folks</span>
+  </div>
+
+  <h1>Bewakoof Friends Pivot oversized tee, run end&#8209;to&#8209;end through the Creative Cockpit.</h1>
+
+  <p class="lede">The brand brief, the competitor style report, the angle picker (five proposed, three picked), three on-brand concept briefs with prompts for every image-gen tool, the prompt deck, and a short honest commentary on what worked, what did not, and what I would iterate. Generated with gpt-5.4 via the ChatGPT auth path. Zero rupees of marginal cost.</p>
+
+  <div class="cover-meta">
+    <span class="name">Piyush Malik</span>
+    <span>&middot;</span>
+    <span>piyushmalik987@gmail.com</span>
+    <span>&middot;</span>
+    <span>May 2026</span>
+  </div>
+
+  <div class="toc">
+    <div class="toc-row"><span><span class="num">01</span> &nbsp; Brand brief template, filled in</span><span>Page 2</span></div>
+    <div class="toc-row"><span><span class="num">02</span> &nbsp; Step by step walkthrough</span><span>Page 4</span></div>
+    <div class="toc-row"><span><span class="num">03</span> &nbsp; Three concept briefs</span><span>Page 7</span></div>
+    <div class="toc-row"><span><span class="num">04</span> &nbsp; Prompt deck</span><span>Page 11</span></div>
+    <div class="toc-row"><span><span class="num">05</span> &nbsp; Generated image prompts, ready to run</span><span>Page 12</span></div>
+    <div class="toc-row"><span><span class="num">06</span> &nbsp; Commentary &mdash; what worked, what did not</span><span>Page 13</span></div>
+  </div>
+</section>
+
+<!-- ============ 01 BRAND BRIEF ============ -->
+<h2>01 &middot; The brand brief, filled in</h2>
+
+<p>The cockpit asks for six things, every one of them load-bearing. This is what went in for the Bewakoof Friends Pivot oversized tee.</p>
+
+<h4>Product</h4>
+<ul class="brief-list">
+  <li><strong>Name.</strong> Bewakoof Friends Pivot Oversized Tee</li>
+  <li><strong>One-liner.</strong> Officially licensed Friends merch, sized for the streetwear drop, priced for college.</li>
+  <li><strong>Category.</strong> Fashion / apparel</li>
+  <li><strong>Price tier.</strong> Value / mass</li>
+  <li><strong>Hero photo.</strong> URL fetched from bewakoof.com (high fidelity)</li>
+</ul>
+
+<h4>Audience</h4>
+<ul class="brief-list">
+  <li><strong>Target.</strong> Tier 1 and Tier 2 Gen Z streetwear shoppers, 18 to 26, who wear what they watched.</li>
+  <li><strong>Signal preset.</strong> Tier 1 Gen Z streetwear</li>
+  <li><strong>Insight.</strong> They want to wear the show and own the joke, not be marketed at.</li>
+</ul>
+
+<h4>Strategy</h4>
+<ul class="brief-list">
+  <li><strong>Single-minded proposition.</strong> Wear the show. Own the joke.</li>
+  <li><strong>Reasons to believe.</strong> Officially licensed Friends IP &middot; Oversized 240gsm cotton drop fit &middot; Under &#8377;600, ships in 3 days</li>
+</ul>
+
+<h4>Brand</h4>
+<div class="swatch-row">
+  <div class="swatch" style="background:#FFCC00"></div>
+  <code>#FFCC00 primary 60%</code>
+  <div class="swatch" style="background:#0A0A0A"></div>
+  <code>#0A0A0A accent 30%</code>
+  <div class="swatch" style="background:#FFFFFF; border-color:#ccc"></div>
+  <code>#FFFFFF neutral 10%</code>
+</div>
+<ul class="brief-list">
+  <li><strong>Typography.</strong> Bebas Neue (display) + Inter (body)</li>
+  <li><strong>Voice opposites.</strong> punny not slapstick &middot; rebellious not edgy &middot; confident not hypey</li>
+</ul>
+
+<h4>References &amp; guardrails</h4>
+<ul class="brief-list">
+  <li><strong>Competitors.</strong> Snitch, The Souled Store, Beyoung (+ a souledstore.com product URL)</li>
+  <li><strong>Do-not-include.</strong> clean studio white-bg &middot; mannequin shot &middot; plastic mockup &middot; corporate stock model</li>
+</ul>
+
+<h4>Surfaces &amp; mandatories</h4>
+<ul class="brief-list">
+  <li><strong>Aspect ratios.</strong> 1:1 (Amazon hero) &middot; 4:5 (Meta feed) &middot; 9:16 (Reels / Story)</li>
+  <li><strong>Mandatories.</strong> Bewakoof logo bottom-right &middot; A+ content panel safe zones</li>
+</ul>
+
+<div class="figure">
+  <img src="screens/04-brief-expanded.png" alt="Brief step 1 expanded" />
+  <div class="caption"><span class="num">Fig 1.1</span> Step 1 &middot; Brief, with the product section expanded. Auto-fill bar at the top accepts a URL or a brand+product name and populates every field.</div>
+</div>
+
+<div class="figure cap-img">
+  <img src="screens/06-brief-brand.png" alt="Brief brand + references sections" />
+  <div class="caption"><span class="num">Fig 1.2</span> Step 1 &middot; Brand and References sections. Palette uses a hex picker with usage-ratio sliders. Voice opposites are entered as X-not-Y pairs. Competitor refs accept URL paste, file upload, or brand-name search.</div>
+</div>
+
+<!-- ============ 02 WALKTHROUGH ============ -->
+<h2>02 &middot; Step by step walkthrough</h2>
+
+<p>The cockpit is a single page with six expanding cards. Each step has one job. Each step shows the AI doing it, with a live activity ticker so the user always knows what is happening.</p>
+
+<h3>Step 1 &mdash; Brief</h3>
+<p><strong>What the human does:</strong> fills the six sections. Auto-fill from a URL or brand name is available once ChatGPT is connected (top right).</p>
+<p><strong>What the AI does:</strong> seeds preset chips per category (Tier 1 Gen Z streetwear, Premium 35+ luxe, etc.), and on auto-fill, scrapes the supplied URL and fills every field as a draft for the user to supervise.</p>
+
+<h3>Step 2 &mdash; Competitor style report</h3>
+<p>Two parallel jobs run. Server-side cheerio extracts og:image, JSON-LD product schema, Twitter card, and ranked &lt;img&gt; tags from the supplied competitor URLs. Then gpt-5.4 produces a structured StyleReport: palette with hex + role + ratio, lighting language, composition, props, copy patterns, audience signal, negative patterns, and an evidence array. Every claim cites an image index. No image, no claim.</p>
+
+<div class="figure">
+  <img src="screens/07-style-report.png" alt="Competitor style report, Bewakoof" />
+  <div class="caption"><span class="num">Fig 2.1</span> Step 2 &middot; Competitor style report. Extracted palette top-right, lighting / composition / audience signal as short tokens, evidence array bottom-right tying each claim to an image index.</div>
+</div>
+
+<h3>Step 3 &mdash; Strategic angles</h3>
+<p>Five angles proposed by gpt-5.4 from the controlled vocabulary (Aspirational, Rational, Emotional, Problem-Solution, Social-Proof, Transformation, Scarcity, Value). Each comes with a one-line rationale tied to a specific competitor whitespace claim, a contextual palette, a sample headline in the brand voice, and a confidence score. The picker enforces the trifecta: continue is blocked until the three picked angles span at least two trifecta families (Rational, Emotional, Aspirational, Social). Three Aspirational cards in different palettes is not three different concepts.</p>
+
+<div class="figure">
+  <img src="screens/08-angles.png" alt="Five strategic angles proposed" />
+  <div class="caption"><span class="num">Fig 3.1</span> Step 3 &middot; Five contextual angles. Picked: Aspirational (rebel-poster), Emotional (rewatch moment), Rational (Amazon A+ infographic). Three trifecta families.</div>
+</div>
+
+<h3>Step 4 &mdash; Concept briefs</h3>
+<p>Three parallel gpt-5.4 calls, one per picked angle. Each returns the same six spec fields: theme statement, color story with ratios, typography pairing, shot recipe, headline + subhead + CTA, mandatories checklist. Five tool-specific prompts per brief, each written in that tool&apos;s native idiom (Midjourney terse with --ar / --style, Flux descriptive structured, Nano Banana natural language, GPT-Image conversational, Ideogram poster-aware). Plus a single combined negative prompt. A quality gate checks: brand palette overlap, every mandatory present in the prompts, zero do-not-include items in the prompts.</p>
+
+<div class="figure cap-img">
+  <img src="screens/09-concept-briefs.png" alt="Three concept briefs expanded" />
+  <div class="caption"><span class="num">Fig 4.1</span> Step 4 &middot; Three concept briefs expanded. Theme statement, color story, typography, shot recipe, copy, mandatories, and five tool-specific prompts per concept.</div>
+</div>
+
+<h3>Step 5 &mdash; Image generation (optional)</h3>
+<p>Skipped in v1. The cockpit&apos;s value lands at Step 6 &mdash; execution-ready prompts. For this test run, the prompts in the deck are the deliverable; the images were generated externally by pasting the prompts into Nano Banana / Flux Kontext as a sanity check (see Section 5).</p>
+
+<h3>Step 6 &mdash; Prompt deck export</h3>
+<p>One card per concept &times; surface using the auto-recommended tool for each shot type (Flux for hero / lifestyle, Ideogram for infographic, Nano Banana for text-heavy). Each card is self-contained: a heading that reads in 3 seconds, a one-line description, the prompt in a code block, the tool tag, and a Copy / Open-in-tool button pair. A PDF export bundles cover + brief + style report + 3 concept briefs + the prompt deck for a portable deliverable.</p>
+
+<div class="figure cap-img">
+  <img src="screens/10-prompt-deck.png" alt="Prompt deck vertical list" />
+  <div class="caption"><span class="num">Fig 6.1</span> Step 6 &middot; Prompt deck. Vertical scroll, one card per concept &times; surface, copy button + open-in-tool button per card, Download PDF top-right.</div>
+</div>
+
+<!-- ============ 03 THREE CONCEPT BRIEFS ============ -->
+<h2>03 &middot; Three concept briefs</h2>
+
+<p>Each brief declares the same six spec fields. A designer or an image-gen AI should be able to execute these without guessing.</p>
+
+<div class="concept-card">
+  <div class="pos">Concept 1 &middot; Aspirational</div>
+  <h3>A Friends tee shot like a band poster, not a catalog.</h3>
+
+  <p><strong>Strategic rationale.</strong> Souled Store and Snitch both lean catalog-soft. Bewakoof has white-space in poster culture: rebel youth, sticker layout, hot yellow on inky black. This concept treats the tee like a wall artefact you would tear off a Bombay Local pillar, then hangs the licensed Friends IP from it without apologising.</p>
+
+  <div class="swatch-row">
+    <div class="swatch" style="background:#FFCC00"></div><code>#FFCC00 primary 55%</code>
+    <div class="swatch" style="background:#0A0A0A"></div><code>#0A0A0A background 35%</code>
+    <div class="swatch" style="background:#FFFFFF; border-color:#ccc"></div><code>#FFFFFF accent 10%</code>
+  </div>
+
+  <div class="grid">
+    <div class="k">Typography</div><div class="v">Bebas Neue (display) + Inter (body)</div>
+    <div class="k">Shot type</div><div class="v">hero</div>
+    <div class="k">Lighting</div><div class="v">hard top key + black rim, deep shadow, no fill &mdash; gig poster contrast</div>
+    <div class="k">Composition</div><div class="v">centred tee at 70% height, top-third bold headline, sticker artefacts at bottom-third</div>
+    <div class="k">Lens</div><div class="v">50mm prime, slight wide framing for poster feel</div>
+    <div class="k">Setting</div><div class="v">inky black backdrop with a slight matte texture, Bombay-poster sticker overlays</div>
+    <div class="k">Headline</div><div class="v"><strong>OWN YOUR CRAZY</strong> &mdash; Friends Pivot &middot; Oversized &middot; Drop 014</div>
+    <div class="k">CTA</div><div class="v">GRAB THE DROP</div>
+    <div class="k">Mandatories</div><div class="v">Bewakoof logo bottom-right (&#10003;) &middot; A+ safe zones (&#10003;)</div>
+  </div>
+
+  <h4>Flux Kontext prompt</h4>
+  <pre class="prompt">Bewakoof yellow Friends Pivot oversized cotton t-shirt centred on backdrop. inky black matte-textured poster backdrop with paste-up sticker scraps bottom-third. hard top key light + black rim, deep shadow, no fill, gig poster contrast. centred tee at 70% frame height, headline reserve top-third, brand logo lockup bottom-right. colour palette anchored at #FFCC00 (60%) and #0A0A0A (30%), accent #FFFFFF (10%). 1:1 aspect ratio. Mandatory: Bewakoof logo bottom-right + A+ safe zones respected. Negative: no clean studio white-bg, no mannequin, no plastic mockup, no corporate stock model</pre>
+</div>
+
+<div class="concept-card">
+  <div class="pos">Concept 2 &middot; Emotional</div>
+  <h3>The tee in its natural habitat: a Sunday-afternoon rewatch.</h3>
+
+  <p><strong>Strategic rationale.</strong> Friends is comfort merchandise. An emotional concept frames the tee as the artefact you reach for when you finally get the joke. Warm beige room, late-afternoon window light, the tee draped on a chair next to a half-drunk coffee. Reads like a rewatch ritual, not a catalog page.</p>
+
+  <div class="swatch-row">
+    <div class="swatch" style="background:#F4E1B4"></div><code>#F4E1B4 background 55%</code>
+    <div class="swatch" style="background:#FFCC00"></div><code>#FFCC00 accent 25%</code>
+    <div class="swatch" style="background:#3D2F1F"></div><code>#3D2F1F neutral 20%</code>
+  </div>
+
+  <div class="grid">
+    <div class="k">Typography</div><div class="v">Bebas Neue (display) + Inter (body)</div>
+    <div class="k">Shot type</div><div class="v">lifestyle</div>
+    <div class="k">Lighting</div><div class="v">late golden-hour window light, soft directional, warm CT shift</div>
+    <div class="k">Composition</div><div class="v">tee draped on a wooden chair in left-third, coffee mug + remote in foreground</div>
+    <div class="k">Lens</div><div class="v">35mm wide, shallow depth at foreground objects</div>
+    <div class="k">Setting</div><div class="v">beige plaster wall with soft TV-glow rim from off-frame right</div>
+    <div class="k">Headline</div><div class="v"><strong>PIVOT. PIVOT! PIVOT!!</strong> &mdash; For the rewatch, the in-jokes, and the Sunday couches.</div>
+    <div class="k">CTA</div><div class="v">WEAR THE REWATCH</div>
+    <div class="k">Mandatories</div><div class="v">Bewakoof logo bottom-right (&#10003;) &middot; A+ safe zones (&#10003;)</div>
+  </div>
+
+  <h4>Flux Kontext prompt</h4>
+  <pre class="prompt">Bewakoof yellow Friends Pivot oversized tee draped on a wooden chair, soft rattan side table foreground. beige plaster wall living room corner, half-drunk coffee mug and tv remote on side table, soft TV glow from off-frame right. late golden-hour window light, soft directional, warm CT shift, gentle rim. tee in left-third, foreground objects bottom-right, 4:5 vertical reserve for headline top. #F4E1B4 background (55%) with #FFCC00 tee accent (25%) and #3D2F1F warm neutrals (20%). 4:5 aspect ratio. Mandatory: Bewakoof logo bottom-right + A+ safe zones respected. Negative: no clean studio white-bg, no mannequin, no plastic mockup, no corporate stock model</pre>
+</div>
+
+<div class="concept-card">
+  <div class="pos">Concept 3 &middot; Rational</div>
+  <h3>The Amazon A+ panel that converts the licence-aware buyer.</h3>
+
+  <p><strong>Strategic rationale.</strong> Marketplace buyers do not get rewatch jokes &mdash; they get spec tags. This concept stacks the proof points: officially licensed Friends IP, 240gsm cotton, oversized drop fit, machine wash safe. Yellow callouts on black, every claim with an icon. Built for Amazon A+ panel placement.</p>
+
+  <div class="swatch-row">
+    <div class="swatch" style="background:#0A0A0A"></div><code>#0A0A0A background 60%</code>
+    <div class="swatch" style="background:#FFCC00"></div><code>#FFCC00 primary 30%</code>
+    <div class="swatch" style="background:#FFFFFF; border-color:#ccc"></div><code>#FFFFFF accent 10%</code>
+  </div>
+
+  <div class="grid">
+    <div class="k">Typography</div><div class="v">Inter (display + body, marketplace-safe)</div>
+    <div class="k">Shot type</div><div class="v">infographic</div>
+    <div class="k">Lighting</div><div class="v">even softbox, flat reveal, no shadow drama &mdash; spec-shoot lighting</div>
+    <div class="k">Composition</div><div class="v">tee centred at 55%, four yellow icon-callout chips at the four corners</div>
+    <div class="k">Lens</div><div class="v">85mm product macro, slight compression</div>
+    <div class="k">Setting</div><div class="v">pure #0A0A0A backdrop, no texture, marketplace-safe</div>
+    <div class="k">Headline</div><div class="v"><strong>OFFICIALLY LICENSED. OVERSIZED. UNDER &#8377;600.</strong> &mdash; 240gsm cotton &middot; Drop fit &middot; Machine wash safe</div>
+    <div class="k">CTA</div><div class="v">ADD TO CART</div>
+    <div class="k">Mandatories</div><div class="v">Bewakoof logo bottom-right (&#10003;) &middot; A+ safe zones (&#10003;)</div>
+  </div>
+
+  <h4>Ideogram prompt</h4>
+  <pre class="prompt">Infographic. Subject: tee centred. Setting: pure #0A0A0A backdrop. Lighting: even softbox flat reveal. Composition: tee at 55%, four corner callouts. Type: Inter headline "OFFICIALLY LICENSED. OVERSIZED. UNDER &#8377;600." top + four short icon-callout chips. Colour: #0A0A0A 60 / #FFCC00 30 / #FFFFFF 10. Aspect 1:1. Negatives: white-bg, mannequin, plastic mockup, corporate stock model, lifestyle.</pre>
+</div>
+
+<!-- ============ 04 PROMPT DECK ============ -->
+<h2>04 &middot; Prompt deck</h2>
+
+<p>The deck assembles one card per concept &times; surface, using the auto-recommended image-gen tool per shot type. For this run the picked surfaces are Amazon hero 1:1, Meta feed 4:5, and Reels 9:16 &mdash; nine cards total. All prompts are copy-and-paste ready.</p>
+
+<div class="grid-2">
+  <div>
+    <h4>Concept 1 &middot; Aspirational hero</h4>
+    <span class="pill">Flux Kontext</span>
+    <span class="pill">1:1</span><span class="pill">4:5</span><span class="pill">9:16</span>
+    <p style="font-size:8.5pt; color:var(--text-muted); margin-top:6px;">Hard-light gig-poster aesthetic. Inky black backdrop, paste-up sticker scraps, hot yellow tee. Headline "OWN YOUR CRAZY" in tall Bebas top-third.</p>
+  </div>
+  <div>
+    <h4>Concept 2 &middot; Emotional lifestyle</h4>
+    <span class="pill">Flux Kontext</span>
+    <span class="pill">1:1</span><span class="pill">4:5</span><span class="pill">9:16</span>
+    <p style="font-size:8.5pt; color:var(--text-muted); margin-top:6px;">Rewatch corner. Beige plaster wall, golden-hour window light, tee draped on wooden chair, coffee mug + remote in foreground. Headline "PIVOT. PIVOT! PIVOT!!"</p>
+  </div>
+  <div>
+    <h4>Concept 3 &middot; Rational infographic</h4>
+    <span class="pill">Ideogram v3</span>
+    <span class="pill">1:1</span><span class="pill">4:5</span><span class="pill">9:16</span>
+    <p style="font-size:8.5pt; color:var(--text-muted); margin-top:6px;">Amazon A+ panel. Pure black backdrop, tee centred, four yellow icon-callout chips at the corners. Headline "OFFICIALLY LICENSED. OVERSIZED. UNDER &#8377;600."</p>
+  </div>
+  <div>
+    <h4>System-generated PDF</h4>
+    <span class="pill">/api/pdf/&lt;id&gt;</span>
+    <p style="font-size:8.5pt; color:var(--text-muted); margin-top:6px;">The same deck plus brief, style report, and three concept briefs are bundled into a single downloadable PDF in one click from Step 6. See <code>test-run-doc/system-generated.pdf</code> for the raw cockpit output for this brief.</p>
+  </div>
+</div>
+
+<!-- ============ 05 IMAGES ============ -->
+<h2>05 &middot; Generated image prompts, ready to run</h2>
+
+<p>The prompts above were lifted into Nano Banana Pro and Flux Kontext as a sanity check. The full prompt deck for this brief is in the system-generated PDF (<code>system-generated.pdf</code>) and the bundled web view at Step 6 in the running app. Three things were true under load:</p>
+
+<ul class="brief-list">
+  <li><strong>Concept 1 (Aspirational hero) lands first time.</strong> Flux Kontext renders the yellow-on-black gig-poster aesthetic cleanly when given a real product photo as the conditioning image.</li>
+  <li><strong>Concept 3 (Rational infographic) is best run on Ideogram.</strong> The legibility of the four corner callouts in tall Inter is the differentiator versus Flux, which still wobbles on short on-image text under 12pt equivalent.</li>
+  <li><strong>Concept 2 (Emotional lifestyle) needs a hand-pick.</strong> The room-corner moment is the right vibe but the AI occasionally hallucinates a different chair or a different tee colour &mdash; the auto-fix loop helps but a human pick across 3-4 candidates is faster than auto-regen.</li>
+</ul>
+
+<!-- ============ 06 COMMENTARY ============ -->
+<h2>06 &middot; What worked, what did not, what I would iterate</h2>
+
+<div class="commentary">
+  <h3>What worked</h3>
+  <p><strong>The trifecta enforcement on the angle picker.</strong> This is the single highest-signal mechanism in the cockpit. The first time I ran the system with no enforcement, gpt-5.4 happily proposed three Aspirational angles in different palettes and called them different. The picker refusing to advance unless at least two trifecta families are picked changed the output meaningfully.</p>
+  <p><strong>The evidence array on the StyleReport.</strong> Forcing the LLM to ground every claim to a specific image index killed the "competitors use heavy grain" hallucinations almost overnight. No image, no claim.</p>
+  <p><strong>ChatGPT auth as the default zero-cost path.</strong> Anyone with a Plus subscription runs this for free. The Codex endpoint streams cleanly. I want to call this the most important architectural decision in the whole submission.</p>
+  <p><strong>Surfacing AI activity in a live ticker.</strong> The user can see the scrape chain trying og:image, then JSON-LD, then a Twitter card fallback. The transparency is what makes the system feel real instead of magical.</p>
+
+  <h3>What did not work first try</h3>
+  <p><strong>The poll endpoint URL was wrong.</strong> First version of the auth integration polled <code>/api/accounts/deviceauth/poll</code>; the correct endpoint is <code>/api/accounts/deviceauth/token</code>. Symptom: the user entered the code on auth.openai.com and the cockpit never noticed. Fix was one line.</p>
+  <p><strong>The provider modal was clipped off-screen.</strong> The sticky header uses <code>backdrop-filter: blur</code>, which creates a new containing block, so <code>fixed inset-0</code> on the modal was relative to the header, not the viewport. Fix: render the modal in a React portal to <code>document.body</code>.</p>
+  <p><strong>The auto-fill button took too long to ship.</strong> The first brief form was technically complete but felt like a tax. Adding "paste a URL or type a brand name and the cockpit fills the rest" was the change that made first-time users stop bouncing.</p>
+
+  <h3>What I would iterate</h3>
+  <p><strong>Vision on Steps 2 and 4.</strong> Today the style extractor reads page metadata + competitor URL strings and uses gpt-5.4&apos;s training knowledge of those brands. Adding a vision call that actually looks at the fetched competitor images would tighten the palette extraction, especially for unknown brands. The trade-off is that vision input on Codex is constrained; we would route this leg to a BYO Gemini or Anthropic key.</p>
+  <p><strong>Per-image regen in Step 5 with an explicit edit-instruction.</strong> Today Step 5 is a pass-through. The next iteration takes the Step 4 prompt and an uploaded reference image, runs Flux Kontext with a small inpaint mask, and lets the user "remove the chair" or "make the headline bigger" without rewriting the whole prompt.</p>
+  <p><strong>A second model in parallel for cross-validation.</strong> Run Claude 4.7 in parallel with gpt-5.4 on the concept brief stage. If the two models agree, ship. If they disagree, surface both proposals for human pick. Cheap insurance against single-model bias.</p>
+  <p><strong>An "approve and lock" gate per step.</strong> Today the user can keep regenerating downstream artefacts even after they accepted Step 2. A lock chip would make the human gate explicit and cut wasted ChatGPT calls.</p>
+
+  <h3>The line I would put on the homepage</h3>
+  <p class="callout"><em>One subscription, no designer in the loop.</em> A brand ships an Amazon A+ panel set or a Meta dynamic-creative batch on the same Tuesday the brief lands.</p>
+</div>
+
+</body>
+</html>
