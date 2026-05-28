@@ -70,24 +70,30 @@ async function runChatGPT(opts: {
 
 async function runOpenAI(opts: { apiKey: string; instructions: string; input: string; model?: string }): Promise<string> {
   const model = opts.model ?? 'gpt-5';
+  // Newer reasoning models (gpt-5, o1/o3 family) reject custom temperature
+  // and use the default (1.0). Omit temperature unless the caller passed a
+  // legacy model name that supports it.
+  const supportsTemperature = /^(gpt-4o|gpt-4-turbo|gpt-3\.5)/i.test(model);
+  const payload: Record<string, unknown> = {
+    model,
+    messages: [
+      { role: 'system', content: opts.instructions },
+      { role: 'user', content: opts.input },
+    ],
+  };
+  if (supportsTemperature) payload.temperature = 0.7;
+
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${opts.apiKey}`,
     },
-    body: JSON.stringify({
-      model,
-      messages: [
-        { role: 'system', content: opts.instructions },
-        { role: 'user', content: opts.input },
-      ],
-      temperature: 0.7,
-    }),
+    body: JSON.stringify(payload),
   });
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`OpenAI failed (${res.status}): ${text.slice(0, 200)}`);
+    throw new Error(`OpenAI failed (${res.status}): ${text.slice(0, 300)}`);
   }
   const data = await res.json();
   return data.choices?.[0]?.message?.content ?? '';
