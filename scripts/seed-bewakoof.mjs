@@ -57,7 +57,7 @@ await db.collection('briefs').insertOne({
   product: {
     name: 'Bewakoof Friends Pivot Oversized Tee',
     oneLiner: 'Officially licensed Friends merch, sized for the streetwear drop, priced for college.',
-    photos: [{ kind: 'url', url: 'https://images.bewakoof.com/t1080/men-s-yellow-friends-pivot-graphic-printed-oversized-t-shirt-616849-1707913127-1.jpg', fidelityTier: 'medium' }],
+    photos: [{ kind: 'url', url: 'https://picsum.photos/seed/bewakoof-friends-pivot/600/600', fidelityTier: 'medium' }],
     priceTier: 'value',
     category: 'fashion',
   },
@@ -122,10 +122,10 @@ await db.collection('styleReports').insertOne({
     manualEdits: [],
   },
   competitorImages: [
-    { url: 'https://images.bewakoof.com/utter/content/2826/content_TSS_homepage_banner_1.jpg', source: 'thesouledstore.com', pinned: true, classification: 'hero', confidence: 0.86 },
-    { url: 'https://images.bewakoof.com/utter/content/3015/content_snitch_drop_hero.jpg', source: 'snitch.in', pinned: true, classification: 'hero', confidence: 0.81 },
-    { url: 'https://images.bewakoof.com/utter/content/3201/content_beyoung_tee.jpg', source: 'beyoung.in', pinned: true, classification: 'hero', confidence: 0.74 },
-    { url: 'https://images.bewakoof.com/utter/content/2199/content_souled_store_friends.jpg', source: 'thesouledstore.com', pinned: true, classification: 'hero', confidence: 0.92 },
+    { url: 'https://picsum.photos/seed/snitch-streetwear-1/600/600', source: 'snitch.in', pinned: true, classification: 'hero', confidence: 0.86 },
+    { url: 'https://picsum.photos/seed/souledstore-friends-1/600/600', source: 'thesouledstore.com', pinned: true, classification: 'hero', confidence: 0.92 },
+    { url: 'https://picsum.photos/seed/beyoung-streetwear-1/600/600', source: 'beyoung.in', pinned: true, classification: 'hero', confidence: 0.74 },
+    { url: 'https://picsum.photos/seed/snitch-streetwear-2/600/600', source: 'snitch.in', pinned: true, classification: 'hero', confidence: 0.81 },
   ],
   palette: [
     { hex: '#0A0A0A', role: 'background', ratio: 0.45, evidenceImageIdx: 0 },

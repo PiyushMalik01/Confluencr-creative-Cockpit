@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertCircle, Brain, CheckCircle2, ChevronDown, ChevronUp, Database, Eye, Globe, Loader2 } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import type { ActivityEvent } from '@/lib/schemas/activity-event';
 import { cn } from '@/lib/utils';
 
@@ -24,9 +24,25 @@ export function ActivityTicker({
   const done = events.find((e) => e.kind === 'done');
   const isCollapsed = collapsedAfterDone && done && !forceOpen;
 
-  if (events.length === 0) return null;
+  // Filter out "thinking" events that have been superseded by later events
+  // from the same requestId. A thinking entry is a live progress indicator;
+  // once a real result lands, the spinner should disappear.
+  const visibleEvents = useMemo(() => {
+    const latestRealIdx: Record<string, number> = {};
+    events.forEach((e, i) => {
+      if (e.kind === 'thinking') return;
+      latestRealIdx[e.requestId] = i;
+    });
+    return events.filter((e, i) => {
+      if (e.kind !== 'thinking') return true;
+      const later = latestRealIdx[e.requestId];
+      return later === undefined || i > later;
+    });
+  }, [events]);
 
-  if (isCollapsed) {
+  if (visibleEvents.length === 0) return null;
+
+  if (isCollapsed && done && 'summary' in done) {
     return (
       <button
         type="button"
@@ -35,7 +51,7 @@ export function ActivityTicker({
       >
         <span className="inline-flex items-center gap-2">
           <CheckCircle2 className="size-3.5 text-emerald-500" />
-          <span>{'summary' in done! ? (done as { summary: string }).summary : 'Done'}</span>
+          <span>{done.summary}</span>
         </span>
         <ChevronDown className="size-3.5 text-[color:var(--color-muted-foreground)]" />
       </button>
@@ -56,7 +72,7 @@ export function ActivityTicker({
       )}
       <div className="px-3 py-2 space-y-1 max-h-80 overflow-y-auto scrollbar-thin">
         <AnimatePresence initial={false}>
-          {events.map((e, i) => (
+          {visibleEvents.map((e, i) => (
             <motion.div
               key={`${e.requestId}-${i}-${e.ts}`}
               initial={{ opacity: 0, y: 2 }}
