@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Approach Document · Creative Process Engineer</title>
+<style>
+  @import url('https://rsms.me/inter/inter.css');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --text: #1f1f1f;
+    --text-strong: #0a0a0a;
+    --text-muted: #6b6b6b;
+    --text-subtle: #8a8a8a;
+    --bg: #ffffff;
+    --rule: rgba(15, 15, 15, 0.08);
+    --rule-strong: rgba(15, 15, 15, 0.14);
+    --code-bg: #f6f5f3;
+    --code-text: #2a2a2a;
+    --accent: #1763d1;
+    --quote-bar: #d9d9d6;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    margin: 0;
+    padding: 8px 58px 4px 58px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'ss03', 'cv02';
+    font-size: 9.2pt;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .doc-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 7.8pt;
+    color: var(--text-subtle);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .doc-meta .pellet {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--text-subtle);
+    opacity: 0.6;
+  }
+
+  h1 {
+    font-size: 20pt;
+    line-height: 1.14;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 4px 0 9px 0;
+    color: var(--text-strong);
+    max-width: 16em;
+  }
+
+  .lede {
+    font-size: 9.8pt;
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 10px 0;
+    font-weight: 400;
+  }
+  .lede strong { color: var(--text-strong); font-weight: 600; }
+
+  .author-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+    font-size: 8.4pt;
+    color: var(--text-muted);
+  }
+  .author-line .name { color: var(--text-strong); font-weight: 500; }
+  .author-line .pellet {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--text-subtle);
+    opacity: 0.6;
+  }
+
+  h2 {
+    font-size: 11.5pt;
+    font-weight: 600;
+    letter-spacing: -0.014em;
+    color: var(--text-strong);
+    margin: 16px 0 7px 0;
+    line-height: 1.22;
+  }
+
+  p {
+    margin: 0 0 7px 0;
+    color: var(--text);
+  }
+
+  strong { font-weight: 600; color: var(--text-strong); }
+  em { font-style: italic; }
+
+  code {
+    font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Mono', Consolas, monospace;
+    font-size: 0.84em;
+    background: var(--code-bg);
+    padding: 1.5px 5px;
+    border-radius: 3.5px;
+    color: var(--code-text);
+    letter-spacing: -0.005em;
+    border: 1px solid rgba(15, 15, 15, 0.04);
+  }
+
+  ul.fields {
+    list-style: none;
+    padding: 0;
+    margin: 2px 0 11px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  ul.fields li {
+    position: relative;
+    padding: 3px 0 3px 18px;
+    border-bottom: 1px solid var(--rule);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  ul.fields li:last-child { border-bottom: none; }
+  ul.fields li::before {
+    content: "";
+    position: absolute;
+    left: 4px; top: 12px;
+    width: 3.5px; height: 3.5px;
+    border-radius: 50%;
+    background: var(--text-strong);
+  }
+  ul.fields li strong { color: var(--text-strong); }
+
+  .failure-list {
+    margin: 2px 0 8px 0;
+    padding: 0;
+    list-style: none;
+  }
+  .failure-list .item {
+    margin-bottom: 4px;
+    padding-left: 12px;
+    border-left: 2px solid var(--quote-bar);
+  }
+  .failure-list .item p { margin: 0; }
+  .failure-list em {
+    font-style: italic;
+    color: var(--text-strong);
+    font-weight: 500;
+  }
+
+  .closer {
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid var(--rule);
+    color: var(--text);
+    font-size: 9.2pt;
+    line-height: 1.45;
+    font-style: italic;
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+  .closer .em { color: var(--text-strong); font-style: normal; font-weight: 600; }
+
+  .page-footer {
+    margin-top: 14px;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-size: 7.4pt;
+    color: var(--text-subtle);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  @page {
+    size: A4;
+  }
+  @media print {
+    body { padding: 0 52px; }
+    h2 { page-break-after: avoid; break-after: avoid; }
+    .failure-list .item,
+    ul.fields,
+    ul.fields li,
+    .brief-block { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  .brief-block { page-break-inside: avoid; break-inside: avoid; }
+</style>
+</head>
+<body>
+
+  <h1>From a brand brief to three on-brand image concepts, in one wizard.</h1>
+
+  <p class="lede">A six-step single-page wizard. Brief in, three on-brand concept briefs out, a prompt-deck PDF on the way. The strategic bet is that marginal cost per brief is zero rupees by default, because the recommended path authenticates against the user's own ChatGPT subscription. The quieter bet is that the three concepts are anchored to a Rational, Emotional, Aspirational trifecta. Three concepts that look different are not three concepts that <strong>are</strong> different, and most ad-creative pipelines fail this test.</p>
+
+  <div class="author-line">
+    <span class="name">Piyush Malik</span>
+    <span class="pellet"></span>
+    <span>piyushmalik987@gmail.com</span>
+    <span class="pellet"></span>
+    <span>May 2026</span>
+  </div>
+
+  <h2>The six steps, and who does what</h2>
+
+  <p><strong>Step 1, Brief.</strong> Human-only. Six-section accordion: Product, Audience, Strategy (single-minded proposition plus three RTBs), Brand (palette with usage ratios, voice opposites as "X not Y"), References (URL paste, upload, or brand-name search), and Surfaces (1:1 for Amazon hero, 4:5 for Meta feed, 9:16 for Reels, 16:9 for hero banners). Every starred field has AI-seeded preset chips that change per category, so a Bewakoof Friends Pivot oversized tee sees "Tier 1 Gen Z streetwear" presets and a Quechua MH100 trekking shoe sees "value-tier outdoor enthusiast" presets. Chips constrain, free text overrides.</p>
+
+  <p><strong>Step 2, Competitor Style Report.</strong> AI heavy, human curates. Two parallel jobs run: a five-strategy scrape chain (<code>og:image</code>, JSON-LD, Twitter card, scored <code>img</code> scan, Playwright fallback) then a vision call returning a structured <code>StyleReport</code>. Palette with hex plus role plus ratio, lighting language, composition, props, copy patterns, audience signal, negative patterns. Every claim cites an <code>evidenceImageIdx</code>. The human pins, edits any token, adds refs.</p>
+
+  <p><strong>Step 3, Strategic Angles.</strong> AI proposes five angles as horizontal scroll-snap cards, each with a "why this fits THIS brand" rationale tied to a specific competitor whitespace claim. The trifecta picker enforces strategic spread, so picking three Aspirational cards triggers a warning. Human picks three, reorders, or hand-authors a custom angle.</p>
+
+  <p><strong>Step 4, Concept Briefs.</strong> AI generates three <code>ConceptBrief</code> documents in parallel, one per angle. Each declares the same six spec fields: theme statement, color story with ratios, typography pairing, shot recipe (<code>shotType</code>, lighting, composition, lens, setting, props), headline plus subhead plus CTA, mandatories checklist. Five tool-specific prompts per brief (Midjourney, Flux, Nano Banana, GPT-image, Ideogram), each written in that tool's native idiom. Human nudges with "make it more rebellious" or per-section regen.</p>
+
+  <p><strong>Step 5, Image Generation.</strong> Optional. Skipped if no image-gen key. With a fal or Ideogram key, shot-type-aware routing picks Flux Kontext Pro for hero and lifestyle, Ideogram v3 for poster and typography, and streams thumbnails into a gallery.</p>
+
+  <p><strong>Step 6, Prompt Deck Export.</strong> PDF of 15-25 prompt cards (3 concepts &times; 2-3 surfaces &times; 2-3 tool variants). Every card is self-contained: heading, one-line description, prompt in a code block, tool tag. A brand lead reviews on phone; a designer or an image-gen AI executes from it directly.</p>
+
+  <div class="brief-block">
+    <h2>The 1-page brand brief</h2>
+
+    <p>Six sections, fits one A4 page, every field load-bearing.</p>
+
+    <ul class="fields">
+      <li><strong>Product.</strong> Name, one-liner, hero photo (upload, URL, or text-only with a fidelity badge so the model knows it is working blind), price tier, category.</li>
+      <li><strong>Audience.</strong> Description, signal preset, one customer insight in the brand's own words.</li>
+      <li><strong>Strategy.</strong> Single-minded proposition, three reasons to believe.</li>
+      <li><strong>Brand.</strong> Palette as hex with usage-ratio sliders (60/30/10 by default), typography, voice opposites as "X not Y" pairs (for example, "playful, not slapstick"), logo.</li>
+      <li><strong>References.</strong> Three to six competitor URLs OR uploads OR brand names, plus a do-not-include list, plus optional mood images.</li>
+      <li><strong>Surfaces.</strong> Aspect ratios checklist and mandatories (logo placement, legal claims, A+ content panel safe zones).</li>
+    </ul>
+
+    <p>Two fields most briefs skip do disproportionate work here: voice opposites and do-not-include. Voice opposites kill the bland-corporate default tone AI lands on without contrastive framing. The do-not-include list strips off-strategy cliches before they reach the prompt. For Bewakoof, that means "clean studio white-bg" goes on the list, because Souled Store owns that frame and the angle is to avoid it.</p>
+  </div>
+
+  <h2>What "done" means</h2>
+
+  <p>Each step has a binary gate, not a vibe.</p>
+
+  <p><strong>Brief.</strong> Six sections submitted, palette has a primary hex, at least one competitor ref resolves to a real image. <strong>Style Report.</strong> Three or more palette swatches with hex plus role plus ratio, and every extracted token carries an <code>evidenceImageIdx</code> pointing to a fetched image. No floating claims. <strong>Angles.</strong> Five proposals returned, each with controlled-vocabulary name, rationale, whitespace claim, confidence score; user has picked three spanning at least two trifecta families. <strong>Concept Briefs.</strong> All six spec fields populated, quality gate passes (palette &Delta;E &lt; 20 against brand hex, every mandatory present in the prompt, zero do-not-include items present, shot recipe matches angle family). <strong>Image Generation.</strong> Every requested surface yields either a rendered image or a logged failure with a reason. <strong>Export.</strong> PDF renders cover, brief, style report, three concept briefs, and prompt deck with no missing assets.</p>
+
+  <h2>What can go wrong, and how it is caught</h2>
+
+  <p>A handful of failure modes are worth budget. Most are the ones a generic "Zapier plus ChatGPT" workflow eats silently.</p>
+
+  <div class="failure-list">
+    <div class="item">
+      <p><em>Off-brand colour drift in renders.</em> Flux returns a navy hero when the brand is mustard. Caught by a CIE2000 &Delta;E gate that samples dominant colours from the render and compares to the brief palette. Fails to a yellow chip; auto-fix re-runs the prompt with <code>--no</code> constraints on the offending hues.</p>
+    </div>
+    <div class="item">
+      <p><em>Scrape blocked by CSP or a login wall.</em> Bewakoof's SPA needs Playwright; Instagram is a login wall full stop. Caught by the five-strategy chain degrading to "we couldn't load 2 of 5 URLs, paste images?" instead of fabricating tokens. The ticker shows the failure live so the user never wonders.</p>
+    </div>
+    <div class="item">
+      <p><em>Three visually different but strategically identical angles.</em> The classic: three Aspirational concepts in different palettes. The angle picker refuses to advance until at least two trifecta families are picked. A "Show all 8" toggle exists for users who insist, but they have to insist.</p>
+    </div>
+    <div class="item">
+      <p><em>Brief edits after concept briefs exist.</em> User flips the palette in Step 1 after seeing Step 4. Caught by an integer <code>editEpoch</code> that bumps on every upstream write. Each derived doc stores <code>editEpochAtGeneration</code> and shows a stale chip when the integers diverge. One-line check, no fingerprinting.</p>
+    </div>
+    <div class="item">
+      <p><em>Hallucinated competitor patterns.</em> AI loves inventing "competitors use heavy grain" when nothing in the fetched set does. Caught by the <code>evidence</code> array in the StyleReport schema. No image, no claim.</p>
+    </div>
+  </div>
+
+  <p class="closer">One subscription, no designer in the loop. <span class="em">A brand ships an Amazon A+ panel set or a Meta dynamic-creative batch on the same Tuesday the brief lands.</span></p>
+
+</body>
+</html>
