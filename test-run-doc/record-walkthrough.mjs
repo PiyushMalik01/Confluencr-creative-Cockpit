@@ -43,18 +43,14 @@ async function scrollBackToTop() {
 }
 
 console.log('[1/9] Landing page');
-await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+await page.goto(`${BASE}/`, { waitUntil: 'domcontentloaded' });
 await pause(2400);
 
 console.log('[2/9] Open project');
-await page.goto(`${BASE}/p/${PROJECT_ID}`, { waitUntil: 'networkidle' });
-await pause(2200);
-
-console.log('[3/9] Open header switcher');
-await page.locator('button:has-text("Bewakoof Friends Pivot")').first().click();
+await page.goto(`${BASE}/p/${PROJECT_ID}`, { waitUntil: 'load' });
+// Wait for the project shell to actually render past the not-found suspense fallback
+await page.locator('text=Brief').first().waitFor({ state: 'visible', timeout: 30000 });
 await pause(2500);
-await page.keyboard.press('Escape');
-await pause(800);
 
 console.log('[4/9] Step 1 Brief');
 await clickStep('Tell the cockpit');

@@ -34,7 +34,7 @@
 
   body {
     margin: 0;
-    padding: 0 64px;
+    padding: 12px 64px 12px 64px;
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -176,10 +176,11 @@
 
   /* ========== SECTION HEADER ========== */
   .section-header {
-    margin: 48px 0 24px 0;
-    padding-bottom: 16px;
+    margin: 36px 0 22px 0;
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--rule);
     page-break-after: avoid;
+    page-break-before: auto;
   }
   .section-header .num {
     display: inline-block;
@@ -256,7 +257,7 @@
 
   /* ========== FIGURE ========== */
   .figure {
-    margin: 24px -8px 24px -8px;
+    margin: 24px 0 24px 0;
     page-break-inside: avoid;
   }
   .figure-frame {
@@ -271,8 +272,86 @@
     width: 100%;
     height: auto;
   }
-  .figure-frame.crop { max-height: 620px; overflow: hidden; position: relative; }
-  .figure-frame.crop img { object-position: top; object-fit: cover; max-height: 620px; }
+  .figure-frame.crop { overflow: hidden; position: relative; }
+  .figure-frame.crop img { display: block; width: 100%; height: auto; }
+
+  /* Render panel: shows the actual produced image for a concept */
+  .render-panel {
+    margin: 18px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    page-break-inside: avoid;
+  }
+  .render-panel .render-img {
+    border: 1px solid var(--rule-strong);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #050505;
+  }
+  .render-panel .render-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
+    background: #0a0a0a;
+  }
+  .render-panel .render-meta {
+    font-size: 8.5pt;
+    color: var(--text-muted);
+    line-height: 1.55;
+    display: flex; gap: 10px; align-items: baseline;
+  }
+  .render-panel .render-meta .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: var(--text-strong);
+    background: var(--brand-yellow);
+    padding: 3px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Triptych for Image Generation section */
+  .triptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0 8px 0;
+    page-break-inside: avoid;
+  }
+  .triptych .panel {
+    border: 1px solid var(--rule-strong);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+  .triptych .panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: contain;
+  }
+  .triptych .caption {
+    font-size: 7.5pt;
+    color: var(--text-muted);
+    padding: 6px 10px 8px 10px;
+    border-top: 1px solid var(--rule);
+    background: var(--bg);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .triptych .caption strong {
+    color: var(--text-strong);
+    text-transform: uppercase;
+    font-size: 7.5pt;
+    letter-spacing: 0.08em;
+  }
   .figure .caption {
     margin-top: 10px;
     font-size: 9pt;
@@ -410,10 +489,14 @@
     border: 1px solid rgba(15,15,15,0.04);
     border-radius: 6px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 8pt;
-    line-height: 1.6;
+    font-size: 7.5pt;
+    line-height: 1.55;
     white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
     color: var(--code-text);
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .concept-body .prompt-label {
     display: flex; align-items: center; gap: 10px;
@@ -518,11 +601,12 @@
   .closer strong { color: var(--text-strong); font-style: normal; font-weight: 600; }
 
   /* ========== PRINT ========== */
-  @page { size: A4; margin: 0; }
+  @page { size: A4; margin: 22mm 0 18mm 0; }
   @media print {
     body { padding: 0 64px; }
     h2, h3 { page-break-after: avoid; }
     .figure, .concept, .step-card, .deck-grid, .comm-block, .closer { page-break-inside: avoid; }
+    .section-header { page-break-before: auto; padding-top: 4px; }
   }
 </style>
 </head>
@@ -542,7 +626,7 @@
     <h1>Bewakoof Friends Pivot oversized tee,<br>run end to end through the<br>Creative Cockpit.</h1>
 
     <p class="cover-lede">
-      The brand brief filled in, the competitor style report, the angle picker (five proposed, three picked across the trifecta), three on-brand concept briefs with prompts written for every image-gen tool, the prompt deck, and an honest commentary on what worked, what did not, and what I would iterate. Driven against the <strong>deployed Vercel build</strong> with Playwright. Generated with gpt-5.4 via the ChatGPT auth path. <strong>Zero rupees of marginal cost.</strong>
+      The brand brief filled in, the competitor style report, the angle picker (five proposed, three picked across the trifecta), three on-brand concept briefs with prompts written for every image-gen tool, the prompt deck, and an honest commentary on what worked, what did not, and what I would iterate. Driven end to end against the running cockpit with Playwright, using a BYO <strong>gpt-5</strong> key. The three final images were rendered in Gemini from the prompts the cockpit emitted. Nothing in this document was seeded or mocked.
     </p>
 
     <div class="cover-meta">
@@ -644,16 +728,6 @@
   </div>
 </div>
 
-<div class="figure">
-  <div class="figure-frame crop">
-    <img src="screens-deployed/04-brief-brand.png" alt="Brand section: palette + voice opposites" />
-  </div>
-  <div class="caption">
-    <span class="num">Fig 1.2</span>
-    <span class="body"><strong>Brand and References sections.</strong> Palette uses hex picker + usage-ratio sliders. Voice opposites are entered as X-not-Y pairs. Competitor refs accept URL paste, file upload, or brand-name search.</span>
-  </div>
-</div>
-
 <!-- ============ 02 WALKTHROUGH ============ -->
 <header class="section-header">
   <span class="num">02</span>
@@ -701,7 +775,7 @@
   </div>
   <div class="caption">
     <span class="num">Fig 3.1</span>
-    <span class="body"><strong>Step 3 &middot; Five contextual angles.</strong> Picked: Aspirational (rebel-poster), Emotional (rewatch moment), Rational (Amazon A+ infographic). Three trifecta families. Picker refuses to advance unless the spread is real.</span>
+    <span class="body"><strong>Step 3 &middot; Five contextual angles.</strong> gpt-5 proposed Aspirational, Social-Proof, Transformation, Problem-Solution, and Value. Picker held the picks to <em>Value</em>, <em>Transformation</em>, and <em>Social-Proof</em>, three trifecta families. The cockpit refuses to advance unless the spread is real.</span>
   </div>
 </div>
 
@@ -758,85 +832,126 @@
 
 <div class="concept">
   <div class="concept-head">
-    <span class="pos">Concept 01 &middot; Aspirational</span>
-    <h3>A Friends tee shot like a band poster, not a catalog.</h3>
-    <p class="rationale"><strong>Strategic rationale.</strong> Souled Store and Snitch both lean catalog-soft. Bewakoof has white-space in poster culture: rebel youth, sticker layout, hot yellow on inky black. This concept treats the tee like a wall artefact you would tear off a Bombay Local pillar, then hangs the licensed Friends IP from it without apologising.</p>
+    <span class="pos">Concept 01 &middot; Value</span>
+    <h3>BIG FIT, SMALL BILL. The price-lock hero that proves D2C value without discount tropes.</h3>
+    <p class="rationale"><strong>Strategic rationale.</strong> The model rejected MRP-slash and limited-drop pressure. Instead it staged a dual-view hero (front + back) under punchy on-axis flash with crisp trust badges (COD, Pan-India delivery, easy returns) so value feels everyday and dependable. Stark white field, accurate mustard hue, bold headline.</p>
   </div>
   <div class="concept-body">
     <div class="swatch-row">
-      <div class="swatch-chip"><span class="sw" style="background:#FFCC00"></span><code>#FFCC00</code><span style="color:var(--text-muted); font-size:8pt;">primary 55%</span></div>
-      <div class="swatch-chip"><span class="sw" style="background:#0A0A0A"></span><code>#0A0A0A</code><span style="color:var(--text-muted); font-size:8pt;">background 35%</span></div>
-      <div class="swatch-chip"><span class="sw" style="background:#FFFFFF; border-color:#ccc"></span><code>#FFFFFF</code><span style="color:var(--text-muted); font-size:8pt;">accent 10%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#FFD200"></span><code>#FFD200</code><span style="color:var(--text-muted); font-size:8pt;">primary 45%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#000000"></span><code>#000000</code><span style="color:var(--text-muted); font-size:8pt;">neutral 25%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#FFFFFF; border-color:#ccc"></span><code>#FFFFFF</code><span style="color:var(--text-muted); font-size:8pt;">background 20%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#D4A017"></span><code>#D4A017</code><span style="color:var(--text-muted); font-size:8pt;">accent 10%</span></div>
     </div>
     <div class="grid">
-      <div class="k">Typography</div><div class="v">Bebas Neue (display) + Inter (body)</div>
+      <div class="k">Typography</div><div class="v">Rubik Bold (display) + Inter Regular (body)</div>
       <div class="k">Shot type</div><div class="v">hero</div>
-      <div class="k">Lighting</div><div class="v">hard top key + black rim, deep shadow, no fill &mdash; gig poster contrast</div>
-      <div class="k">Composition</div><div class="v">centred tee at 70% height, top-third bold headline, sticker artefacts at bottom-third</div>
-      <div class="k">Lens</div><div class="v">50mm prime, slight wide framing for poster feel</div>
-      <div class="k">Setting</div><div class="v">inky black backdrop with a slight matte texture, Bombay-poster sticker overlays</div>
-      <div class="k">Headline</div><div class="v headline">OWN YOUR CRAZY &mdash; Friends Pivot &middot; Oversized &middot; Drop 014</div>
-      <div class="k">CTA</div><div class="v">GRAB THE DROP</div>
-      <div class="k">Mandatories</div><div class="v">Bewakoof logo bottom-right &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; A+ safe zones &nbsp;<span style="color:#22a35a;">&#10003;</span></div>
+      <div class="k">Lighting</div><div class="v">On-axis 5600K speedlight + 1:4 white V-flat fill + 5200K magenta-gel rim at az 120&deg;, el 20&deg;; shadow density 0.65</div>
+      <div class="k">Composition</div><div class="v">1:1 frame, model twice: front (right, dominant) + back (left); headline-safe top 22%, logo-safe bottom 14%</div>
+      <div class="k">Lens</div><div class="v">Full-frame, 35mm prime, f/5.6, 1/200s, ISO 800</div>
+      <div class="k">Material</div><div class="v">Cotton jersey roughness 0.65, Lambertian diffuse, no plastic sheen; rib collar shows soft fiber edge</div>
+      <div class="k">Headline</div><div class="v headline">BIG FIT, SMALL BILL</div>
+      <div class="k">Subhead</div><div class="v">Official FRIENDS &lsquo;PIVOT&rsquo; tee. COD | Pan-India Delivery | Easy Returns.</div>
+      <div class="k">CTA</div><div class="v">Shop the PIVOT Tee</div>
+      <div class="k">Mandatories</div><div class="v">FRIENDS&trade; lockup &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; Bewakoof mark &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; Front + back fit &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; #FFD200 hue lock &nbsp;<span style="color:#22a35a;">&#10003;</span></div>
+    </div>
+    <div class="render-panel">
+      <div class="render-img"><img src="screens-deployed/render-concept-01-value.png" alt="Concept 01 rendered in Gemini" /></div>
+      <div class="render-meta"><span class="num">Render 01</span><span><strong>Rendered in Gemini</strong> from the Flux Kontext prompt below. Dual-figure hero, accurate mustard #FFD200, headline laid in to spec, FRIENDS&trade; lockup + Bewakoof mark in safe bands. First pass, no regen.</span></div>
     </div>
     <div class="prompt-label"><span class="tag">Flux Kontext</span></div>
-    <pre class="prompt">Bewakoof yellow Friends Pivot oversized cotton t-shirt centred on backdrop. inky black matte-textured poster backdrop with paste-up sticker scraps bottom-third. hard top key light + black rim, deep shadow, no fill, gig poster contrast. centred tee at 70% frame height, headline reserve top-third, brand logo lockup bottom-right. colour palette anchored at #FFCC00 (60%) and #0A0A0A (30%), accent #FFFFFF (10%). 1:1 aspect ratio. Mandatory: Bewakoof logo bottom-right + A+ safe zones respected. Negative: no clean studio white-bg, no mannequin, no plastic mockup, no corporate stock model</pre>
+    <pre class="prompt">Render a dual-figure hero of the Bewakoof Friends &lsquo;PIVOT&rsquo; Oversized T-Shirt (mustard #FFD200): right figure front view, left figure back view, on white seamless with hard flash character and value badges.
+PHOTOMETRIC: key 5600K on-camera flash, az 0&deg;, el 0&deg;; fill 1:4 via white V-flat camera-right; rim 5200K with &frac12; magenta gel, az 120&deg;, el 20&deg;; shadow_density 0.65.
+OPTICAL: full-frame body, 35mm prime, f/5.6, 1/200s, ISO 800; focus on front chest print; DOF band covers back shoulder at ~1.5m.
+SPATIAL: canvas 1:1; subject_offset_x_pct front=62%, back=38%; subject_offset_y_pct=50%; headroom_pct=10%; headline-safe top 22%; logo-safe bottom 14%.
+MATERIAL: cotton jersey (roughness 0.65, low specular); black &lsquo;PIVOT&rsquo; vector print sharp; rib knit collar shows fiber microtexture; swing tag with FRIENDS&trade; lockup near hem.
+POST: grain ISO800 (15%); shadows grade #0E0E0E, highlights #FFF2B0; mild S-curve; vignette 8%; Portra 400 tonality, halation off.
+GRAPHICS: &ldquo;BIG FIT, SMALL BILL&rdquo; Rubik Bold 84pt eq, tracking -5, #000000, inset top 8% left 6%; &ldquo;COD | Pan-India Delivery | Easy Returns&rdquo; Inter Medium 24pt eq; FRIENDS&trade; licensing line Inter Regular 14pt eq.
+References: Petra-Collins on-camera flash grammar; Jurgen Teller hard-flash honesty; Supreme typographic restraint.
+Constraints: accurate mustard #FFD200; no soft high-key cyclorama look; no couch &lsquo;PIVOT&rsquo; clipart; no pixelated graphics.</pre>
   </div>
 </div>
 
 <div class="concept">
   <div class="concept-head">
-    <span class="pos">Concept 02 &middot; Emotional</span>
-    <h3>The tee in its natural habitat: a Sunday afternoon rewatch.</h3>
-    <p class="rationale"><strong>Strategic rationale.</strong> Friends is comfort merchandise. An emotional concept frames the tee as the artefact you reach for when you finally get the joke. Warm beige room, late-afternoon window light, the tee draped on a chair next to a half-drunk coffee. Reads like a rewatch ritual, not a catalog page.</p>
+    <span class="pos">Concept 02 &middot; Transformation</span>
+    <h3>INSTANT VIBE SHIFT. Before/after in one frame, flash-frozen swagger with magenta rim energy.</h3>
+    <p class="rationale"><strong>Strategic rationale.</strong> Competitors default to flat-lays and static front crops. The model claimed whitespace with a motion-led split-frame visualising transformation: the tee on-body, oversized drape in action, Petra-Collins grammar flash, magenta rim signaling the instant vibe shift.</p>
   </div>
   <div class="concept-body">
     <div class="swatch-row">
-      <div class="swatch-chip"><span class="sw" style="background:#F4E1B4"></span><code>#F4E1B4</code><span style="color:var(--text-muted); font-size:8pt;">background 55%</span></div>
-      <div class="swatch-chip"><span class="sw" style="background:#FFCC00"></span><code>#FFCC00</code><span style="color:var(--text-muted); font-size:8pt;">accent 25%</span></div>
-      <div class="swatch-chip"><span class="sw" style="background:#3D2F1F"></span><code>#3D2F1F</code><span style="color:var(--text-muted); font-size:8pt;">neutral 20%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#FFD200"></span><code>#FFD200</code><span style="color:var(--text-muted); font-size:8pt;">primary 45%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#000000"></span><code>#000000</code><span style="color:var(--text-muted); font-size:8pt;">neutral 25%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#FFFFFF; border-color:#ccc"></span><code>#FFFFFF</code><span style="color:var(--text-muted); font-size:8pt;">background 20%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#D4A017"></span><code>#D4A017</code><span style="color:var(--text-muted); font-size:8pt;">accent 10%</span></div>
     </div>
     <div class="grid">
-      <div class="k">Typography</div><div class="v">Bebas Neue (display) + Inter (body)</div>
-      <div class="k">Shot type</div><div class="v">lifestyle</div>
-      <div class="k">Lighting</div><div class="v">late golden-hour window light, soft directional, warm CT shift</div>
-      <div class="k">Composition</div><div class="v">tee draped on a wooden chair in left-third, coffee mug + remote in foreground</div>
-      <div class="k">Lens</div><div class="v">35mm wide, shallow depth at foreground objects</div>
-      <div class="k">Setting</div><div class="v">beige plaster wall with soft TV-glow rim from off-frame right</div>
-      <div class="k">Headline</div><div class="v headline">PIVOT. PIVOT! PIVOT!! &mdash; For the rewatch, the in-jokes, and the Sunday couches.</div>
-      <div class="k">CTA</div><div class="v">WEAR THE REWATCH</div>
-      <div class="k">Mandatories</div><div class="v">Bewakoof logo bottom-right &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; A+ safe zones &nbsp;<span style="color:#22a35a;">&#10003;</span></div>
+      <div class="k">Typography</div><div class="v">Anton Bold (display) + Inter (body)</div>
+      <div class="k">Shot type</div><div class="v">in-use</div>
+      <div class="k">Lighting</div><div class="v">5600K on-camera flash key + 1:4 negative fill + 5600K magenta-gel rim at az 110&deg;, el 30&deg;; ambient off; shadow density 0.7</div>
+      <div class="k">Composition</div><div class="v">1:1 split-frame: left 30% desaturated &lsquo;before&rsquo;, right 70% saturated &lsquo;after&rsquo;; ghosted rear view 15&ndash;20% opacity arcs behind</div>
+      <div class="k">Lens</div><div class="v">Full-frame, 35mm prime, f/8, 1/200s, ISO 800</div>
+      <div class="k">Material</div><div class="v">Cotton jersey roughness 0.65 with vertical anisotropy; skin 0.35; wall 0.75 matte plaster</div>
+      <div class="k">Headline</div><div class="v headline">INSTANT VIBE SHIFT</div>
+      <div class="k">Subhead</div><div class="v">Official FRIENDS&trade; &lsquo;PIVOT&rsquo; oversized tee in mustard. Throw it on and the mood moves with you.</div>
+      <div class="k">CTA</div><div class="v">Pivot now. Shop.</div>
+      <div class="k">Mandatories</div><div class="v">FRIENDS&trade; lockup &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; Bewakoof mark &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; Oversized fit (front + back) &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; #FFD200 lock &nbsp;<span style="color:#22a35a;">&#10003;</span></div>
+    </div>
+    <div class="render-panel">
+      <div class="render-img"><img src="screens-deployed/render-concept-02-transformation.png" alt="Concept 02 rendered in Gemini" /></div>
+      <div class="render-meta"><span class="num">Render 02</span><span><strong>Rendered in Gemini</strong> from the Flux Kontext prompt below. Split-frame holds, ghosted back view falls in behind the front pose, mustard hue lock holds, headline reads. Tape X on the floor came through as art-directed.</span></div>
     </div>
     <div class="prompt-label"><span class="tag">Flux Kontext</span></div>
-    <pre class="prompt">Bewakoof yellow Friends Pivot oversized tee draped on a wooden chair, soft rattan side table foreground. beige plaster wall living room corner, half-drunk coffee mug and tv remote on side table, soft TV glow from off-frame right. late golden-hour window light, soft directional, warm CT shift, gentle rim. tee in left-third, foreground objects bottom-right, 4:5 vertical reserve for headline top. #F4E1B4 background (55%) with #FFCC00 tee accent (25%) and #3D2F1F warm neutrals (20%). 4:5 aspect ratio. Mandatory: Bewakoof logo bottom-right + A+ safe zones respected. Negative: no clean studio white-bg, no mannequin, no plastic mockup, no corporate stock model</pre>
+    <pre class="prompt">Render a 1:1 dynamic split-frame &lsquo;transformation&rsquo; image of a Gen Z Indian model putting on the Bewakoof x FRIENDS &lsquo;PIVOT&rsquo; Oversized Tee in mustard (#FFD200).
+PHOTOMETRIC: key on-camera flash 5600K (az 0&deg;, el 5&deg;); fill 1:4 via negative fill; magenta-gelled rim strobe 5600K (az 110&deg;, el 30&deg;); shadow density 0.7; ambient off.
+OPTICAL: full-frame, 35mm prime, f/8, 1/200s, ISO 800; focus on chest print; DOF 1.5&ndash;2.5m.
+SPATIAL: left 30% grayscale &lsquo;before&rsquo;; right 70% saturated &lsquo;after&rsquo;; ghosted rear view at 15&ndash;20% opacity to show back drape; subject_offset_x_pct 60 (after), 15 (before); headroom_pct 10; headline-safe top 22%; logo-safe bottom 14%.
+MATERIAL: cotton jersey roughness 0.65 with vertical anisotropy; skin roughness 0.35; wall roughness 0.75; low Fresnel on cotton.
+SETTING: matte white wall with visible corner seam; tape X on floor; minimal styling.
+POST: Portra 400 emulation with warm shadows (#C18A00) and creamy highlights (#FFF1CC); gentle S-curve (+8); vignette 8%; ISO 800 grain.
+GRAPHICS: &ldquo;INSTANT VIBE SHIFT&rdquo; Anton Bold 140pt eq, tracking +20, leading 92%, #000000, top-left inset 6% within top 22%; subhead Inter Regular 36pt eq #000000; FRIENDS&trade; lockup Inter Medium 18pt eq bottom-right inset 4%; Bewakoof wordmark bottom-left.
+Constraints: crisp &lsquo;PIVOT&rsquo; graphic (no pixelation), no couch, no flat-lay, no soft high-key.</pre>
   </div>
 </div>
 
 <div class="concept">
   <div class="concept-head">
-    <span class="pos">Concept 03 &middot; Rational</span>
-    <h3>The Amazon A+ panel that converts the licence-aware buyer.</h3>
-    <p class="rationale"><strong>Strategic rationale.</strong> Marketplace buyers do not get rewatch jokes &mdash; they get spec tags. This concept stacks the proof points: officially licensed Friends IP, 240gsm cotton, oversized drop fit, machine wash safe. Yellow callouts on black, every claim with an icon. Built for Amazon A+ panel placement.</p>
+    <span class="pos">Concept 03 &middot; Social-Proof</span>
+    <h3>FANS PIVOT HERE. Candid campus trio with Petra-Collins flash and rating overlays.</h3>
+    <p class="rationale"><strong>Strategic rationale.</strong> Show three real friends in a believable Indian campus setting, captured with diaristic on-camera flash and clean UGC overlays. The group dynamic signals popularity; rating snippets replace generic &lsquo;official badge&rsquo; tropes; the licensed lockup plus Bewakoof mark reinforce trust while feeling native to social feeds.</p>
   </div>
   <div class="concept-body">
     <div class="swatch-row">
-      <div class="swatch-chip"><span class="sw" style="background:#0A0A0A"></span><code>#0A0A0A</code><span style="color:var(--text-muted); font-size:8pt;">background 60%</span></div>
-      <div class="swatch-chip"><span class="sw" style="background:#FFCC00"></span><code>#FFCC00</code><span style="color:var(--text-muted); font-size:8pt;">primary 30%</span></div>
-      <div class="swatch-chip"><span class="sw" style="background:#FFFFFF; border-color:#ccc"></span><code>#FFFFFF</code><span style="color:var(--text-muted); font-size:8pt;">accent 10%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#FFD200"></span><code>#FFD200</code><span style="color:var(--text-muted); font-size:8pt;">primary 45%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#000000"></span><code>#000000</code><span style="color:var(--text-muted); font-size:8pt;">neutral 25%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#FFFFFF; border-color:#ccc"></span><code>#FFFFFF</code><span style="color:var(--text-muted); font-size:8pt;">background 20%</span></div>
+      <div class="swatch-chip"><span class="sw" style="background:#D4A017"></span><code>#D4A017</code><span style="color:var(--text-muted); font-size:8pt;">accent 10%</span></div>
     </div>
     <div class="grid">
-      <div class="k">Typography</div><div class="v">Inter (display + body, marketplace-safe)</div>
-      <div class="k">Shot type</div><div class="v">infographic</div>
-      <div class="k">Lighting</div><div class="v">even softbox, flat reveal, no shadow drama &mdash; spec-shoot lighting</div>
-      <div class="k">Composition</div><div class="v">tee centred at 55%, four yellow icon-callout chips at the four corners</div>
-      <div class="k">Lens</div><div class="v">85mm product macro, slight compression</div>
-      <div class="k">Setting</div><div class="v">pure #0A0A0A backdrop, no texture, marketplace-safe</div>
-      <div class="k">Headline</div><div class="v headline">OFFICIALLY LICENSED. OVERSIZED. UNDER &#8377;600. &mdash; 240gsm cotton &middot; Drop fit &middot; Machine wash safe</div>
-      <div class="k">CTA</div><div class="v">ADD TO CART</div>
-      <div class="k">Mandatories</div><div class="v">Bewakoof logo bottom-right &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; A+ safe zones &nbsp;<span style="color:#22a35a;">&#10003;</span></div>
+      <div class="k">Typography</div><div class="v">Poppins Bold (display) + Inter Regular (body)</div>
+      <div class="k">Shot type</div><div class="v">social-proof</div>
+      <div class="k">Lighting</div><div class="v">5500K on-camera flash + 1:4 white card fill + 3200K magenta-gel rim at az 300&deg;, el 40&deg;; ambient 4500K corridor at -1.0 EV; shadow density 0.65</div>
+      <div class="k">Composition</div><div class="v">Trio in Z-stagger: front subject center-left, 3/4 back mid-right, side profile rear-left; headline-safe top 22%, logo-safe bottom 14%</div>
+      <div class="k">Lens</div><div class="v">Full-frame, 35mm prime, f/4, 1/200s, ISO 800</div>
+      <div class="k">Material</div><div class="v">Cotton jersey roughness 0.7 matte; skin 0.45; plaster 0.6; helmet gloss 0.25; flag magenta off the tee</div>
+      <div class="k">Headline</div><div class="v headline">FANS PIVOT HERE</div>
+      <div class="k">Subhead</div><div class="v">Official FRIENDS&trade; oversized comfort. Real reviews. Real fits. Bewakoof prices. <em>(4.6 &#9733; 1.8k reviews)</em></div>
+      <div class="k">CTA</div><div class="v">Shop the PIVOT Tee</div>
+      <div class="k">Mandatories</div><div class="v">FRIENDS&trade; lockup &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; Bewakoof mark &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; Front + back fit &nbsp;<span style="color:#22a35a;">&#10003;</span>&nbsp; #FFD200 lock &nbsp;<span style="color:#22a35a;">&#10003;</span></div>
     </div>
-    <div class="prompt-label"><span class="tag">Ideogram v3</span></div>
-    <pre class="prompt">Infographic. Subject: tee centred. Setting: pure #0A0A0A backdrop. Lighting: even softbox flat reveal. Composition: tee at 55%, four corner callouts. Type: Inter headline "OFFICIALLY LICENSED. OVERSIZED. UNDER &#8377;600." top + four short icon-callout chips. Colour: #0A0A0A 60 / #FFCC00 30 / #FFFFFF 10. Aspect 1:1. Negatives: white-bg, mannequin, plastic mockup, corporate stock model, lifestyle.</pre>
+    <div class="render-panel">
+      <div class="render-img"><img src="screens-deployed/render-concept-03-social.jpg" alt="Concept 03 rendered in Gemini" /></div>
+      <div class="render-meta"><span class="num">Render 03</span><span><strong>Rendered in Gemini</strong> from the Flux Kontext prompt below. Stairwell landing, candid trio, magenta-rim flash on the background, mustard tee stays clean. Rating pill and licensing line composited cleanly inside the safe bands.</span></div>
+    </div>
+    <div class="prompt-label"><span class="tag">Flux Kontext</span></div>
+    <pre class="prompt">Render a 1:1 social-proof image of three Indian college friends on a hostel stairwell landing, styling the Bewakoof FRIENDS &lsquo;PIVOT&rsquo; mustard oversized tee. One faces camera (front print), one 3/4 back, one side profile.
+PHOTOMETRIC: key = direct on-camera flash 5500K (az 0&deg;, el 15&deg;); fill = white foam-core 1:4; rim = gridded strobe 3200K with magenta gel (az 300&deg;, el 40&deg;); ambient = 4500K corridor at -1.0 EV; shadow density 0.65; clamp max highlight at 90 IRE on cotton.
+OPTICAL: full-frame; 35mm prime; f/4; 1/200s; ISO 800; focus on chest print; DOF band &plusmn;40 cm.
+SPATIAL: subject_offset_x_pct +8; subject_offset_y_pct -4; headroom_pct 14; headline-safe top 22; logo-safe bottom 14; Reels 9:16 central 60% protected.
+MATERIAL: cotton jersey roughness 0.7, low specular, Lambertian BRDF; skin roughness 0.45; plaster wall roughness 0.6; helmet gloss roughness 0.25; keep mustard #FFD200 accurate (no magenta contamination, flag rim light).
+POST: grain ISO 800 (12&ndash;15%); grade shadows to #1F1A17, highlights to #FFF2B0; LUT Portra 400 +0.5; contrast +8, blacks -4; vignette 8%.
+GRAPHICS: &ldquo;FANS PIVOT HERE&rdquo; Poppins Bold 78pt with 2px white stroke for legibility, top 4% center; rating pill &ldquo;4.6 &#9733; 1.8k reviews&rdquo; Inter Medium 34pt on #000 rounded rect top-left 5% inset; licensing &ldquo;FRIENDS&trade; &amp; &copy; WB Ent. Used under license&rdquo; Inter Regular 20pt bottom-left 4% inset; Bewakoof wordmark top-right.
+Avoid studio-white, over-propping, badge clutter.</pre>
   </div>
 </div>
 
@@ -849,22 +964,22 @@
 
 <div class="deck-grid">
   <div class="card">
-    <h4>Concept 01 &middot; Aspirational hero</h4>
+    <h4>Concept 01 &middot; Value hero</h4>
     <span class="pill solid">Flux Kontext</span>
     <span class="pill">1:1</span><span class="pill">4:5</span><span class="pill">9:16</span>
-    <p class="desc">Hard-light gig-poster aesthetic. Inky black backdrop, paste-up sticker scraps, hot yellow tee. Headline "OWN YOUR CRAZY" in tall Bebas top-third.</p>
+    <p class="desc">Dual-figure hero on white seamless. On-axis 5600K flash, 1:4 V-flat fill, magenta-gel rim. Headline "BIG FIT, SMALL BILL" in Rubik Bold. Trust badges: COD, Pan-India, easy returns.</p>
   </div>
   <div class="card">
-    <h4>Concept 02 &middot; Emotional lifestyle</h4>
+    <h4>Concept 02 &middot; Transformation</h4>
     <span class="pill solid">Flux Kontext</span>
     <span class="pill">1:1</span><span class="pill">4:5</span><span class="pill">9:16</span>
-    <p class="desc">Rewatch corner. Beige plaster wall, golden-hour window light, tee draped on wooden chair, coffee mug + remote in foreground. Headline "PIVOT. PIVOT! PIVOT!!"</p>
+    <p class="desc">Split-frame before/after on matte white wall. f/8 sharpness, Portra 400 grade, ghosted rear view at 15&ndash;20% opacity. Headline "INSTANT VIBE SHIFT" in Anton Bold.</p>
   </div>
   <div class="card">
-    <h4>Concept 03 &middot; Rational infographic</h4>
-    <span class="pill solid">Ideogram v3</span>
+    <h4>Concept 03 &middot; Social-Proof</h4>
+    <span class="pill solid">Flux Kontext</span>
     <span class="pill">1:1</span><span class="pill">4:5</span><span class="pill">9:16</span>
-    <p class="desc">Amazon A+ panel. Pure black backdrop, tee centred, four yellow icon-callout chips at the corners. Headline "OFFICIALLY LICENSED. OVERSIZED. UNDER &#8377;600."</p>
+    <p class="desc">Campus stairwell trio, Petra-Collins on-camera flash, dusk corridor ambient. Rating pill "4.6 &#9733; 1.8k reviews" + licensing line. Headline "FANS PIVOT HERE" in Poppins Bold.</p>
   </div>
   <div class="card">
     <h4>System-generated PDF</h4>
@@ -876,29 +991,48 @@
 <!-- ============ 05 IMAGE GEN ============ -->
 <header class="section-header">
   <span class="num">05</span>
-  <h2>Generated image prompts, ready to run</h2>
-  <p class="lede">The prompts above were lifted into Nano Banana Pro and Flux Kontext as a sanity check. Three things were true under load.</p>
+  <h2>Three images, rendered from the cockpit's prompts</h2>
+  <p class="lede">Each Flux Kontext prompt from Step 4 was lifted into Gemini as the image-gen runtime. No edits, no Photoshop, no re-prompting. These are the first-pass returns.</p>
 </header>
+
+<div class="triptych">
+  <div class="panel">
+    <img src="screens-deployed/render-concept-01-value.png" alt="Concept 01 Value: BIG FIT, SMALL BILL" />
+    <div class="caption"><strong>Concept 01 &middot; Value</strong><br>BIG FIT, SMALL BILL</div>
+  </div>
+  <div class="panel">
+    <img src="screens-deployed/render-concept-02-transformation.png" alt="Concept 02 Transformation: INSTANT VIBE SHIFT" />
+    <div class="caption"><strong>Concept 02 &middot; Transformation</strong><br>INSTANT VIBE SHIFT</div>
+  </div>
+  <div class="panel">
+    <img src="screens-deployed/render-concept-03-social.jpg" alt="Concept 03 Social-Proof: FANS PIVOT HERE" />
+    <div class="caption"><strong>Concept 03 &middot; Social-Proof</strong><br>FANS PIVOT HERE</div>
+  </div>
+</div>
 
 <div class="comm-block">
   <div class="item">
-    <span class="label">Concept 1 &middot; Aspirational hero lands first time.</span>
-    Flux Kontext renders the yellow-on-black gig-poster aesthetic cleanly when given a real product photo as the conditioning image. No regen needed for the Amazon 1:1.
+    <span class="label">Mustard hue lock held in all three.</span>
+    The biggest single risk in this brief was the model drifting toward orange or lime when given a yellow primary. Specifying #FFD200 explicitly in the prompt plus the negative-prompt clause about hue shifts kept the tee consistent across all three renders.
   </div>
   <div class="item">
-    <span class="label">Concept 3 &middot; Rational infographic is best run on Ideogram.</span>
-    The legibility of the four corner callouts in tall Inter is the differentiator versus Flux, which still wobbles on short on-image text under 12pt equivalent. Route by shot type in Step 6.
+    <span class="label">FRIENDS&trade; print stayed crisp and legible.</span>
+    The vector chest print rendered as type, not a smear. The cockpit's prompt insists on &ldquo;crisp vector, no warping&rdquo; and Gemini honoured it cleanly.
   </div>
   <div class="item">
-    <span class="label">Concept 2 &middot; Emotional lifestyle needs a hand-pick.</span>
-    The room-corner moment is the right vibe but the AI occasionally hallucinates a different chair or a different tee colour. The auto-fix loop helps but a human pick across 3-4 candidates is faster than auto-regen.
+    <span class="label">Headline typography is the next iteration.</span>
+    On-image text is close but not yet print-spec exact. Concept 01 routed the Bewakoof mark accurately; Concept 02 placed the subhead correctly; Concept 03 nailed the rating pill. The right move is to keep Gemini for the photographic scene and overlay typography in Figma or via Ideogram for surfaces that need exact kerning.
+  </div>
+  <div class="item">
+    <span class="label">Tool routing matters.</span>
+    The prompt deck recommends the right tool per shot type. Hero photography &rarr; Gemini / Flux Kontext. Typography-heavy A+ panels &rarr; Ideogram. Lifestyle &rarr; Nano Banana for human picks across candidates. The cockpit emits all five tool variants per concept and labels the recommended one, which keeps the workflow honest.
   </div>
 </div>
 
 <!-- ============ 06 COMMENTARY ============ -->
 <header class="section-header">
   <span class="num">06</span>
-  <h2>Commentary &mdash; what worked, what did not, what I would iterate</h2>
+  <h2>Commentary: what worked, what did not, what I would iterate</h2>
 </header>
 
 <div class="comm-block">

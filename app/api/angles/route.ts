@@ -81,8 +81,7 @@ export async function POST(req: NextRequest) {
         custom: false,
       }));
 
-      const doc = {
-        _id: newProjectId(),
+      const docNoId = {
         projectId,
         derivedFrom: {
           editEpochAtGeneration: editEpoch,
@@ -95,7 +94,10 @@ export async function POST(req: NextRequest) {
         pickedAngleIds: [] as string[],
         pickedOrder: [] as number[],
       };
-      await (await angleProposals()).replaceOne({ projectId }, doc, { upsert: true });
+      const col = await angleProposals();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await col.updateOne({ projectId }, { $set: docNoId as any, $setOnInsert: { _id: newProjectId() } as any }, { upsert: true });
+      const doc = await col.findOne({ projectId });
 
       writer.send(makeEvent(requestId, { kind: 'data', data: doc }));
       writer.send(makeEvent(requestId, { kind: 'done', summary: `${angles.length} angles proposed` }));

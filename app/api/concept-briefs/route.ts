@@ -88,8 +88,7 @@ export async function POST(req: NextRequest) {
           const parsed = extractJson<ConceptGeneratorOutput>(raw);
           const qg = runQualityGate({ brief, result: parsed });
 
-          const doc = {
-            _id: newProjectId(),
+          const docNoId = {
             projectId,
             angleId: angle.id,
             position: (idx + 1) as 1 | 2 | 3,
@@ -104,11 +103,14 @@ export async function POST(req: NextRequest) {
             qualityGate: qg,
           };
 
-          await (await conceptBriefs()).replaceOne(
+          const cbCol = await conceptBriefs();
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          await cbCol.updateOne(
             { projectId, angleId: angle.id },
-            doc,
+            { $set: docNoId as any, $setOnInsert: { _id: newProjectId() } as any },
             { upsert: true }
           );
+          const doc = await cbCol.findOne({ projectId, angleId: angle.id });
 
           writer.send(makeEvent(requestId, { kind: 'data', data: doc }));
           writer.send(

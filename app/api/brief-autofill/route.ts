@@ -138,7 +138,11 @@ export async function POST(req: NextRequest) {
         updatedAt: new Date(),
       };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      await col.updateOne({ projectId }, { $set: merged } as any);
+      await col.updateOne(
+        { projectId },
+        { $set: merged as any, $setOnInsert: { _id: newProjectId(), projectId } as any },
+        { upsert: true }
+      );
       await bumpEditEpoch(projectId);
 
       writer.send(makeEvent(requestId, { kind: 'data', data: merged }));

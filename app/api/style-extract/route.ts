@@ -151,8 +151,7 @@ export async function POST(req: NextRequest) {
         })),
       ];
 
-      const doc = {
-        _id: newProjectId(),
+      const docNoId = {
         projectId,
         derivedFrom: {
           editEpochAtGeneration: editEpoch,
@@ -172,7 +171,10 @@ export async function POST(req: NextRequest) {
         evidence: parsed.evidence,
       };
 
-      await (await styleReports()).replaceOne({ projectId }, doc, { upsert: true });
+      const col = await styleReports();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await col.updateOne({ projectId }, { $set: docNoId as any, $setOnInsert: { _id: newProjectId() } as any }, { upsert: true });
+      const doc = await col.findOne({ projectId });
       await bumpEditEpoch(projectId);
 
       writer.send(makeEvent(requestId, { kind: 'data', data: doc }));

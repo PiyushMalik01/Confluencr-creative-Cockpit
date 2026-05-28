@@ -38,8 +38,7 @@ export async function POST(req: NextRequest) {
     includeAllToolVariants: !!includeAllToolVariants,
   });
 
-  const doc = {
-    _id: newProjectId(),
+  const docNoId = {
     projectId,
     derivedFrom: {
       editEpochAtGeneration: project?.editEpoch ?? 0,
@@ -50,7 +49,10 @@ export async function POST(req: NextRequest) {
     },
     cards,
   };
-  await (await promptDecks()).replaceOne({ projectId }, doc, { upsert: true });
+  const pdCol = await promptDecks();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  await pdCol.updateOne({ projectId }, { $set: docNoId as any, $setOnInsert: { _id: newProjectId() } as any }, { upsert: true });
+  const doc = await pdCol.findOne({ projectId });
 
   return NextResponse.json(doc);
 }

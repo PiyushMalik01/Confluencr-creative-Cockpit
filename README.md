@@ -8,7 +8,7 @@ Submission for the Confluencr / Walnut Folks **Creative Process Engineer** assig
 
 The cockpit is live at **https://confluencr-creative-cockpit.vercel.app**
 
-Open the link, click `Start a new brief`, connect ChatGPT through the Settings button (top-right of the project page), and walk through the six steps. A pre-populated Bewakoof Friends Pivot oversized tee project is available at `/p/019e6fe6-a221-77e4-8dd4-8ba36a02d388` so the test-run state is visible without running every step yourself.
+Open the link, click `Start a new brief`, connect a provider through the Settings button (top-right of the project page; ChatGPT device-code or BYO OpenAI / Anthropic / Google key), and walk through the six steps. A pre-populated Bewakoof Friends Pivot oversized tee project is available at [`/p/019e7082-493c-720f-89fc-1f962fec51f8`](https://confluencr-creative-cockpit.vercel.app/p/019e7082-493c-720f-89fc-1f962fec51f8) so the company can see the real end-to-end output (5 angles, 3 concept briefs with full craft-depth fields, 9 prompt deck cards) without running every step.
 
 ## Submission packet — what to read in what order
 

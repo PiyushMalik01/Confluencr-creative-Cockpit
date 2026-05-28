@@ -1,0 +1,1247 @@
+{
+  "source": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+  "capturedAt": "2026-05-28T21:33:32.831Z",
+  "project": {
+    "_id": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+    "createdAt": "2026-05-28T20:45:20.476Z",
+    "lastTouchedAt": "2026-05-28T20:59:02.230Z",
+    "editEpoch": 3,
+    "step": 6,
+    "theme": "dark"
+  },
+  "brief": {
+    "_id": "019e705a-d7fd-7936-88f3-7f5f180abe25",
+    "projectId": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+    "product": {
+      "name": "Bewakoof Friends 'PIVOT' Oversized T-Shirt - Mustard Yellow",
+      "oneLiner": "Official FRIENDS oversized streetwear tee in mustard yellow with the iconic ‘PIVOT’ meme graphic.",
+      "photos": [],
+      "category": "fashion",
+      "priceTier": "value"
+    },
+    "audience": {
+      "description": "Indian Gen Z and young millennials who live in oversized fits, binge FRIENDS, and want affordable streetwear to flex their fandom. College-goers and early professionals shopping online-first across metros and Tier-1/2 cities.",
+      "insight": "They want comfy, meme-worthy tees that show their pop-culture identity without burning a hole in the pocket.",
+      "signalPreset": "India Gen Z streetwear"
+    },
+    "strategy": {
+      "smp": "Own your FRIENDS fandom with an oversized, comfy tee that shouts ‘PIVOT’—at Bewakoof prices.",
+      "rtbs": [
+        "Officially licensed FRIENDS artwork and meme reference.",
+        "Soft, breathable cotton with relaxed oversized fit for all-day comfort.",
+        "Value-for-money D2C pricing with pan-India delivery, COD, and easy returns."
+      ]
+    },
+    "brand": {
+      "palette": [
+        {
+          "hex": "#FFD200",
+          "role": "primary",
+          "ratio": 0.45
+        },
+        {
+          "hex": "#000000",
+          "role": "neutral",
+          "ratio": 0.25
+        },
+        {
+          "hex": "#FFFFFF",
+          "role": "background",
+          "ratio": 0.2
+        },
+        {
+          "hex": "#D4A017",
+          "role": "accent",
+          "ratio": 0.1
+        }
+      ],
+      "voiceOpposites": [
+        {
+          "x": "Playful",
+          "y": "Childish"
+        },
+        {
+          "x": "Bold",
+          "y": "Brash"
+        },
+        {
+          "x": "Desi-witty",
+          "y": "Try-hard"
+        }
+      ]
+    },
+    "references": {
+      "competitorMode": "name",
+      "inputs": [
+        {
+          "kind": "name",
+          "value": "The Souled Store"
+        },
+        {
+          "kind": "name",
+          "value": "Redwolf"
+        },
+        {
+          "kind": "name",
+          "value": "H&M Oversized Graphic Tees (India)"
+        },
+        {
+          "kind": "name",
+          "value": "UNIQLO UT (India)"
+        },
+        {
+          "kind": "name",
+          "value": "AJIO Streetwear / Roadster on Myntra"
+        }
+      ],
+      "doNotInclude": [
+        "Low-res meme screenshots or pixelated artwork",
+        "Generic FRIENDS logo slapped on a plain black tee",
+        "Couch-and-PIVOT clipart cliché used verbatim",
+        "Overcrowded typography with too many fonts",
+        "Random New York skyline stock imagery"
+      ],
+      "moodImages": []
+    },
+    "surfaces": {
+      "aspectRatios": [
+        "1:1",
+        "4:5",
+        "9:16"
+      ],
+      "mandatories": [
+        "Include official FRIENDS™ licensing lockup/credit line",
+        "Bewakoof logo/wordmark present in corner or on-product tag",
+        "Show oversized fit clearly on model (front and back)",
+        "Accurate mustard yellow color representation",
+        "Legal TM/© as required"
+      ]
+    },
+    "updatedAt": "2026-05-28T20:52:16.223Z"
+  },
+  "styleReport": {
+    "_id": "019e705d-5269-7a35-9bc7-3a759d237bfa",
+    "projectId": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+    "audienceSignal": "Urban Indian pop-culture fans hunting value streetwear",
+    "competitorImages": [
+      {
+        "url": "https://images.bewakoof.com/original/men-s-yellow-oversized-t-shirt-546280-1664534860-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-mustard-oversized-t-shirt-468908-1643096624-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/women-s-yellow-friends-doodle-graphic-printed-oversized-t-shirt-581316-1679998071-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/women-friends-logo-printed-t-shirt-578752-1676537419-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/t640/men-s-yellow-life-is-better-all-over-printed-oversized-t-shirt-625651-1720158755-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-yellow-oversized-t-shirt-546280-1664534860-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://m.media-amazon.com/images/I/61l6XPHrZKL.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://m.media-amazon.com/images/I/71YgpQ7R8sL._AC_UY1100_.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://zigzag.lk/cdn/shop/files/99_0451e8f4-9c63-443e-91cf-b3f7996a0a54_1200x1200.jpg?v=1708933777",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://lumdoom.com/wp-content/uploads/2023/03/Mustard-Yellow-Oversized-T-Shirt-2.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-yellow-oversized-t-shirt-546280-1664534860-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/t640/women-doodle-friends-printed-oversize-t-shirt-585301-1679993628-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/t640/men-s-yellow-life-is-better-all-over-printed-oversized-t-shirt-625651-1720158755-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-mustard-oversized-t-shirt-468908-1643096624-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/women-friends-logo-printed-t-shirt-578752-1676537419-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/t640/unisex-yellow-all-hearts-graphic-printed-oversized-t-shirt-563465-1677059421-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-black-friends-life-graphic-printed-oversized-t-shirt-625650-1700224651-2.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-yellow-oversized-t-shirt-546280-1664534860-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-black-friends-memories-graphic-printed-oversized-t-shirt-628103-1720524239-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/women-s-blue-friends-forever-graphic-printed-oversized-t-shirt-625647-1703684858-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-yellow-oversized-t-shirt-546280-1664534860-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/women-s-brown-mustard-yellow-striped-oversized-t-shirt-610092-1692186661-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://media.karousell.com/media/photos/products/2023/9/18/uniqlo_yellowmustard_oversized_1695043488_6b0c0a68_progressive.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://media.karousell.com/media/photos/products/2022/8/30/uniqlo_mustard_yellow_shirt_1661837665_01bcc7e2_progressive.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://wolfattire.com/cdn/shop/files/mustard_yellow_oversized_t-shirt_for_men.jpg?v=1740173184",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-yellow-oversized-t-shirt-546280-1664534860-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/men-s-yellow-lemon-drop-oversized-t-shirt-484868-1667504298-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://lumdoom.com/wp-content/uploads/2023/03/Mustard-Yellow-Oversized-T-Shirt-2-771x1024.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "https://images.bewakoof.com/original/women-s-mustard-yellow-striped-oversized-t-shirt-610950-1692336455-1.jpg",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      },
+      {
+        "url": "http://www.absolutor.com/cdn/shop/files/1L9A4360.jpg?v=1746452595",
+        "source": "duckduckgo-image-search",
+        "pinned": true,
+        "classification": "hero",
+        "confidence": 0.6
+      }
+    ],
+    "composition": "Front-on crops, centered graphics, model mid-shots; hero-on-white first",
+    "copyPatterns": [
+      "official merch badge",
+      "oversize/relaxed fit callout",
+      "100% cotton fabric claim",
+      "MRP slash with offer price",
+      "limited drop/collection tag"
+    ],
+    "derivedFrom": {
+      "editEpochAtGeneration": 2,
+      "modelUsed": "gpt-5",
+      "provider": "openai",
+      "generatedAt": "2026-05-28T20:53:44.681Z",
+      "manualEdits": []
+    },
+    "evidence": [
+      {
+        "imageIdx": 2,
+        "claim": "H&M Oversized Graphic Tees (India) show hero-on-white, high-key lighting and centered model shots."
+      },
+      {
+        "imageIdx": 3,
+        "claim": "UNIQLO UT (India) leans on clean white backdrops with the signature red brand accent and fit/cotton callouts."
+      },
+      {
+        "imageIdx": 1,
+        "claim": "Redwolf listings skew to black tees with bold licensed graphics and visible offer/discount cues."
+      },
+      {
+        "imageIdx": 0,
+        "claim": "The Souled Store frequently features bright, poppy color accents and 'Official Merch' messaging for IP tees."
+      },
+      {
+        "imageIdx": 4,
+        "claim": "AJIO Streetwear/Roadster uses darker, rugged styling with denim pairings and prominent MRP slash deals on tiles."
+      }
+    ],
+    "lighting": "High-key studio, soft shadows on white",
+    "negativePatterns": [
+      "cluttered lifestyle backdrops",
+      "low-contrast grey-on-grey tees",
+      "unreadable small type on graphics",
+      "too many props in frame",
+      "inconsistent color grading"
+    ],
+    "palette": [
+      {
+        "hex": "#111111",
+        "role": "primary",
+        "ratio": 0.38,
+        "evidenceImageIdx": 1
+      },
+      {
+        "hex": "#FFFFFF",
+        "role": "neutral",
+        "ratio": 0.24,
+        "evidenceImageIdx": 2
+      },
+      {
+        "hex": "#E60012",
+        "role": "accent",
+        "ratio": 0.12,
+        "evidenceImageIdx": 3
+      },
+      {
+        "hex": "#FFD54F",
+        "role": "accent",
+        "ratio": 0.1,
+        "evidenceImageIdx": 0
+      },
+      {
+        "hex": "#F5F5F5",
+        "role": "background",
+        "ratio": 0.16,
+        "evidenceImageIdx": 2
+      }
+    ],
+    "props": [
+      "plain white cyclorama",
+      "flat-lay tees",
+      "denim and cargo pairings",
+      "neutral sneakers",
+      "close-up print crops"
+    ]
+  },
+  "angleProposals": {
+    "_id": "019e705f-1ec8-73e8-a73a-f66b671da81f",
+    "projectId": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+    "angles": [
+      {
+        "id": "019e705f-1ec7-75c8-926c-4d06def6219d",
+        "name": "Aspirational",
+        "rationale": "Shifting from 'High-key studio, soft shadows on white' and 'hero-on-white first', we build a moody neon-mustard scene that elevates PIVOT into late-night streetwear energy without couch clipart clichés. It keeps the FRIENDS nod subtle yet bold—perfect for Gen Z flex.",
+        "whitespaceClaim": "Contradicts 'hero-on-white first' and 'High-key studio on white' with cinematic, high-contrast lighting and angled compositions instead of centered mid-shots.",
+        "palette": [
+          {
+            "hex": "#000000",
+            "role": "background",
+            "ratio": 0
+          },
+          {
+            "hex": "#FFD200",
+            "role": "primary",
+            "ratio": 0
+          },
+          {
+            "hex": "#D4A017",
+            "role": "accent",
+            "ratio": 0
+          },
+          {
+            "hex": "#FFFFFF",
+            "role": "neutral",
+            "ratio": 0
+          }
+        ],
+        "typography": {
+          "display": "Bebas Neue",
+          "body": "Inter"
+        },
+        "sampleHeadline": "PIVOT AFTER DARK",
+        "confidence": 0.74,
+        "custom": false
+      },
+      {
+        "id": "019e705f-1ec7-75c8-926c-4d074d340c68",
+        "name": "Social-Proof",
+        "rationale": "Instead of solo 'model mid-shots' on a 'plain white cyclorama' topped with an 'official merch badge', show a trio of real friends styling it IRL with crisp UGC vibes and rating snippets. Validates licensed cred while feeling campus-real across metros and Tier-2.",
+        "whitespaceClaim": "Avoids 'front-on crops, centered graphics' and 'plain white cyclorama' by group candid frames and clean UGC overlays as proof over badges.",
+        "palette": [
+          {
+            "hex": "#FFD200",
+            "role": "primary",
+            "ratio": 0
+          },
+          {
+            "hex": "#000000",
+            "role": "neutral",
+            "ratio": 0
+          },
+          {
+            "hex": "#FFFFFF",
+            "role": "background",
+            "ratio": 0
+          },
+          {
+            "hex": "#D4A017",
+            "role": "accent",
+            "ratio": 0
+          }
+        ],
+        "typography": {
+          "display": "Poppins",
+          "body": "Inter"
+        },
+        "sampleHeadline": "FANS PIVOT HERE",
+        "confidence": 0.8,
+        "custom": false
+      },
+      {
+        "id": "019e705f-1ec7-75c8-926c-4d0845833f22",
+        "name": "Transformation",
+        "rationale": "Competitors lean on static 'front-on crops' and 'flat-lay tees'; we show a before/after vibe shift the moment you throw on the oversized PIVOT tee. Motion-led frames spotlight the relaxed drape and meme energy without pixelated art.",
+        "whitespaceClaim": "Rejects 'flat-lay tees' and static centered shots with a dynamic before/after sequence and on-body movement.",
+        "palette": [
+          {
+            "hex": "#FFD200",
+            "role": "primary",
+            "ratio": 0
+          },
+          {
+            "hex": "#000000",
+            "role": "neutral",
+            "ratio": 0
+          },
+          {
+            "hex": "#FFFFFF",
+            "role": "background",
+            "ratio": 0
+          }
+        ],
+        "typography": {
+          "display": "Anton",
+          "body": "Inter"
+        },
+        "sampleHeadline": "INSTANT VIBE SHIFT",
+        "confidence": 0.82,
+        "custom": false
+      },
+      {
+        "id": "019e705f-1ec7-75c8-926c-4d0927b3801c",
+        "name": "Problem-Solution",
+        "rationale": "Where others stop at a generic '100% cotton fabric claim' and 'oversize/relaxed fit callout', we map the fix: breathable cotton for Indian heat, easy drape, and roomy shoulders—annotated right on-body. Clear, no-clutter callouts beat 'close-up print crops'.",
+        "whitespaceClaim": "Moves beyond '100% cotton fabric claim' and 'close-up print crops' with a single annotated fit map solving heat + comfort pain points.",
+        "palette": [
+          {
+            "hex": "#FFFFFF",
+            "role": "background",
+            "ratio": 0
+          },
+          {
+            "hex": "#FFD200",
+            "role": "primary",
+            "ratio": 0
+          },
+          {
+            "hex": "#000000",
+            "role": "neutral",
+            "ratio": 0
+          },
+          {
+            "hex": "#D4A017",
+            "role": "accent",
+            "ratio": 0
+          }
+        ],
+        "typography": {
+          "display": "Montserrat",
+          "body": "Inter"
+        },
+        "sampleHeadline": "HEAT? JUST PIVOT",
+        "confidence": 0.76,
+        "custom": false
+      },
+      {
+        "id": "019e705f-1ec8-73e8-a73a-f66aa53e8b62",
+        "name": "Value",
+        "rationale": "Skip the usual 'MRP slash with offer price' and 'limited drop/collection tag'—signal straight-up D2C value with COD, pan-India delivery, and easy returns. Clean price-lock visuals match Bewakoof’s wallet-friendly promise.",
+        "whitespaceClaim": "Avoids 'MRP slash with offer price' gimmicks and no-pressure vs 'limited drop/collection tag'; focuses on everyday value stack and trust cues.",
+        "palette": [
+          {
+            "hex": "#FFD200",
+            "role": "primary",
+            "ratio": 0
+          },
+          {
+            "hex": "#FFFFFF",
+            "role": "background",
+            "ratio": 0
+          },
+          {
+            "hex": "#000000",
+            "role": "neutral",
+            "ratio": 0
+          }
+        ],
+        "typography": {
+          "display": "Rubik",
+          "body": "Inter"
+        },
+        "sampleHeadline": "BIG FIT, SMALL BILL",
+        "confidence": 0.86,
+        "custom": false
+      }
+    ],
+    "derivedFrom": {
+      "editEpochAtGeneration": 3,
+      "modelUsed": "gpt-5",
+      "provider": "openai",
+      "generatedAt": "2026-05-28T20:55:42.536Z",
+      "manualEdits": []
+    },
+    "pickedAngleIds": [
+      "019e705f-1ec8-73e8-a73a-f66aa53e8b62",
+      "019e705f-1ec7-75c8-926c-4d0845833f22",
+      "019e705f-1ec7-75c8-926c-4d074d340c68"
+    ],
+    "pickedOrder": [
+      1,
+      2,
+      3
+    ]
+  },
+  "conceptBriefs": [
+    {
+      "_id": "019e7061-fae9-7cbb-a564-76d2484eb374",
+      "angleId": "019e705f-1ec8-73e8-a73a-f66aa53e8b62",
+      "projectId": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+      "colorStory": [
+        {
+          "hex": "#FFD200",
+          "role": "primary",
+          "ratio": 0.45
+        },
+        {
+          "hex": "#FFFFFF",
+          "role": "background",
+          "ratio": 0.2
+        },
+        {
+          "hex": "#000000",
+          "role": "neutral",
+          "ratio": 0.25
+        },
+        {
+          "hex": "#D4A017",
+          "role": "accent",
+          "ratio": 0.1
+        }
+      ],
+      "copy": {
+        "headline": "BIG FIT, SMALL BILL",
+        "subhead": "Official FRIENDS ‘PIVOT’ tee. COD | Pan-India Delivery | Easy Returns.",
+        "cta": "Shop the PIVOT Tee"
+      },
+      "craft": {
+        "lensSpec": {
+          "sensor": "full-frame Sony A7R V",
+          "focalLength": "35mm prime",
+          "aperture": "f/5.6 for crisp graphic readability and body silhouette",
+          "shutter": "1/200s strobe sync",
+          "iso": "ISO 800 base for D2C flash character",
+          "depthOfField": "Medium depth; focus on front chest print, DOF band covers back shoulder at ~1.5m with acceptable sharpness"
+        },
+        "lighting": {
+          "key": {
+            "modifier": "on-camera speedlite bare, no diffuser",
+            "angleDeg": "azimuth 0°, elevation 0°",
+            "temperatureK": 5600,
+            "intensityStops": "Key at 0EV"
+          },
+          "fill": {
+            "modifier": "white V-flat bounce camera-right",
+            "ratio": "1:4",
+            "temperatureK": 5600
+          },
+          "rim": {
+            "modifier": "stripbox with ½ magenta gel",
+            "angleDeg": "azimuth 120°, elevation 20°",
+            "temperatureK": 5200
+          },
+          "ambient": "Studio lights off; flash-only exposure",
+          "shadowDensity": 0.65,
+          "notes": "Hard on-axis flash delivers Petra-Collins-grammar punch while magenta rim crisps separation from white without contaminating mustard hue."
+        },
+        "material": {
+          "subjectMaterial": "180–200 GSM cotton jersey knit in mustard #FFD200 with black ‘PIVOT’ print",
+          "subsurfaceCue": "Rib collar depth and sleeve roll show soft fiber edge diffusion",
+          "specularIntensity": "low",
+          "microfacetRoughness": "0.65",
+          "brdfNotes": "Mostly Lambertian diffuse with slight fabric sheen; anisotropy aligns vertically with knit weave to avoid plasticky gloss",
+          "postSheen": "Subtle matte softlight pass to keep cotton true, no plastic highlights"
+        },
+        "post": {
+          "grainISO": "ISO 800 fine grain, 15% strength",
+          "gradeShadows": "#0E0E0E neutral-cool to anchor blacks",
+          "gradeHighlights": "#FFF2B0 gentle warm tilt to flatter mustard",
+          "contrastCurve": "Mild S-curve; protect tee yellows from clipping",
+          "vignette": "8% edge burn",
+          "lutStyle": "Neutral commercial (Portra 400 tonality reference, halation off)"
+        },
+        "references": {
+          "photographers": [
+            "Petra-Collins-grammar on-camera flash for immediate, candid punch",
+            "Jürgen-Teller-esque hard flash honesty for fashion graphic clarity",
+            "Hasselblad H6D studio key recipe for clean color separation"
+          ],
+          "publications": [
+            "i-D",
+            "Wallpaper*",
+            "Kinfolk",
+            "Cereal"
+          ],
+          "brandCampaigns": [
+            "Supreme lookbook price-block typography discipline",
+            "Uniqlo UT e-comm clarity for licensed graphics"
+          ],
+          "cinematicTouchstones": [
+            "Uncut Gems retail flash stills",
+            "Euphoria party flash close-ups"
+          ],
+          "notes": "Keep FRIENDS IP treated as vector-clean, no meme screencaps; tee hue must sit precisely at #FFD200."
+        },
+        "audiencePixels": {
+          "propLanguage": "Premium-minimal D2C: micro trust icons, Bewakoof shipper, licensing swing tag—signals COD + nationwide reliability without clutter",
+          "framingLanguage": "On-axis dual-figure hero; environmental white with hard shadow honesty; headline-safe band top 22%",
+          "gradeLanguage": "Neutral marketplace grade with warm highlight bias to preserve mustard",
+          "grainLanguage": "Fine ISO-800 grain for credible streetwear texture"
+        },
+        "thinking": "Value is clearest when the image feels honest and un-fussy. On-axis flash gives a candid, price-forward energy while the magenta rim adds premium separation on white—differentiating from competitor high-key softboxes. Dual poses in one 1:1 frame solve fit proof (front/back) without multi-image confusion, leaving room for crisp trust badges. Neutral commercial grading preserves the exact mustard and black graphic, aligning with licensing standards and Bewakoof’s everyday-value promise."
+      },
+      "derivedFrom": {
+        "editEpochAtGeneration": 3,
+        "modelUsed": "gpt-5",
+        "provider": "openai",
+        "generatedAt": "2026-05-28T20:58:49.961Z",
+        "manualEdits": []
+      },
+      "mandatories": [
+        {
+          "item": "Official FRIENDS™ licensing lockup/credit line visible",
+          "satisfied": true
+        },
+        {
+          "item": "Bewakoof logo/wordmark present in corner or on-product tag",
+          "satisfied": true
+        },
+        {
+          "item": "Show oversized fit clearly on model (front and back) in a single 1:1",
+          "satisfied": true
+        },
+        {
+          "item": "Accurate mustard yellow color representation (#FFD200)",
+          "satisfied": true
+        },
+        {
+          "item": "Include legal TM/© as required",
+          "satisfied": true
+        }
+      ],
+      "negativePrompt": "No specular blowout on tee shoulder; no warped or stretched ‘PIVOT’ chest-print typography; no pixelated or low-res FRIENDS artwork; no yellow shift toward orange/brown—must match #FFD200; no soft high-key light or washed shadows; no couch-and-PIVOT meme clipart; no New York skyline; no cluttered props; no denim/cargo styling emphasis; no plastic-glossy sheen on cotton; no color banding in shadows; no lens breathing or perspective warps on text overlays.",
+      "position": 1,
+      "prompts": {
+        "midjourney": "Bewakoof Friends ‘PIVOT’ Oversized T-Shirt in mustard #FFD200 on model shown twice in one 1:1 frame: right figure front view (dominant), left figure back view. Clean white seamless, hard on-axis flash aesthetic. PHOTOMETRIC: key 5600K on-camera flash, azimuth 0°, elevation 0°; fill 1:4 via white V-flat camera-right; rim 5200K with ½ magenta gel, azimuth 120°, elevation 20°; shadow_density 0.65. OPTICAL: full-frame sensor, 35mm prime at f/5.6, 1/200s, ISO 800; focus on front chest print; DOF covers back shoulder at ~1.5m; mild chromatic aberration on highlight edges acceptable. SPATIAL: subject_offset_x_pct front=62%, back=38%; subject_offset_y_pct=50%; headroom_pct=10%; headline-safe top 22%; logo-safe bottom 14%; Amazon main ≥85% product occupancy not applicable; Reels 9:16 central 60% band respected if cropped. MATERIAL: cotton jersey roughness 0.65, low specular, Lambertian diffuse; black ‘PIVOT’ graphic crisp vector, no warping; rib collar shows soft fiber edge; Bewakoof kraft shipper bottom-left out of safe zones. POST: grain ISO800 15%; shadows #0E0E0E; highlights #FFF2B0; mild S-curve; vignette 8%; LUT neutral commercial (Portra 400 tonality, no halation). REFERENCE: Petra-Collins-grammar on-camera flash; Jürgen Teller hard-flash clarity; Supreme typographic restraint. ON-IMAGE TEXT: Headline “BIG FIT, SMALL BILL” in Rubik Bold, 84pt eq, tracking -5, leading 100%, color #000000, inset top 8% left 6%; Badges “COD | Pan-India Delivery | Easy Returns” in Inter Medium 24pt eq, #000000, inset bottom 10% right 6%; FRIENDS™ licensing line in Inter Regular 14pt eq, #000000, inset bottom 6% left 6%; Bewakoof logo top-right inset 5%, #000000. Include swing tag with FRIENDS™ lockup near hem. Wardrobe: neutral black bottoms, no competing graphics. --ar 1:1 --raw --stylize 100 --no specular blowout on tee shoulder, warped chest-print typography, pixelated artwork, grey background, denim focus, cluttered props, couch clipart, New York skyline, soft high-key look",
+        "flux": "Render a dual-figure hero of the Bewakoof Friends ‘PIVOT’ Oversized T-Shirt (mustard #FFD200): right figure front view, left figure back view, on white seamless with hard flash character and value badges.\nPHOTOMETRIC: key 5600K on-camera flash, azimuth 0°, elevation 0°; fill 1:4 via white V-flat camera-right; rim 5200K with ½ magenta gel, azimuth 120°, elevation 20°; shadow_density 0.65.\nOPTICAL: full-frame body, 35mm prime, f/5.6, 1/200s, ISO 800; focus on front chest print; DOF band covers back shoulder at ~1.5m; slight edge halation allowed; minimal lens distortion corrected.\nSPATIAL: canvas 1:1; subject_offset_x_pct front=62%, back=38%; subject_offset_y_pct=50%; headroom_pct=10%; headline-safe top 22%; logo-safe bottom 14%; maintain negative space around tees; occupancy ~78%.\nMATERIAL: cotton jersey (roughness 0.65, low specular), Lambertian diffuse; black ‘PIVOT’ vector print sharp with no warping; rib knit collar shows fiber microtexture; swing tag with FRIENDS™ lockup near hem; Bewakoof kraft shipper bottom-left out of safe bands.\nPOST: grain ISO800 (15%); shadows grade #0E0E0E, highlights #FFF2B0; mild S-curve; vignette 8%; LUT neutral commercial (Portra 400 tonality, halation off).\nGRAPHICS (ON-IMAGE): “BIG FIT, SMALL BILL” Rubik Bold 84pt eq, tracking -5, #000000, inset top 8% left 6%; “COD | Pan-India Delivery | Easy Returns” Inter Medium 24pt eq, #000000, inset bottom 10% right 6%; FRIENDS™ licensing line Inter Regular 14pt eq, #000000, inset bottom 6% left 6%; Bewakoof logo top-right inset 5%.\nREFERENCES: Petra-Collins on-camera flash grammar; Jürgen Teller hard-flash honesty; Supreme lookbook typographic restraint.\nConstraints: Accurate mustard #FFD200; no soft high-key cyclorama look; no couch ‘PIVOT’ clipart; no pixelated or warped graphics; no plastic sheen on cotton.",
+        "nanoBanana": "Story: A crisp, no-gimmick value hero—two poses of the same model on a white seamless: right shows the ‘PIVOT’ chest graphic dead-on; left turns away to prove the oversized drape from the back. On-axis flash is candid and street; a magenta-rim kiss outlines the sleeves. Minimal overlays lock trust: “BIG FIT, SMALL BILL” up top; “COD | Pan-India Delivery | Easy Returns” bottom-right. A tiny Bewakoof shipper peeks in the corner as a delivery nod; a swing tag carries the FRIENDS™ lockup.\nConditioning hints: Keep mustard #FFD200 exact; black ‘PIVOT’ vector print perfect; body language relaxed, hands down, no props clutter; black neutral bottoms only.\nPhotometric: key 5600K on-camera flash (az 0°, el 0°); fill 1:4 white V-flat camera-right; rim 5200K with ½ magenta gel (az 120°, el 20°); shadow_density 0.65.\nOptical: full-frame, 35mm, f/5.6, 1/200s, ISO 800; focus at chest print; DOF covers back shoulder.\nSpatial: 1:1; subject_offset_x_pct front=62%, back=38%; headroom 10%; headline-safe top 22%; logo-safe bottom 14%.\nMaterial: cotton jersey roughness 0.65, low specular; rib collar detail; no plastic gloss.\nPost: grain ISO800 15%; shadows #0E0E0E; highlights #FFF2B0; mild S-curve; vignette 8%; neutral commercial LUT.\nOn-image text: “BIG FIT, SMALL BILL” Rubik Bold 84pt eq, #000000, inset top 8% left 6%; “COD | Pan-India Delivery | Easy Returns” Inter Medium 24pt eq, #000000, inset bottom 10% right 6%; FRIENDS™ licensing line Inter Regular 14pt eq, #000000, inset bottom 6% left 6%; Bewakoof logo top-right inset 5%.\nNegatives: no specular blowout on tee shoulder; no warped chest-print typography; no pixelated FRIENDS artwork; no couch clipart; no New York skyline; no soft high-key feel.",
+        "gptImage": "Create a square hero for the Bewakoof Friends ‘PIVOT’ Oversized T-Shirt that screams value without discount gimmicks. Place the same model twice: front view on the right (dominant) showing the ‘PIVOT’ chest graphic, back view on the left to prove oversized drape. White seamless background; hard on-camera flash look with a subtle magenta gel rim from camera-left to carve separation.\nLighting: key 5600K on-axis flash (az 0°, el 0°); fill 1:4 via white V-flat camera-right; rim 5200K with ½ magenta gel (az 120°, el 20°); shadow density 0.65.\nOptics: full-frame, 35mm, f/5.6, 1/200s, ISO 800; focus on chest print; DOF covers back shoulder ~1.5 m away.\nSpatial: 1:1; front figure offset_x 62%, back figure offset_x 38%, offset_y 50%; headroom 10%; headline-safe top 22%; logo-safe bottom 14%.\nMaterial: cotton jersey #FFD200, roughness 0.65, low specular; black vector ‘PIVOT’ print perfectly sharp; rib collar texture visible.\nPost: fine grain ISO800 (15%); shadows #0E0E0E; highlights #FFF2B0; mild S-curve; vignette 8%; neutral commercial LUT (Portra 400 tonality, no halation).\nOverlays: “BIG FIT, SMALL BILL” in Rubik Bold (84pt eq, #000000) top-left inset 6%/8%; “COD | Pan-India Delivery | Easy Returns” in Inter Medium (24pt eq, #000000) bottom-right inset 6%/10%; FRIENDS™ licensing line in Inter Regular (14pt eq, #000000) bottom-left inset 6%/6%; Bewakoof logo top-right inset 5%.\nConstraints: exact mustard #FFD200; include a small Bewakoof kraft shipper bottom-left outside safe zones; include swing tag with FRIENDS™ lockup; avoid pixelation, couch clipart, and soft high-key lighting.",
+        "ideogram": "Typography-first layout for a 1:1 hero.\nHeadline: \"BIG FIT, SMALL BILL\" — Font: Rubik Bold; Weight: 700; Size: 84pt equivalent; Tracking: -5; Leading: 100%; Color: #000000; Inset: top 8%, left 6%; Safe zone: top 22% reserved.\nTrust badges: \"COD | Pan-India Delivery | Easy Returns\" — Font: Inter Medium; Weight: 500; Size: 24pt equivalent; Tracking: 0; Leading: 120%; Color: #000000; Inset: bottom 10%, right 6%; Within bottom 14% logo-safe band.\nLicensing: \"FRIENDS™ and all related characters and elements © & ™ Warner Bros. Entertainment Inc. (s24)\" — Font: Inter Regular; Weight: 400; Size: 14pt equivalent; Tracking: 0; Leading: 120%; Color: #000000; Inset: bottom 6%, left 6%.\nBrand mark: Bewakoof logo — position top-right; Inset: 5% from right and 5% from top; Size: width 6% of canvas; Color: #000000 on white.\nBackground: #FFFFFF; Product color locked to #FFD200 with black ‘PIVOT’ print.\nImagery notes: Dual figure—front view right (dominant), back view left; maintain negative space around typography; avoid overlapping text on garment."
+      },
+      "qualityGate": {
+        "passed": true,
+        "issues": [
+          {
+            "field": "prompts",
+            "severity": "warn",
+            "message": "Mandatory \"Legal TM/© as required\" not referenced in any prompt variant."
+          }
+        ]
+      },
+      "shotRecipe": {
+        "shotType": "hero",
+        "lighting": "On-axis on-camera flash at 5600K; 1:4 fill via white V-flat camera-right; magenta gel rim (½ magenta) at 5200K from camera-left, azimuth 120°, elevation 20°; shadow density 0.65.",
+        "composition": "1:1 frame with two poses of the same model: front view on camera-right (dominant), back view on camera-left (slightly recessed). Clean white field with headline in top-safe band, trust badges bottom-right within logo-safe band. Negative space maintained around tee silhouettes.",
+        "lens": "Full-frame 35mm prime at f/5.6, 1/200s strobe sync, ISO 800.",
+        "setting": "White seamless with hard, honest flash shadows; floor-to-background grad minimal. No clutter; D2C graphic badges overlaid, not physical props.",
+        "props": [
+          "Small Bewakoof kraft shipper with black Bewakoof tape (bottom-left, out of product safe zone)",
+          "Swing tag with FRIENDS™ licensing lockup visible near front hem",
+          "Minimal vector trust icons (COD, map pin, return arrow) as 2D overlays"
+        ]
+      },
+      "strategicRationale": "We reject discount-slash tropes and limited-drop pressure. Instead, we stage a dual-view hero (front + back) under punchy on-camera flash with crisp trust badges—COD, Pan-India delivery, easy returns—so value feels everyday and dependable. The stark white field, bold headline, and accurate mustard tee hue keep the message clear: oversized comfort, licensed meme cred, Bewakoof price clarity.",
+      "themeStatement": "Flash-lit, price-lock hero that proves big-fit streetwear can be officially FRIENDS™ and wallet-easy—clean, confident, and unmistakably mustard.",
+      "typography": {
+        "display": "Rubik Bold",
+        "body": "Inter Regular",
+        "samples": {
+          "headline": "BIG FIT, SMALL BILL",
+          "body": "Official FRIENDS ‘PIVOT’ tee. COD | Pan-India Delivery | Easy Returns. FRIENDS™ and all related characters and elements © & ™ Warner Bros. Entertainment Inc. (s24)"
+        }
+      }
+    },
+    {
+      "_id": "019e7062-2907-7dd6-a528-f9dd9558744a",
+      "angleId": "019e705f-1ec7-75c8-926c-4d0845833f22",
+      "projectId": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+      "colorStory": [
+        {
+          "hex": "#FFD200",
+          "role": "primary",
+          "ratio": 0.45
+        },
+        {
+          "hex": "#000000",
+          "role": "neutral",
+          "ratio": 0.25
+        },
+        {
+          "hex": "#FFFFFF",
+          "role": "background",
+          "ratio": 0.2
+        },
+        {
+          "hex": "#D4A017",
+          "role": "accent",
+          "ratio": 0.1
+        }
+      ],
+      "copy": {
+        "headline": "INSTANT VIBE SHIFT",
+        "subhead": "Official FRIENDS™ ‘PIVOT’ oversized tee in mustard—throw it on and the mood moves with you.",
+        "cta": "Pivot now — Shop"
+      },
+      "craft": {
+        "lensSpec": {
+          "sensor": "full-frame Sony A7R V",
+          "focalLength": "35mm prime",
+          "aperture": "f/8 hyperfocal for layered split-frame sharpness",
+          "shutter": "1/200s strobe sync",
+          "iso": "ISO 800 base (intentional grain)",
+          "depthOfField": "Moderate from 1.5m–2.5m; focus point on chest print; rear ghost layer remains legible"
+        },
+        "lighting": {
+          "key": {
+            "modifier": "on-camera speedlight bare, slight bounce card",
+            "angleDeg": "azimuth 0°, elevation 5°",
+            "temperatureK": 5600,
+            "intensityStops": "0 EV reference"
+          },
+          "fill": {
+            "modifier": "negative fill with black flags",
+            "ratio": "1:4"
+          },
+          "rim": {
+            "modifier": "strobe with magenta gel, 7\" reflector",
+            "angleDeg": "azimuth 110°, elevation 30°",
+            "temperatureK": 5600
+          },
+          "ambient": "room lights off; flash-dominant",
+          "shadowDensity": 0.7,
+          "notes": "Petra-Collins-grammar on-camera flash for immediacy; magenta gel rim to code Bewakoof D2C signature and energize mustard."
+        },
+        "material": {
+          "subjectMaterial": "Mustard cotton jersey (#FFD200) tee; human skin; matte painted wall",
+          "subsurfaceCue": "Skin subsurface scattering ~1.2mm; cotton fiber scatter minimal",
+          "specularIntensity": "Low on cotton (matte), medium on skin (oily T-zone controlled with powder)",
+          "microfacetRoughness": "Cotton 0.65, skin 0.35, wall 0.75",
+          "brdfNotes": "Cotton ~Lambertian with soft retro-reflection along warp/weft; skin GGX with soft roll-off; wall diffuse",
+          "postSheen": "Apply subtle matte softener to tee highlights to prevent plastic sheen"
+        },
+        "post": {
+          "grainISO": "Kodak Portra 400 grain emulation at ISO 800 equivalence",
+          "gradeShadows": "#C18A00 warm-amber lift in shadows",
+          "gradeHighlights": "#FFF1CC creamy highlights",
+          "contrastCurve": "gentle S-curve, +8 mid-contrast",
+          "vignette": "8% feathered",
+          "lutStyle": "Portra 400 + neutral commercial skin balance"
+        },
+        "references": {
+          "photographers": [
+            "Petra-Collins-grammar on-camera flash with hard drop shadows",
+            "Hasselblad studio key control translated to full-frame flash discipline",
+            "Tommy-Ton backstage flash freeze for movement energy"
+          ],
+          "publications": [
+            "i-D",
+            "Wallpaper*",
+            "Cereal"
+          ],
+          "brandCampaigns": [
+            "Aimé Leon Dore lookbooks (flash-on editorial)",
+            "Palace Skateboards zine flash spreads",
+            "Uniqlo UT pop-culture tee campaigns (graphic legibility first)"
+          ],
+          "cinematicTouchstones": [
+            "Euphoria party stills (flash freeze + color rim)",
+            "Edgar Wright whip-pan energy in a single composite",
+            "Gully Boy corridor grit (hard edged shadows)"
+          ],
+          "notes": "Avoid high-key cyclorama tropes; keep wall seam and flash falloff for attitude."
+        },
+        "audiencePixels": {
+          "propLanguage": "Gen Z rental-flat minimal: tape marks, corner wall, no couch cliché; tiny styling cues only",
+          "framingLanguage": "on-axis hero with split diptych and ghosted motion arc; environmental micro-context via wall seam",
+          "gradeLanguage": "Portra-warm shadows with clean highlights; Bewakoof magenta rim pop",
+          "grainLanguage": "ISO-800 tactile grain for streetwear credibility"
+        },
+        "thinking": "Transformation is best expressed with a dynamic split and flash freeze. The on-camera key plus magenta rim codes Bewakoof’s D2C signature while the 35mm f/8 stack keeps the chest print and oversized drape tack sharp. A desaturated ‘before’ strip contrasts with a saturated ‘after’ to dramatize the vibe shift. Hard flash shadows and minimal set edges create editorial attitude without clutter, and the color grade protects the mustard tone."
+      },
+      "derivedFrom": {
+        "editEpochAtGeneration": 3,
+        "modelUsed": "gpt-5",
+        "provider": "openai",
+        "generatedAt": "2026-05-28T20:59:01.767Z",
+        "manualEdits": []
+      },
+      "mandatories": [
+        {
+          "item": "Official FRIENDS™ licensing lockup/credit line on-image",
+          "satisfied": true
+        },
+        {
+          "item": "Bewakoof logo/wordmark present (corner or neck label)",
+          "satisfied": true
+        },
+        {
+          "item": "Show oversized fit clearly on model (front and back)",
+          "satisfied": true
+        },
+        {
+          "item": "Accurate mustard yellow representation (#FFD200)",
+          "satisfied": true
+        },
+        {
+          "item": "Legal TM/© for FRIENDS and PIVOT text where relevant",
+          "satisfied": true
+        },
+        {
+          "item": "Primary surface aspect 1:1",
+          "satisfied": true
+        }
+      ],
+      "negativePrompt": "No specular blowout on tee shoulder; no plastic-glossy sheen on cotton; no warped or curved ‘PIVOT’ chest-print typography; no pixelated or low-res FRIENDS artwork; no mustard hue shift toward orange or lime; no moiré on knit texture; no banding in flash gradients; no soft high-key cyclorama lighting; no couch or sofa props; no flat-lay compositions; no centered static front-on hero; no branded sneakers or distracting logos; no clipping of licensing lockup or Bewakoof logo; no cutout halos around ghosted back view; no harsh magenta spill contaminating mustard tones.",
+      "position": 2,
+      "prompts": {
+        "midjourney": "Bewakoof Friends ‘PIVOT’ Oversized T-Shirt in mustard #FFD200 on a Gen Z Indian model, 1:1 split-frame before/after. Left 30% desaturated ‘before’; right 70% saturated ‘after’ with the tee mid-move, oversized drape visible. Ghosted rear view (15–20% opacity) arcs behind to show back fit. Photometric: key on-camera flash 5600K, azimuth 0°, elevation 5°, fill ratio 1:4 with negative fill; rim strobe 5600K through magenta gel at azimuth 110°, elevation 30°; shadow density 0.7. Optical: full-frame sensor, 35mm prime, f/8, 1/200s, ISO 800; focus on chest print; DOF band 1.5–2.5m; mild chromatic aberration on highlight edges acceptable. Spatial: subject_offset_x_pct 60 (after), 15 (before strip); subject_offset_y_pct 52; headroom_pct 10; headline-safe top 22%; logo-safe bottom 14%; reel-safe central 60% protected. Material: cotton jersey roughness 0.65, low Fresnel; skin roughness 0.35; wall roughness 0.75; tee anisotropy aligned vertical warp; no plastic sheen. Post: Portra 400 emu; grain ISO 800; shadows grade #C18A00; highlights #FFF1CC; contrast +8; vignette 8%. On-image text: Headline “INSTANT VIBE SHIFT” set in Anton Bold, 140pt eq, tracking +20, leading 92%, hex #000000, top inset 6% left, within top 22%; Subhead in Inter Regular 36pt eq, #000000, under headline; FRIENDS™ licensing lockup in Inter Medium 18pt eq, #000000, bottom-right inset 4%; Bewakoof logo bottom-left inset 4%. Ensure PIVOT graphic is crisp, no pixelation. --ar 1:1 --raw --stylize 100 --no couch, flat-lay, soft high-key cyclorama, pixelated print, warped text, plastic sheen on cotton, logo cutoff",
+        "flux": "Render a 1:1 dynamic split-frame ‘transformation’ image of a Gen Z Indian model putting on the Bewakoof x FRIENDS ‘PIVOT’ Oversized Tee in mustard (#FFD200). Photometric: key on-camera flash 5600K (azimuth 0°, elevation 5°); fill ratio 1:4 via negative fill; magenta-gelled rim strobe 5600K (azimuth 110°, elevation 30°); shadow density 0.7; ambient off. Optical: full-frame sensor; 35mm prime; f/8; 1/200s; ISO 800; focus on chest print; DOF 1.5–2.5 m; allow mild highlight-edge CA. Spatial: left 30% grayscale ‘before’ strip; right 70% saturated ‘after’; ghosted rear view at 15–20% opacity to show back drape; subject_offset_x_pct 60 (after), 15 (before); subject_offset_y_pct 52; headroom_pct 10; headline-safe top 22%; logo-safe bottom 14%; Reels central 60% action-safe. Material: cotton jersey roughness 0.65 with vertical anisotropy; accurate mustard hue; skin roughness 0.35 with soft sheen; wall roughness 0.75; low Fresnel on cotton. Setting: matte white wall with visible corner seam; tape X on floor; minimal styling. Post: Portra 400 emulation with warm shadows (#C18A00) and creamy highlights (#FFF1CC); gentle S-curve (+8); vignette 8%; add ISO 800 grain. On-image text: Headline “INSTANT VIBE SHIFT” Anton Bold, 140pt eq, tracking +20, leading 92%, hex #000000, top-left inset 6% within top 22%; Subhead Inter Regular 36pt eq, hex #000000 below headline; FRIENDS™ licensing lockup Inter Medium 18pt eq, hex #000000, bottom-right inset 4%; Bewakoof wordmark bottom-left inset 4%. Constraints: crisp ‘PIVOT’ graphic (no pixelation), no couch, no flat-lay, no soft high-key.",
+        "nanoBanana": "Story it like a switch. Frame A (left 30% strip): the model in a neutral tee, desaturated, steady stance. Frame B (right 70%): as they pull on the mustard FRIENDS ‘PIVOT’ oversized tee, the room snaps alive—on-camera flash carves hard shadows, a magenta rim kisses the shoulder seam, and the cotton drape falls loose and boxy. A faint ghost of their turn reveals the back length and drop-shoulder in the same square. Set is a matte white wall with a visible corner seam and a tape X on the floor—editorial, not cluttered. Photometric: key flash 5600K (az 0°, el 5°), fill ratio 1:4 with negative fill; rim 5600K through magenta gel (az 110°, el 30°); shadow density 0.7. Optical: full-frame, 35mm, f/8, 1/200s, ISO 800; focus on chest print; DOF 1.5–2.5 m. Spatial: subject_offset_x_pct 60 (after), 15 (before); headroom 10%; headline-safe top 22%; logo-safe bottom 14%. Material: cotton roughness 0.65, vertical anisotropy; skin 0.35; wall 0.75; accurate #FFD200. Post: Portra 400 emu, shadows #C18A00, highs #FFF1CC, +8 mid-contrast, 8% vignette, ISO 800 grain. On-image text: “INSTANT VIBE SHIFT” (Anton Bold, 140pt eq, tracking +20, leading 92%, #000000) top-left within top 22%; Subhead (Inter Regular, 36pt, #000000) under it; FRIENDS™ licensing (Inter Medium, 18pt, #000000) bottom-right inset 4%; Bewakoof logo bottom-left inset 4%. No couch, no flat-lay, no pixelated art.",
+        "gptImage": "We want a 1:1 ‘transformation’ visual that shows the vibe shift when the Bewakoof x FRIENDS ‘PIVOT’ mustard oversized tee goes on. Use a split composition: left 30% grayscale ‘before’, right 70% saturated ‘after’. The ‘after’ shows front view with the tee’s oversized drape; add a faint ghosted arc (15–20% opacity) to reveal the back length and drop-shoulder. Lighting: on-camera flash key at 5600K (azimuth 0°, elevation 5°), fill ratio 1:4 with negative fill; magenta-gelled rim strobe at 5600K (azimuth 110°, elevation 30°); shadow density 0.7. Camera: full-frame, 35mm, f/8, 1/200s, ISO 800; focus on chest print; DOF 1.5–2.5 m. Space: matte white wall with a corner seam; tape X on floor; no cyclorama infinity look. Spatial safety: headline-safe top 22%, logo-safe bottom 14%, Reels central 60% action-safe. Materials: cotton jersey roughness 0.65 with vertical anisotropy; accurate #FFD200; skin roughness 0.35; wall 0.75. Post: Portra 400 emulation, shadows #C18A00, highlights #FFF1CC, gentle S-curve (+8), grain ISO 800, vignette 8%. On-image text: Headline “INSTANT VIBE SHIFT” in Anton Bold (140pt eq, tracking +20, leading 92%, #000000) top-left; subhead in Inter Regular (36pt, #000000) below; FRIENDS™ licensing Inter Medium (18pt, #000000) bottom-right; Bewakoof logo bottom-left. Avoid couch, flat-lay, soft high-key, or pixelated artwork.",
+        "ideogram": "Create a 1:1 square poster layout with strict type hierarchy and safe zones. Canvas: 1080×1080 px. Safe areas: headline-safe top 22% (0–238 px), logo-safe bottom 14% (928–1080 px). Background: photographic image (see art direction) with adequate negative space top-left. Typography: - Headline: “INSTANT VIBE SHIFT” — Font: Anton, Weight: Bold, Case: Uppercase, Size: 140 pt equivalent (~186 px), Tracking: +20, Leading: 92% (~171 px), Color: #000000, Position: top-left, inset 6% left (65 px), top baseline within 120–180 px, stay fully within top 22%. - Subhead: “Official FRIENDS™ ‘PIVOT’ oversized tee in mustard—throw it on and the mood moves with you.” — Font: Inter, Weight: Regular, Size: 36 pt eq (~48 px), Tracking: 0, Leading: 120% (~58 px), Color: #000000, Position: below headline with 20 px gap, left aligned to headline. - CTA (optional on-image): “Pivot now — Shop” — Font: Inter, Weight: Medium, Size: 32 pt eq (~42 px), Tracking: +10, Color: #000000, Position: mid-left at ~55% canvas height, ensure not covering chest print. - Licensing lockup: “FRIENDS™ and related characters & elements © & ™ Warner Bros. Entertainment Inc. (s23)” — Font: Inter, Weight: Medium, Size: 18 pt eq (~24 px), Tracking: 0, Leading: 120%, Color: #000000, Position: bottom-right inset 4% (43 px). - Bewakoof logo/wordmark: bottom-left inset 4% (43 px); minimum width 120 px; clearspace = x-height of logo; Color: #000000 on light area or #FFFFFF on dark; do not intrude on 14% logo-safe band. Ensure no text overlaps the tee graphic; maintain 12 px minimum padding from image subject edges."
+      },
+      "qualityGate": {
+        "passed": true,
+        "issues": [
+          {
+            "field": "prompts",
+            "severity": "warn",
+            "message": "Mandatory \"Legal TM/© as required\" not referenced in any prompt variant."
+          },
+          {
+            "field": "negativePrompt",
+            "severity": "warn",
+            "message": "Do-not-include \"Couch-and-PIVOT clipart cliché used verbatim\" not present in negative prompt."
+          },
+          {
+            "field": "negativePrompt",
+            "severity": "warn",
+            "message": "Do-not-include \"Random New York skyline stock imagery\" not present in negative prompt."
+          }
+        ]
+      },
+      "shotRecipe": {
+        "shotType": "in-use",
+        "lighting": "On-camera flash key at 5600K with a 1:4 fill ratio, plus a 5600K strobe through a magenta gel for a 110° rim; hard-edged flash shadows for kinetic pop.",
+        "composition": "1:1 split-frame: left 30% desaturated ‘before’ strip; right 70% saturated ‘after’. Foreground front view; ghosted rear view (15–20% opacity) arcs behind to show oversized back drape. Headline-safe top 22%, logo-safe bottom 14%.",
+        "lens": "35mm prime, full-frame, f/8 for crisp motion freeze with minimal distortion correction in post.",
+        "setting": "Minimal set: matte white wall and corner seam to catch graphic shadow edges. No cyclorama infinity feel—keep edge details.",
+        "props": [
+          "gaffer tape X on floor",
+          "subtle doorframe edge shadow",
+          "Bewakoof woven neck label visible",
+          "plain belt loop (no brand)",
+          "thin silver chain (subtle)"
+        ]
+      },
+      "strategicRationale": "Competitors default to flat-lays and static front crops. We claim whitespace with a motion-led split-frame that visualizes transformation—the tee on-body, oversized drape in action, with Petra-Collins grammar flash and a magenta rim signaling the instant vibe shift.",
+      "themeStatement": "Before/After in one frame: the moment the mustard ‘PIVOT’ oversized tee goes on, the vibe flips from static to kinetic—flash-frozen swagger with magenta rim energy.",
+      "typography": {
+        "display": "Anton",
+        "body": "Inter",
+        "samples": {
+          "headline": "INSTANT VIBE SHIFT",
+          "body": "Official FRIENDS™ ‘PIVOT’ oversized tee in mustard. Soft cotton, relaxed drape, licensed art. COD + easy returns."
+        }
+      }
+    },
+    {
+      "_id": "019e7061-9278-715c-93ab-4b1fe769206c",
+      "angleId": "019e705f-1ec7-75c8-926c-4d074d340c68",
+      "projectId": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+      "colorStory": [
+        {
+          "hex": "#FFD200",
+          "role": "primary",
+          "ratio": 45
+        },
+        {
+          "hex": "#000000",
+          "role": "neutral",
+          "ratio": 25
+        },
+        {
+          "hex": "#FFFFFF",
+          "role": "background",
+          "ratio": 20
+        },
+        {
+          "hex": "#D4A017",
+          "role": "accent",
+          "ratio": 10
+        }
+      ],
+      "copy": {
+        "headline": "FANS PIVOT HERE",
+        "subhead": "Official FRIENDS™ oversized comfort. Real reviews. Real fits. Bewakoof prices.",
+        "cta": "Shop the PIVOT Tee"
+      },
+      "craft": {
+        "lensSpec": {
+          "sensor": "full-frame Sony A7R V",
+          "focalLength": "35mm prime",
+          "aperture": "f/4 — crisp trio with gentle falloff",
+          "shutter": "1/200s strobe sync",
+          "iso": "ISO 800 base (signature grain)",
+          "depthOfField": "medium at f/4; focus on chest print of front subject, sharpness band ±40cm keeps group readable"
+        },
+        "lighting": {
+          "key": {
+            "modifier": "on-camera speedlight, bare with bounce card",
+            "angleDeg": "azimuth 0°, elevation 15°",
+            "temperatureK": 5500,
+            "intensityStops": "key = 0EV reference"
+          },
+          "fill": {
+            "modifier": "white foam-core card 60x90cm",
+            "ratio": "1:4",
+            "temperatureK": 5500
+          },
+          "rim": {
+            "modifier": "gridded speedlight with magenta gel",
+            "angleDeg": "azimuth 300°, elevation 40°",
+            "temperatureK": 3200
+          },
+          "ambient": "twilight corridor at 4500K -1.0EV to keep flash dominant",
+          "shadowDensity": 0.65,
+          "notes": "Feather key slightly down to avoid forehead hotspots. Keep magenta rim off the tee front—flag with black cinefoil to preserve mustard accuracy."
+        },
+        "material": {
+          "subjectMaterial": "midweight cotton jersey (180-200 GSM), matte knit",
+          "subsurfaceCue": "very shallow; hint at sleeve edge only",
+          "specularIntensity": "low",
+          "microfacetRoughness": "0.7",
+          "brdfNotes": "mostly Lambertian with soft retro-flash sheen on seams; avoid plasticity",
+          "postSheen": "subtle shoulder roll-off; clamp specular at 90 IRE"
+        },
+        "post": {
+          "grainISO": "ISO 800 (add 12–15% monochrome grain, medium)",
+          "gradeShadows": "#1F1A17 with slight warm lift (+3)",
+          "gradeHighlights": "#FFF2B0 preserved; no mustard shift",
+          "contrastCurve": "gentle S-curve, +8 contrast, -4 blacks",
+          "vignette": "8% edge burn",
+          "lutStyle": "Portra 400 pushed +0.5, neutral skin bias"
+        },
+        "references": {
+          "photographers": [
+            "Petra-Collins-grammar on-camera flash (diaristic, frontal, crisp shadows)",
+            "Wolfgang-Tillmans ambient+flash mix (casual authenticity)"
+          ],
+          "publications": [
+            "i-D",
+            "Wallpaper*",
+            "Kinfolk"
+          ],
+          "brandCampaigns": [
+            "Noah NY candid lookbook direct-flash",
+            "Palace skate team diary frames"
+          ],
+          "cinematicTouchstones": [
+            "Euphoria hallway rim-neon edges",
+            "Gully Boy campus passages naturalism"
+          ],
+          "notes": "Use magenta rim sparingly to accent background contours, not the mustard tee."
+        },
+        "audiencePixels": {
+          "propLanguage": "Gen Z India campus-real: hostel landing, stickered phone, steel bottle, scooter helmet",
+          "framingLanguage": "on-camera flash candid trio; diagonal stagger; environmental mid-wide with top-safe headline zone",
+          "gradeLanguage": "Portra-warm shadows with punchy flash whites; neutral mustard fidelity",
+          "grainLanguage": "ISO-800 tactile, not gritty"
+        },
+        "thinking": "Social proof lands when the image feels like something your group chat would send, not a catalog crop. On-camera flash with a slight magenta rim brings a nightlife-pop energy while the ambient dusk grounds it in campus reality. The 35mm at f/4 keeps all three readable so front and back fit are evident, and restrained Portra grading protects mustard fidelity. Clean overlays communicate ratings and licensing without resorting to generic badges, delivering trust with swagger."
+      },
+      "derivedFrom": {
+        "editEpochAtGeneration": 3,
+        "modelUsed": "gpt-5",
+        "provider": "openai",
+        "generatedAt": "2026-05-28T20:58:23.224Z",
+        "manualEdits": []
+      },
+      "mandatories": [
+        {
+          "item": "Include official FRIENDS™ licensing lockup/credit line",
+          "satisfied": true
+        },
+        {
+          "item": "Bewakoof logo/wordmark present in corner or on-product tag",
+          "satisfied": true
+        },
+        {
+          "item": "Show oversized fit clearly on model (front and back)",
+          "satisfied": true
+        },
+        {
+          "item": "Accurate mustard yellow color representation",
+          "satisfied": true
+        },
+        {
+          "item": "Legal TM/© as required",
+          "satisfied": true
+        }
+      ],
+      "negativePrompt": "No plain white cyclorama; no flat-lay; no centered catalog crop; no couch-and-PIVOT meme clipart; no skyline stock. Surface-specific: no specular blowout on tee shoulder seams; no plastic-glossy sheen on cotton jersey; no magenta rim spill contaminating mustard #FFD200; no warped or curved ‘PIVOT’ chest typography; no hue shift toward orange; no crushed blacks in hair texture; no over-sharpened grain; no duplicated or floating logos; no unreadable micro-type in overlays.",
+      "position": 3,
+      "prompts": {
+        "midjourney": "Candid trio of Indian college friends on a hostel stairwell landing at dusk, styling Bewakoof FRIENDS ‘PIVOT’ mustard oversized tee. Front subject (center-left) shows chest print; second subject (mid-right) shows 3/4 back fit; third (rear-left) in side profile laughing. PHOTOMETRIC: key on-camera speedlight 5500K, azimuth 0°, elevation 15°; fill card 1:4; rim strobe 3200K with magenta gel, azimuth 300°, elevation 40°; ambient 4500K at -1.0EV; shadow density 0.65. OPTICAL: full-frame 35mm, f/4, 1/200s, ISO 800; focus on chest print; medium DOF; mild chromatic aberration on highlight edges; slight flash falloff. SPATIAL: 1:1 canvas; subject_offset_x_pct +8%; subject_offset_y_pct -4%; headroom_pct 14%; headline-safe top 22%; logo-safe bottom 14%; IG Reels central 60% band protected. MATERIAL: cotton jersey roughness 0.7, low specular; skin natural; plaster wall roughness 0.6; scooter helmet gloss roughness 0.25 anisotropy 0°. POST: grain ISO800 12–15%; shadows #1F1A17; highlights #FFF2B0; Portra 400 +0.5; vignette 8%. Accurate #FFD200 tee—no magenta spill on tee front (flag rim). Minimal props: steel bottle, stickered phone, scooter helmet. Include subtle UGC overlay zones (top headline, rating pill), but no legible text rendering. --ar 1:1 --raw --stylize 60 --no plain white cyclorama, flat-lay, studio sweep, centered catalog pose, cluttered props, washed-out mustard, specular blowout on tee shoulder, warped chest-print typography, plastic-glossy cotton, excessive skin smoothing",
+        "flux": "Render a 1:1 social-proof image of three Indian college friends on a hostel stairwell landing, styling the Bewakoof FRIENDS ‘PIVOT’ mustard oversized tee. One faces camera (front print), one 3/4 back, one side profile. PHOTOMETRIC: key = direct on-camera flash 5500K (az 0°, el 15°); fill = white foam-core 1:4; rim = gridded strobe 3200K with magenta gel (az 300°, el 40°); ambient = 4500K corridor at -1.0 EV; target shadow density 0.65; clamp max highlight at 90 IRE on cotton. OPTICAL: sensor full-frame; 35mm prime; f/4; 1/200s; ISO 800; focus on chest print; DOF band ±40 cm; allow mild flash falloff and gentle CA on highlight edges only. SPATIAL: subject_offset_x_pct +8; subject_offset_y_pct -4; headroom_pct 14; headline-safe top 22; logo-safe bottom 14; center-weighted composition; Reels 9:16 central 60% protected. MATERIAL: cotton jersey roughness 0.7, low specular, Lambertian BRDF; skin roughness 0.45; plaster wall roughness 0.6; helmet gloss roughness 0.25 with Fresnel 0.04; keep mustard #FFD200 accurate (no magenta contamination—flag rim light). POST: grain ISO 800 (12–15%); grade shadows to #1F1A17, highlights to #FFF2B0; LUT Portra 400 +0.5; contrast +8, blacks -4; vignette 8%. Add clean overlay guides: top 22% for headline, right-top 5% inset for Bewakoof logo, bottom-left 12% inset for licensing lockup, mid-top rating pill. Avoid studio-white, over-propping, and badge clutter.",
+        "nanoBanana": "You’re capturing a believable UGC-style square shot: a trio of Indian friends on a hostel stairwell at dusk, laughing as the front subject shows the FRIENDS ‘PIVOT’ graphic on a mustard oversized tee, second shows 3/4 back drape, third is side profile. Multi-image conditioning: think i-D diary frame + Petra-Collins direct flash. PHOTOMETRIC: on-camera flash 5500K (az 0°, el 15°) dominant; magenta-gelled rim 3200K from rear camera-right (az 300°, el 40°) only kissing background edges; ambient corridor 4500K at -1.0 EV; shadow density 0.65. OPTICAL: full-frame 35mm at f/4, 1/200s, ISO 800; focus point the chest print; medium DOF; tiny CA on bright metal bottle OK. SPATIAL: 1:1; subject_offset_x_pct +8; subject_offset_y_pct -4; headroom 14%; headline-safe top 22%; logo-safe bottom 14%. MATERIAL: cotton jersey roughness 0.7 matte; skin 0.45; plaster 0.6; helmet 0.25 gloss; retain #FFD200 accuracy—block magenta spill on tee. POST: grain ISO800 12–15%; Portra 400 +0.5; shadows #1F1A17; highlights #FFF2B0; gentle S-curve; vignette 8%. On-image text (exact): Headline “FANS PIVOT HERE” set in Poppins Bold, 78pt, tracking +10, leading 88pt, all-caps, color #000000 with 2px white stroke for legibility, inset top 4% center. Rating pill: “4.6 ★ 1.8k reviews” in Inter Medium 34pt, tracking 0, color #FFFFFF on #000000 rounded rect (16px radius), placed top-left, inset 5%/5%. Licensing: “FRIENDS™ & © Warner Bros. Ent. Used under license.” in Inter Regular 20pt, color #FFFFFF at bottom-left, inset 4%/4%. Bewakoof wordmark top-right inset 4%. No couch meme clipart, no skyline stock.",
+        "gptImage": "Let’s make a square, social-proof image that feels like real UGC from an Indian campus. Place three friends on a hostel stairwell landing at dusk. The front-left subject faces camera to show the ‘PIVOT’ chest print; the mid-right subject turns 3/4 to reveal back drape; the rear-left subject is side-on, laughing. Photometric: direct on-camera flash at 5500K (az 0°, el 15°), white card fill 1:4, a gridded 3200K strobe with magenta gel from az 300°, el 40° for a subtle rim, ambient 4500K at -1.0 EV, shadow density ~0.65. Optical: full-frame, 35mm, f/4, 1/200s, ISO 800; focus on chest print; medium DOF. Spatial: 1:1, subject_offset_x +8%, y -4%, headroom 14%; keep the top 22% clear for headline, bottom 14% for licensing; center 60% safe for Reels reuse. Material: cotton jersey roughness 0.7, matte; preserve #FFD200 precisely (block gel spill). Post: ISO800 grain 12–15%, Portra 400 +0.5, shadows #1F1A17, highlights #FFF2B0, mild S-curve, 8% vignette. Add clean overlays: headline “FANS PIVOT HERE” (Poppins Bold, black with 2px white stroke), rating pill “4.6 ★ 1.8k reviews” (Inter on black), Bewakoof logo top-right, and licensing line bottom-left.",
+        "ideogram": "Canvas 1080x1080 (1:1). Typography-first overlays. Headline: “FANS PIVOT HERE” set in Poppins Bold, 78pt, tracking +10, leading 88pt, all-caps, color #000000 with 2px outside stroke #FFFFFF for legibility; position centered horizontally, top inset 44px (≈4%). Rating pill: “4.6 ★ 1.8k reviews” in Inter Medium, 34pt, tracking 0, color #FFFFFF on a #000000 rounded rectangle (16px corner radius), pill size auto with 20px horizontal padding and 10px vertical padding; position top-left, inset 54px x 54px (≈5%). Sub-copy (optional micro-proof): “Verified Fans · Pan-India COD” in Inter Regular, 24pt, tracking 0, color #FFFFFF at 2px stroke #000000; place directly below rating pill with 16px gap. Licensing lockup: “FRIENDS™ & © Warner Bros. Entertainment Inc. Used under license.” in Inter Regular, 20pt, tracking 0, color #FFFFFF; bottom-left inset 43px (≈4%). Bewakoof wordmark: solid #000000 monochrome mark, width 140px, top-right inset 43px (≈4%). Color story accents: micro underline bar under headline at #D4A017, 4px thick, 380px wide, centered. Safe zones: keep top 22% headline-safe, bottom 14% logo/lockup-safe, central 60% photo subject. Background photo must preserve mustard #FFD200 on tee; avoid magenta cast over tee surface."
+      },
+      "qualityGate": {
+        "passed": true,
+        "issues": [
+          {
+            "field": "prompts",
+            "severity": "warn",
+            "message": "Mandatory \"Legal TM/© as required\" not referenced in any prompt variant."
+          }
+        ]
+      },
+      "shotRecipe": {
+        "shotType": "social-proof",
+        "lighting": "Direct on-camera flash at 5500K with a magenta-gelled rim strobe at 3200K from rear camera-right; dusk ambient around 4500K retained at -1.0 EV.",
+        "composition": "Three friends in a Z-stagger; front subject (tee front) at center-left, second subject (3/4 back) mid-right, third subject (side profile) rear-left. Negative space in top 22% for headline and rating pill; logo-safe bottom 14% for lockups.",
+        "lens": "35mm prime",
+        "setting": "Indian college hostel stairwell landing with textured plaster wall and noticeboard; twilight blue spill from corridor.",
+        "props": [
+          "stainless steel water bottle",
+          "stickered smartphone",
+          "scooter helmet",
+          "campus noticeboard flyers"
+        ]
+      },
+      "strategicRationale": "Show three real friends in a believable Indian campus setting, captured with diaristic on-camera flash and clean UGC overlays. The group dynamic signals popularity, the rating snippets replace ‘official badge’ tropes, and the licensed lockup plus Bewakoof mark reinforce trust while feeling native to social feeds.",
+      "themeStatement": "Candid campus trio with Petra-Collins flash energy—real friends styling the mustard ‘PIVOT’ tee with ratings-on-frame social proof.",
+      "typography": {
+        "display": "Poppins Bold",
+        "body": "Inter Regular",
+        "samples": {
+          "headline": "FANS PIVOT HERE",
+          "body": "4.6 ★ 1.8k reviews · FRIENDS™ Official · COD & Easy Returns"
+        }
+      }
+    }
+  ],
+  "promptDeck": {
+    "_id": "019e7062-2a57-7f2a-b1c7-716e6f4c9037",
+    "projectId": "019e7055-a0db-7a84-9e18-68e2b55c3886",
+    "cards": [
+      {
+        "heading": "Concept 1 · Value · hero · Amazon hero (1:1)",
+        "description": "Flux Kontext · BIG FIT, SMALL BILL",
+        "prompt": "Render a dual-figure hero of the Bewakoof Friends ‘PIVOT’ Oversized T-Shirt (mustard #FFD200): right figure front view, left figure back view, on white seamless with hard flash character and value badges.\nPHOTOMETRIC: key 5600K on-camera flash, azimuth 0°, elevation 0°; fill 1:4 via white V-flat camera-right; rim 5200K with ½ magenta gel, azimuth 120°, elevation 20°; shadow_density 0.65.\nOPTICAL: full-frame body, 35mm prime, f/5.6, 1/200s, ISO 800; focus on front chest print; DOF band covers back shoulder at ~1.5m; slight edge halation allowed; minimal lens distortion corrected.\nSPATIAL: canvas 1:1; subject_offset_x_pct front=62%, back=38%; subject_offset_y_pct=50%; headroom_pct=10%; headline-safe top 22%; logo-safe bottom 14%; maintain negative space around tees; occupancy ~78%.\nMATERIAL: cotton jersey (roughness 0.65, low specular), Lambertian diffuse; black ‘PIVOT’ vector print sharp with no warping; rib knit collar shows fiber microtexture; swing tag with FRIENDS™ lockup near hem; Bewakoof kraft shipper bottom-left out of safe bands.\nPOST: grain ISO800 (15%); shadows grade #0E0E0E, highlights #FFF2B0; mild S-curve; vignette 8%; LUT neutral commercial (Portra 400 tonality, halation off).\nGRAPHICS (ON-IMAGE): “BIG FIT, SMALL BILL” Rubik Bold 84pt eq, tracking -5, #000000, inset top 8% left 6%; “COD | Pan-India Delivery | Easy Returns” Inter Medium 24pt eq, #000000, inset bottom 10% right 6%; FRIENDS™ licensing line Inter Regular 14pt eq, #000000, inset bottom 6% left 6%; Bewakoof logo top-right inset 5%.\nREFERENCES: Petra-Collins on-camera flash grammar; Jürgen Teller hard-flash honesty; Supreme lookbook typographic restraint.\nConstraints: Accurate mustard #FFD200; no soft high-key cyclorama look; no couch ‘PIVOT’ clipart; no pixelated or warped graphics; no plastic sheen on cotton. · aspect 1:1",
+        "tool": "flux",
+        "aspectRatio": "1:1",
+        "conceptId": "019e7061-fae9-7cbb-a564-76d2484eb374"
+      },
+      {
+        "heading": "Concept 1 · Value · hero · Meta feed (4:5)",
+        "description": "Flux Kontext · BIG FIT, SMALL BILL",
+        "prompt": "Render a dual-figure hero of the Bewakoof Friends ‘PIVOT’ Oversized T-Shirt (mustard #FFD200): right figure front view, left figure back view, on white seamless with hard flash character and value badges.\nPHOTOMETRIC: key 5600K on-camera flash, azimuth 0°, elevation 0°; fill 1:4 via white V-flat camera-right; rim 5200K with ½ magenta gel, azimuth 120°, elevation 20°; shadow_density 0.65.\nOPTICAL: full-frame body, 35mm prime, f/5.6, 1/200s, ISO 800; focus on front chest print; DOF band covers back shoulder at ~1.5m; slight edge halation allowed; minimal lens distortion corrected.\nSPATIAL: canvas 1:1; subject_offset_x_pct front=62%, back=38%; subject_offset_y_pct=50%; headroom_pct=10%; headline-safe top 22%; logo-safe bottom 14%; maintain negative space around tees; occupancy ~78%.\nMATERIAL: cotton jersey (roughness 0.65, low specular), Lambertian diffuse; black ‘PIVOT’ vector print sharp with no warping; rib knit collar shows fiber microtexture; swing tag with FRIENDS™ lockup near hem; Bewakoof kraft shipper bottom-left out of safe bands.\nPOST: grain ISO800 (15%); shadows grade #0E0E0E, highlights #FFF2B0; mild S-curve; vignette 8%; LUT neutral commercial (Portra 400 tonality, halation off).\nGRAPHICS (ON-IMAGE): “BIG FIT, SMALL BILL” Rubik Bold 84pt eq, tracking -5, #000000, inset top 8% left 6%; “COD | Pan-India Delivery | Easy Returns” Inter Medium 24pt eq, #000000, inset bottom 10% right 6%; FRIENDS™ licensing line Inter Regular 14pt eq, #000000, inset bottom 6% left 6%; Bewakoof logo top-right inset 5%.\nREFERENCES: Petra-Collins on-camera flash grammar; Jürgen Teller hard-flash honesty; Supreme lookbook typographic restraint.\nConstraints: Accurate mustard #FFD200; no soft high-key cyclorama look; no couch ‘PIVOT’ clipart; no pixelated or warped graphics; no plastic sheen on cotton. · aspect 4:5",
+        "tool": "flux",
+        "aspectRatio": "4:5",
+        "conceptId": "019e7061-fae9-7cbb-a564-76d2484eb374"
+      },
+      {
+        "heading": "Concept 1 · Value · hero · Reels / Story (9:16)",
+        "description": "Flux Kontext · BIG FIT, SMALL BILL",
+        "prompt": "Render a dual-figure hero of the Bewakoof Friends ‘PIVOT’ Oversized T-Shirt (mustard #FFD200): right figure front view, left figure back view, on white seamless with hard flash character and value badges.\nPHOTOMETRIC: key 5600K on-camera flash, azimuth 0°, elevation 0°; fill 1:4 via white V-flat camera-right; rim 5200K with ½ magenta gel, azimuth 120°, elevation 20°; shadow_density 0.65.\nOPTICAL: full-frame body, 35mm prime, f/5.6, 1/200s, ISO 800; focus on front chest print; DOF band covers back shoulder at ~1.5m; slight edge halation allowed; minimal lens distortion corrected.\nSPATIAL: canvas 1:1; subject_offset_x_pct front=62%, back=38%; subject_offset_y_pct=50%; headroom_pct=10%; headline-safe top 22%; logo-safe bottom 14%; maintain negative space around tees; occupancy ~78%.\nMATERIAL: cotton jersey (roughness 0.65, low specular), Lambertian diffuse; black ‘PIVOT’ vector print sharp with no warping; rib knit collar shows fiber microtexture; swing tag with FRIENDS™ lockup near hem; Bewakoof kraft shipper bottom-left out of safe bands.\nPOST: grain ISO800 (15%); shadows grade #0E0E0E, highlights #FFF2B0; mild S-curve; vignette 8%; LUT neutral commercial (Portra 400 tonality, halation off).\nGRAPHICS (ON-IMAGE): “BIG FIT, SMALL BILL” Rubik Bold 84pt eq, tracking -5, #000000, inset top 8% left 6%; “COD | Pan-India Delivery | Easy Returns” Inter Medium 24pt eq, #000000, inset bottom 10% right 6%; FRIENDS™ licensing line Inter Regular 14pt eq, #000000, inset bottom 6% left 6%; Bewakoof logo top-right inset 5%.\nREFERENCES: Petra-Collins on-camera flash grammar; Jürgen Teller hard-flash honesty; Supreme lookbook typographic restraint.\nConstraints: Accurate mustard #FFD200; no soft high-key cyclorama look; no couch ‘PIVOT’ clipart; no pixelated or warped graphics; no plastic sheen on cotton. · aspect 9:16",
+        "tool": "flux",
+        "aspectRatio": "9:16",
+        "conceptId": "019e7061-fae9-7cbb-a564-76d2484eb374"
+      },
+      {
+        "heading": "Concept 2 · Transformation · in-use · Amazon hero (1:1)",
+        "description": "Flux Kontext · INSTANT VIBE SHIFT",
+        "prompt": "Render a 1:1 dynamic split-frame ‘transformation’ image of a Gen Z Indian model putting on the Bewakoof x FRIENDS ‘PIVOT’ Oversized Tee in mustard (#FFD200). Photometric: key on-camera flash 5600K (azimuth 0°, elevation 5°); fill ratio 1:4 via negative fill; magenta-gelled rim strobe 5600K (azimuth 110°, elevation 30°); shadow density 0.7; ambient off. Optical: full-frame sensor; 35mm prime; f/8; 1/200s; ISO 800; focus on chest print; DOF 1.5–2.5 m; allow mild highlight-edge CA. Spatial: left 30% grayscale ‘before’ strip; right 70% saturated ‘after’; ghosted rear view at 15–20% opacity to show back drape; subject_offset_x_pct 60 (after), 15 (before); subject_offset_y_pct 52; headroom_pct 10; headline-safe top 22%; logo-safe bottom 14%; Reels central 60% action-safe. Material: cotton jersey roughness 0.65 with vertical anisotropy; accurate mustard hue; skin roughness 0.35 with soft sheen; wall roughness 0.75; low Fresnel on cotton. Setting: matte white wall with visible corner seam; tape X on floor; minimal styling. Post: Portra 400 emulation with warm shadows (#C18A00) and creamy highlights (#FFF1CC); gentle S-curve (+8); vignette 8%; add ISO 800 grain. On-image text: Headline “INSTANT VIBE SHIFT” Anton Bold, 140pt eq, tracking +20, leading 92%, hex #000000, top-left inset 6% within top 22%; Subhead Inter Regular 36pt eq, hex #000000 below headline; FRIENDS™ licensing lockup Inter Medium 18pt eq, hex #000000, bottom-right inset 4%; Bewakoof wordmark bottom-left inset 4%. Constraints: crisp ‘PIVOT’ graphic (no pixelation), no couch, no flat-lay, no soft high-key. · aspect 1:1",
+        "tool": "flux",
+        "aspectRatio": "1:1",
+        "conceptId": "019e7062-2907-7dd6-a528-f9dd9558744a"
+      },
+      {
+        "heading": "Concept 2 · Transformation · in-use · Meta feed (4:5)",
+        "description": "Flux Kontext · INSTANT VIBE SHIFT",
+        "prompt": "Render a 1:1 dynamic split-frame ‘transformation’ image of a Gen Z Indian model putting on the Bewakoof x FRIENDS ‘PIVOT’ Oversized Tee in mustard (#FFD200). Photometric: key on-camera flash 5600K (azimuth 0°, elevation 5°); fill ratio 1:4 via negative fill; magenta-gelled rim strobe 5600K (azimuth 110°, elevation 30°); shadow density 0.7; ambient off. Optical: full-frame sensor; 35mm prime; f/8; 1/200s; ISO 800; focus on chest print; DOF 1.5–2.5 m; allow mild highlight-edge CA. Spatial: left 30% grayscale ‘before’ strip; right 70% saturated ‘after’; ghosted rear view at 15–20% opacity to show back drape; subject_offset_x_pct 60 (after), 15 (before); subject_offset_y_pct 52; headroom_pct 10; headline-safe top 22%; logo-safe bottom 14%; Reels central 60% action-safe. Material: cotton jersey roughness 0.65 with vertical anisotropy; accurate mustard hue; skin roughness 0.35 with soft sheen; wall roughness 0.75; low Fresnel on cotton. Setting: matte white wall with visible corner seam; tape X on floor; minimal styling. Post: Portra 400 emulation with warm shadows (#C18A00) and creamy highlights (#FFF1CC); gentle S-curve (+8); vignette 8%; add ISO 800 grain. On-image text: Headline “INSTANT VIBE SHIFT” Anton Bold, 140pt eq, tracking +20, leading 92%, hex #000000, top-left inset 6% within top 22%; Subhead Inter Regular 36pt eq, hex #000000 below headline; FRIENDS™ licensing lockup Inter Medium 18pt eq, hex #000000, bottom-right inset 4%; Bewakoof wordmark bottom-left inset 4%. Constraints: crisp ‘PIVOT’ graphic (no pixelation), no couch, no flat-lay, no soft high-key. · aspect 4:5",
+        "tool": "flux",
+        "aspectRatio": "4:5",
+        "conceptId": "019e7062-2907-7dd6-a528-f9dd9558744a"
+      },
+      {
+        "heading": "Concept 2 · Transformation · in-use · Reels / Story (9:16)",
+        "description": "Flux Kontext · INSTANT VIBE SHIFT",
+        "prompt": "Render a 1:1 dynamic split-frame ‘transformation’ image of a Gen Z Indian model putting on the Bewakoof x FRIENDS ‘PIVOT’ Oversized Tee in mustard (#FFD200). Photometric: key on-camera flash 5600K (azimuth 0°, elevation 5°); fill ratio 1:4 via negative fill; magenta-gelled rim strobe 5600K (azimuth 110°, elevation 30°); shadow density 0.7; ambient off. Optical: full-frame sensor; 35mm prime; f/8; 1/200s; ISO 800; focus on chest print; DOF 1.5–2.5 m; allow mild highlight-edge CA. Spatial: left 30% grayscale ‘before’ strip; right 70% saturated ‘after’; ghosted rear view at 15–20% opacity to show back drape; subject_offset_x_pct 60 (after), 15 (before); subject_offset_y_pct 52; headroom_pct 10; headline-safe top 22%; logo-safe bottom 14%; Reels central 60% action-safe. Material: cotton jersey roughness 0.65 with vertical anisotropy; accurate mustard hue; skin roughness 0.35 with soft sheen; wall roughness 0.75; low Fresnel on cotton. Setting: matte white wall with visible corner seam; tape X on floor; minimal styling. Post: Portra 400 emulation with warm shadows (#C18A00) and creamy highlights (#FFF1CC); gentle S-curve (+8); vignette 8%; add ISO 800 grain. On-image text: Headline “INSTANT VIBE SHIFT” Anton Bold, 140pt eq, tracking +20, leading 92%, hex #000000, top-left inset 6% within top 22%; Subhead Inter Regular 36pt eq, hex #000000 below headline; FRIENDS™ licensing lockup Inter Medium 18pt eq, hex #000000, bottom-right inset 4%; Bewakoof wordmark bottom-left inset 4%. Constraints: crisp ‘PIVOT’ graphic (no pixelation), no couch, no flat-lay, no soft high-key. · aspect 9:16",
+        "tool": "flux",
+        "aspectRatio": "9:16",
+        "conceptId": "019e7062-2907-7dd6-a528-f9dd9558744a"
+      },
+      {
+        "heading": "Concept 3 · Social-Proof · social-proof · Amazon hero (1:1)",
+        "description": "Nano Banana Pro · FANS PIVOT HERE",
+        "prompt": "You’re capturing a believable UGC-style square shot: a trio of Indian friends on a hostel stairwell at dusk, laughing as the front subject shows the FRIENDS ‘PIVOT’ graphic on a mustard oversized tee, second shows 3/4 back drape, third is side profile. Multi-image conditioning: think i-D diary frame + Petra-Collins direct flash. PHOTOMETRIC: on-camera flash 5500K (az 0°, el 15°) dominant; magenta-gelled rim 3200K from rear camera-right (az 300°, el 40°) only kissing background edges; ambient corridor 4500K at -1.0 EV; shadow density 0.65. OPTICAL: full-frame 35mm at f/4, 1/200s, ISO 800; focus point the chest print; medium DOF; tiny CA on bright metal bottle OK. SPATIAL: 1:1; subject_offset_x_pct +8; subject_offset_y_pct -4; headroom 14%; headline-safe top 22%; logo-safe bottom 14%. MATERIAL: cotton jersey roughness 0.7 matte; skin 0.45; plaster 0.6; helmet 0.25 gloss; retain #FFD200 accuracy—block magenta spill on tee. POST: grain ISO800 12–15%; Portra 400 +0.5; shadows #1F1A17; highlights #FFF2B0; gentle S-curve; vignette 8%. On-image text (exact): Headline “FANS PIVOT HERE” set in Poppins Bold, 78pt, tracking +10, leading 88pt, all-caps, color #000000 with 2px white stroke for legibility, inset top 4% center. Rating pill: “4.6 ★ 1.8k reviews” in Inter Medium 34pt, tracking 0, color #FFFFFF on #000000 rounded rect (16px radius), placed top-left, inset 5%/5%. Licensing: “FRIENDS™ & © Warner Bros. Ent. Used under license.” in Inter Regular 20pt, color #FFFFFF at bottom-left, inset 4%/4%. Bewakoof wordmark top-right inset 4%. No couch meme clipart, no skyline stock. · aspect 1:1",
+        "tool": "nano-banana",
+        "aspectRatio": "1:1",
+        "conceptId": "019e7061-9278-715c-93ab-4b1fe769206c"
+      },
+      {
+        "heading": "Concept 3 · Social-Proof · social-proof · Meta feed (4:5)",
+        "description": "Nano Banana Pro · FANS PIVOT HERE",
+        "prompt": "You’re capturing a believable UGC-style square shot: a trio of Indian friends on a hostel stairwell at dusk, laughing as the front subject shows the FRIENDS ‘PIVOT’ graphic on a mustard oversized tee, second shows 3/4 back drape, third is side profile. Multi-image conditioning: think i-D diary frame + Petra-Collins direct flash. PHOTOMETRIC: on-camera flash 5500K (az 0°, el 15°) dominant; magenta-gelled rim 3200K from rear camera-right (az 300°, el 40°) only kissing background edges; ambient corridor 4500K at -1.0 EV; shadow density 0.65. OPTICAL: full-frame 35mm at f/4, 1/200s, ISO 800; focus point the chest print; medium DOF; tiny CA on bright metal bottle OK. SPATIAL: 1:1; subject_offset_x_pct +8; subject_offset_y_pct -4; headroom 14%; headline-safe top 22%; logo-safe bottom 14%. MATERIAL: cotton jersey roughness 0.7 matte; skin 0.45; plaster 0.6; helmet 0.25 gloss; retain #FFD200 accuracy—block magenta spill on tee. POST: grain ISO800 12–15%; Portra 400 +0.5; shadows #1F1A17; highlights #FFF2B0; gentle S-curve; vignette 8%. On-image text (exact): Headline “FANS PIVOT HERE” set in Poppins Bold, 78pt, tracking +10, leading 88pt, all-caps, color #000000 with 2px white stroke for legibility, inset top 4% center. Rating pill: “4.6 ★ 1.8k reviews” in Inter Medium 34pt, tracking 0, color #FFFFFF on #000000 rounded rect (16px radius), placed top-left, inset 5%/5%. Licensing: “FRIENDS™ & © Warner Bros. Ent. Used under license.” in Inter Regular 20pt, color #FFFFFF at bottom-left, inset 4%/4%. Bewakoof wordmark top-right inset 4%. No couch meme clipart, no skyline stock. · aspect 4:5",
+        "tool": "nano-banana",
+        "aspectRatio": "4:5",
+        "conceptId": "019e7061-9278-715c-93ab-4b1fe769206c"
+      },
+      {
+        "heading": "Concept 3 · Social-Proof · social-proof · Reels / Story (9:16)",
+        "description": "Nano Banana Pro · FANS PIVOT HERE",
+        "prompt": "You’re capturing a believable UGC-style square shot: a trio of Indian friends on a hostel stairwell at dusk, laughing as the front subject shows the FRIENDS ‘PIVOT’ graphic on a mustard oversized tee, second shows 3/4 back drape, third is side profile. Multi-image conditioning: think i-D diary frame + Petra-Collins direct flash. PHOTOMETRIC: on-camera flash 5500K (az 0°, el 15°) dominant; magenta-gelled rim 3200K from rear camera-right (az 300°, el 40°) only kissing background edges; ambient corridor 4500K at -1.0 EV; shadow density 0.65. OPTICAL: full-frame 35mm at f/4, 1/200s, ISO 800; focus point the chest print; medium DOF; tiny CA on bright metal bottle OK. SPATIAL: 1:1; subject_offset_x_pct +8; subject_offset_y_pct -4; headroom 14%; headline-safe top 22%; logo-safe bottom 14%. MATERIAL: cotton jersey roughness 0.7 matte; skin 0.45; plaster 0.6; helmet 0.25 gloss; retain #FFD200 accuracy—block magenta spill on tee. POST: grain ISO800 12–15%; Portra 400 +0.5; shadows #1F1A17; highlights #FFF2B0; gentle S-curve; vignette 8%. On-image text (exact): Headline “FANS PIVOT HERE” set in Poppins Bold, 78pt, tracking +10, leading 88pt, all-caps, color #000000 with 2px white stroke for legibility, inset top 4% center. Rating pill: “4.6 ★ 1.8k reviews” in Inter Medium 34pt, tracking 0, color #FFFFFF on #000000 rounded rect (16px radius), placed top-left, inset 5%/5%. Licensing: “FRIENDS™ & © Warner Bros. Ent. Used under license.” in Inter Regular 20pt, color #FFFFFF at bottom-left, inset 4%/4%. Bewakoof wordmark top-right inset 4%. No couch meme clipart, no skyline stock. · aspect 9:16",
+        "tool": "nano-banana",
+        "aspectRatio": "9:16",
+        "conceptId": "019e7061-9278-715c-93ab-4b1fe769206c"
+      }
+    ],
+    "derivedFrom": {
+      "editEpochAtGeneration": 3,
+      "modelUsed": "rule-based-assembly",
+      "provider": "manual",
+      "generatedAt": "2026-05-28T20:59:02.103Z",
+      "manualEdits": []
+    }
+  }
+}

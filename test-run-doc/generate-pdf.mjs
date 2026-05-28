@@ -64,7 +64,7 @@ await page.pdf({
   displayHeaderFooter: true,
   headerTemplate,
   footerTemplate,
-  margin: { top: '14mm', bottom: '12mm', left: '0mm', right: '0mm' },
+  margin: { top: '22mm', bottom: '18mm', left: '0mm', right: '0mm' },
 });
 
 await browser.close();

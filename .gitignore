@@ -32,8 +32,14 @@ next-env.d.ts
 # playwright MCP artifacts
 /.playwright-mcp
 /test-*.png
-/test-run-doc/screens/*.png
-/test-run-doc/screens-deployed/*.png
+/test-run-doc/screens
+/test-run-doc/screens-deployed
+/test-run-doc/screens-live
+/test-run-doc/slideshow
+/walkthrough-frames
+/screenshots
+/gemini*.png
+/gemini*.jpg
 
 # Deliverable binaries — NOT checked into the repo. Submitted separately.
 /APPROACH.pdf
