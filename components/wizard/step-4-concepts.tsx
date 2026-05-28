@@ -228,6 +228,8 @@ function ConceptCard({ concept }: { concept: ConceptBrief }) {
                 </Section>
               )}
 
+              {concept.craft && <CraftDepthBlock craft={concept.craft} />}
+
               <Section label="Prompts">
                 <PromptList prompts={concept.prompts} negative={concept.negativePrompt} />
               </Section>
@@ -235,6 +237,100 @@ function ConceptCard({ concept }: { concept: ConceptBrief }) {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+function CraftDepthBlock({ craft }: { craft: NonNullable<ConceptBrief['craft']> }) {
+  return (
+    <div className="space-y-3 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-muted)]/40 p-3.5">
+      <div className="text-[10px] font-mono uppercase tracking-wider text-[color:var(--color-muted-foreground)] flex items-center gap-2">
+        <span className="size-1.5 rounded-full bg-amber-500" />
+        Craft depth · the thinking behind the prompts
+      </div>
+
+      <Section label="Why this stack">
+        <p className="text-xs leading-relaxed italic text-[color:var(--color-foreground)]">{craft.thinking}</p>
+      </Section>
+
+      <Section label="Optical (lens spec)">
+        <dl className="text-xs grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1">
+          <Pair k="sensor" v={craft.lensSpec.sensor} />
+          <Pair k="focal" v={craft.lensSpec.focalLength} />
+          <Pair k="aperture" v={craft.lensSpec.aperture} />
+          {craft.lensSpec.shutter && <Pair k="shutter" v={craft.lensSpec.shutter} />}
+          {craft.lensSpec.iso && <Pair k="iso" v={craft.lensSpec.iso} />}
+          <Pair k="dof" v={craft.lensSpec.depthOfField} />
+        </dl>
+      </Section>
+
+      <Section label="Photometric (lighting diagram)">
+        <dl className="text-xs grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5">
+          <Pair k="key" v={`${craft.lighting.key.modifier} · ${craft.lighting.key.angleDeg} · ${craft.lighting.key.temperatureK}K${craft.lighting.key.intensityStops ? ` · ${craft.lighting.key.intensityStops}` : ''}`} />
+          {craft.lighting.fill && (
+            <Pair k="fill" v={`${craft.lighting.fill.modifier} · ${craft.lighting.fill.ratio}`} />
+          )}
+          {craft.lighting.rim && (
+            <Pair k="rim" v={`${craft.lighting.rim.modifier} · ${craft.lighting.rim.angleDeg} · ${craft.lighting.rim.temperatureK}K`} />
+          )}
+          {craft.lighting.ambient && <Pair k="ambient" v={craft.lighting.ambient} />}
+          <Pair k="shadow density" v={craft.lighting.shadowDensity.toFixed(2)} />
+        </dl>
+        {craft.lighting.notes && (
+          <p className="text-xs mt-1.5 text-[color:var(--color-muted-foreground)]">{craft.lighting.notes}</p>
+        )}
+      </Section>
+
+      <Section label="Material rendering">
+        <dl className="text-xs space-y-1">
+          <Pair k="subject" v={craft.material.subjectMaterial} />
+          {craft.material.subsurfaceCue && <Pair k="subsurface" v={craft.material.subsurfaceCue} />}
+          <Pair k="specular" v={craft.material.specularIntensity} />
+          {craft.material.microfacetRoughness && <Pair k="roughness" v={craft.material.microfacetRoughness} />}
+          {craft.material.brdfNotes && <Pair k="brdf" v={craft.material.brdfNotes} />}
+          {craft.material.postSheen && <Pair k="sheen" v={craft.material.postSheen} />}
+        </dl>
+      </Section>
+
+      <Section label="Post processing">
+        <dl className="text-xs space-y-1">
+          <Pair k="grain" v={craft.post.grainISO} />
+          <Pair k="shadows" v={craft.post.gradeShadows} />
+          <Pair k="highlights" v={craft.post.gradeHighlights} />
+          <Pair k="curve" v={craft.post.contrastCurve} />
+          {craft.post.vignette && <Pair k="vignette" v={craft.post.vignette} />}
+          {craft.post.lutStyle && <Pair k="lut" v={craft.post.lutStyle} />}
+        </dl>
+      </Section>
+
+      <Section label="References (technique citations)">
+        <div className="text-xs space-y-1">
+          {craft.references.photographers.length > 0 && (
+            <Pair k="technique" v={craft.references.photographers.join(' · ')} />
+          )}
+          {craft.references.publications.length > 0 && (
+            <Pair k="publication" v={craft.references.publications.join(' · ')} />
+          )}
+          {craft.references.brandCampaigns.length > 0 && (
+            <Pair k="brand" v={craft.references.brandCampaigns.join(' · ')} />
+          )}
+          {craft.references.cinematicTouchstones.length > 0 && (
+            <Pair k="cinema" v={craft.references.cinematicTouchstones.join(' · ')} />
+          )}
+          {craft.references.notes && (
+            <p className="text-[color:var(--color-muted-foreground)] mt-1">{craft.references.notes}</p>
+          )}
+        </div>
+      </Section>
+
+      <Section label="Audience signal in pixels">
+        <dl className="text-xs space-y-1">
+          <Pair k="props" v={craft.audiencePixels.propLanguage} />
+          <Pair k="framing" v={craft.audiencePixels.framingLanguage} />
+          <Pair k="grade" v={craft.audiencePixels.gradeLanguage} />
+          {craft.audiencePixels.grainLanguage && <Pair k="grain" v={craft.audiencePixels.grainLanguage} />}
+        </dl>
+      </Section>
     </div>
   );
 }

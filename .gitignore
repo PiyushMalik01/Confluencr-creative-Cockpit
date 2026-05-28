@@ -33,6 +33,13 @@ next-env.d.ts
 /.playwright-mcp
 /test-*.png
 /test-run-doc/screens/*.png
+/test-run-doc/screens-deployed/*.png
+
+# Deliverable binaries — NOT checked into the repo. Submitted separately.
+/APPROACH.pdf
+/TEST-RUN.pdf
+/walkthrough.mp4
+/test-run-doc/system-generated.pdf
 
 # editor
 .vscode

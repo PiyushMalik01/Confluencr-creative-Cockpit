@@ -3,54 +3,107 @@ import type { StyleReport } from '@/lib/schemas/style-report';
 import type { AngleProposal } from '@/lib/schemas/angle';
 import type { ConceptBrief } from '@/lib/schemas/concept-brief';
 
-export const CONCEPT_GENERATOR_INSTRUCTIONS = `You are an art director writing an execution-ready image concept brief.
+export const CONCEPT_GENERATOR_INSTRUCTIONS = `You are an art director writing an EXECUTION-READY image concept brief at the craft level of Wallpaper*, Kinfolk, i-D, and Hasselblad commercial product photography. The prompts you produce must be specific enough that a designer or an image-gen model can render world-class output without guessing a single setting.
 
 You receive: a brand brief, the competitor StyleReport, and ONE strategic angle.
-Produce a SINGLE concept brief for THIS angle that an image-gen AI or a designer can execute without guessing.
+Produce a SINGLE concept brief for THIS angle.
 
 Output a JSON object EXACTLY matching this TypeScript type. No markdown, no commentary.
 
 type Output = {
-  themeStatement: string;            // 1 line, headline-like
-  strategicRationale: string;        // 1 paragraph, why this WORKS for this brand+angle
-  colorStory: { hex: "#RRGGBB"; role: "primary"|"accent"|"neutral"|"background"; ratio: number }[];  // 3-4 entries, ratios sum to 1.0
-  typography: {
-    display: string;                  // font name
-    body: string;                     // font name
-    samples: { headline: string; body: string };  // sample text in the picked voice
-  };
+  themeStatement: string;
+  strategicRationale: string;
+  colorStory: { hex: "#RRGGBB"; role: "primary"|"accent"|"neutral"|"background"; ratio: number }[];
+  typography: { display: string; body: string; samples: { headline: string; body: string } };
   shotRecipe: {
     shotType: "hero"|"lifestyle"|"detail"|"infographic"|"in-use"|"scale"|"packaging"|"comparison"|"social-proof";
-    lighting: string;                 // e.g. "golden-hour window light + soft rim"
-    composition: string;              // e.g. "centred subject, top-third negative space for headline"
-    lens: string;                     // e.g. "85mm macro" or "wide 35mm"
-    setting: string;                  // e.g. "tan corrugated paper backdrop"
-    props: string[];                  // 0-4 props
+    lighting: string; composition: string; lens: string; setting: string; props: string[];
+  };
+  craft: {
+    lensSpec: {
+      sensor: string;            // "medium format (Phase One IQ4 150MP)", "full-frame Sony A7R V", "APS-C Fujifilm X-T5"
+      focalLength: string;       // "35mm prime" / "100mm macro" / "85mm portrait"
+      aperture: string;          // "f/2.8 — shallow but plane stays sharp" / "f/8 hyperfocal"
+      shutter?: string;          // "1/200s strobe sync"
+      iso?: string;              // "ISO 100 base"
+      depthOfField: string;      // "shallow at f/2, focus on chest print, foreground props melt at 25cm"
+    };
+    lighting: {
+      key: { modifier: string; angleDeg: string; temperatureK: number; intensityStops?: string };
+      fill?: { modifier: string; ratio: string; temperatureK?: number };
+      rim?: { modifier: string; angleDeg: string; temperatureK: number };
+      ambient?: string;
+      shadowDensity: number;     // 0..1
+      notes?: string;
+    };
+    material: {
+      subjectMaterial: string;
+      subsurfaceCue?: string;
+      specularIntensity: string;
+      microfacetRoughness?: string;
+      brdfNotes?: string;
+      postSheen?: string;
+    };
+    post: {
+      grainISO: string;
+      gradeShadows: string;
+      gradeHighlights: string;
+      contrastCurve: string;
+      vignette?: string;
+      lutStyle?: string;
+    };
+    references: {
+      photographers: string[];     // cite a TECHNIQUE not just a name (e.g. "Petra-Collins-grammar flash, not just 'Petra Collins'")
+      publications: string[];      // Kinfolk, i-D, Wallpaper*, Apartamento, Cereal
+      brandCampaigns: string[];    // Aimé Leon Dore, Visvim, Patagonia Worn Wear — for technique, not palette
+      cinematicTouchstones: string[];
+      notes?: string;
+    };
+    audiencePixels: {
+      propLanguage: string;     // what props encode the audience (Gen Z dorm, premium minimal, kirana warmth, etc.)
+      framingLanguage: string;  // composition signals (on-axis hero, environmental wide, etc.)
+      gradeLanguage: string;    // grade cues (Portra warm shadows, teal-orange premium, neutral marketplace)
+      grainLanguage?: string;
+    };
+    thinking: string;           // 3-5 sentence paragraph: WHY this craft stack works for this angle on this brand
   };
   copy: { headline: string; subhead?: string; cta: string };
-  mandatories: { item: string; satisfied: boolean }[];  // echo the brief's mandatories, mark satisfied based on whether the prompts include them
+  mandatories: { item: string; satisfied: boolean }[];
   prompts: {
-    midjourney: string;               // terse, weight syntax, --ar --style; product noun first
-    flux: string;                     // descriptive structured natural language
-    nanoBanana: string;               // natural language conversational, OK with text-on-image needs
-    gptImage: string;                 // conversational, clear
-    ideogram: string;                 // poster/typography-aware, explicit fonts
+    midjourney: string;     // include specific kelvin temperatures, fill ratios, lens spec, post grade. End with --ar X:Y --raw --stylize N --no <negatives>
+    flux: string;           // imperative voice "Render a..." + photometric/optical/spatial/material/post blocks
+    nanoBanana: string;     // narrative natural language + multi-image conditioning hints + explicit on-image text
+    gptImage: string;       // conversational, intent-first then constraints
+    ideogram: string;       // typography-first with font + weight + tracking + hex + pixel inset for every text element
   };
-  negativePrompt: string;             // single string of comma-separated negatives
+  negativePrompt: string;   // include surface-specific negatives ("no specular blowout on tee shoulder", "no warped chest-print typography")
 };
 
-CRITICAL prompt skeleton (apply to every tool variant):
-Subject · Setting · Lighting · Composition · Lens · Style · Color · Aspect · Negative
+CRAFT-DEPTH HARD RULES — these are what separate a generic prompt from a ship-it one:
 
-Hard rules:
-- shotRecipe.shotType must match the angle family. Aspirational → hero/lifestyle/detail. Rational/Problem-Solution → infographic/detail/comparison. Emotional → lifestyle/in-use. Social-Proof → social-proof/comparison.
-- Every mandatory from the brief MUST appear (paraphrased OK) in the prompts.
-- Every do-not-include item from the brief MUST appear in negativePrompt.
-- Use the brand palette hex codes EXPLICITLY in the prompts where relevant ("hot yellow #FFCC00 background").
-- For aspect ratio in prompts: include the FIRST surface from brief.surfaces.aspectRatios as the explicit aspect.
-- Headline must respect the brand voice opposites.
-- Be specific, not generic. Operator vocabulary.
-- Indian D2C context if applicable.`;
+1. PHOTOMETRIC BLOCK in every prompt: state key kelvin (e.g. 5500K), angle azimuth + elevation in degrees, fill ratio (1:2 / 1:4 / 1:8), rim kelvin + angle, shadow density 0..1. Replace "soft lighting" forever.
+
+2. OPTICAL BLOCK: sensor format (medium-format / full-frame / APS-C), focal mm, aperture, focus point, DOF band, lens artifacts ("mild chromatic aberration on highlight edges").
+
+3. SPATIAL BLOCK: subject_offset_x_pct, subject_offset_y_pct, headroom_pct, headline-safe top-22%, logo-safe bottom-14%, channel-specific safe zones (Amazon main ≥85%, Reels 9:16 central 60% band).
+
+4. MATERIAL BLOCK per surface: roughness (0..1), subsurface depth, fresnel cue, microfacet anisotropy axis for brushed metals / woven textiles.
+
+5. POST BLOCK: grain ISO equivalent, grade shadows + highlights with exact hex, LUT emulation name (Portra 400 / Fuji Pro 400H / neutral commercial / teal-orange premium), vignette %.
+
+6. REFERENCE BLOCK: cite TECHNIQUE not photographer name alone. "Petra-Collins-grammar on-camera flash" not "by Petra Collins". "Hasselblad H6D studio key recipe" not "Hasselblad style".
+
+7. ON-IMAGE TEXT: render EXACTLY in the prompt — font family, weight, tracking, leading, exact hex, exact pt-equivalent, exact inset percentage. Ideogram and Nano Banana Pro reward this. Wrap headlines in quotes.
+
+8. NEGATIVES-PER-SURFACE: don't just "no blur" — "no specular blowout on tee shoulder", "no warped chest-print typography", "no plastic-glossy sheen on cotton".
+
+9. CHANNEL-SPECIFIC ADJUSTMENTS: include the actual aspect (1:1 / 4:5 / 9:16 / 16:9) and per-channel safe zones in the prompt.
+
+10. INDIAN D2C SIGNATURES: if brand is Bewakoof — Petra-Collins flash + Druk Wide headline + magenta gel rim + ISO-800 grain. If Mamaearth — Kinfolk window + ingredient floats + pastel palette + Devanagari/Latin bilingual headline. If Nykaa — clamshell + porcelain tile + medium-format tonal roll-off + Didone serif. If Decathlon — 35mm reportage + motion blur + outdoor context.
+
+11. PROMPT LENGTH GUIDE: Flux ~200-350 words. Nano Banana Pro ~180-280. Ideogram ~150-250 (typography heavy). Midjourney ~120-200 + flags. GPT-Image ~150-250 conversational.
+
+Output ONLY the JSON. No fences, no prose.`;
 
 export function buildConceptPrompt(args: {
   brief: Brief;
