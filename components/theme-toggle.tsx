@@ -1,50 +1,78 @@
 'use client';
 
-import { useTheme } from 'next-themes';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const btnRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    setIsDark(document.documentElement.classList.contains('dark'));
 
-  function flip() {
-    const next = theme === 'dark' ? 'light' : 'dark';
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleTheme = useCallback(async () => {
+    if (!buttonRef.current) return;
+
+    const newTheme = !isDark;
+
     const doc = document as Document & {
       startViewTransition?: (cb: () => void) => { ready: Promise<void> };
     };
-    const btn = btnRef.current;
 
-    if (!doc.startViewTransition || !btn) {
-      setTheme(next);
+    if (!doc.startViewTransition) {
+      // Fallback: just toggle without animation
+      setIsDark(newTheme);
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', newTheme ? 'dark' : 'light');
       return;
     }
 
-    const rect = btn.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    const endRadius = Math.hypot(
+    const { flushSync } = await import('react-dom');
+
+    const transition = doc.startViewTransition(() => {
+      flushSync(() => {
+        setIsDark(newTheme);
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+      });
+    });
+
+    await transition.ready;
+
+    const { top, left, width, height } = buttonRef.current.getBoundingClientRect();
+    const x = left + width / 2;
+    const y = top + height / 2;
+    const maxRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
       Math.max(y, window.innerHeight - y)
     );
 
-    const transition = doc.startViewTransition(() => setTheme(next));
-    transition.ready.then(() => {
-      document.documentElement.animate(
-        {
-          clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`],
-        },
-        {
-          duration: 520,
-          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-          pseudoElement: '::view-transition-new(root)',
-        }
-      );
-    });
-  }
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${maxRadius}px at ${x}px ${y}px)`,
+        ],
+      },
+      {
+        duration: 500,
+        easing: 'ease-in-out',
+        pseudoElement: '::view-transition-new(root)',
+      }
+    );
+  }, [isDark]);
 
   if (!mounted) {
     return <div className="size-9 rounded-md" />;
@@ -52,13 +80,13 @@ export function ThemeToggle() {
 
   return (
     <button
-      ref={btnRef}
+      ref={buttonRef}
       type="button"
-      onClick={flip}
-      className="inline-flex size-9 items-center justify-center rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-card)]/60 backdrop-blur hover:bg-[color:var(--color-muted)] transition-colors"
+      onClick={toggleTheme}
       aria-label="Toggle theme"
+      className="inline-flex size-9 items-center justify-center rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-card)]/60 backdrop-blur hover:bg-[color:var(--color-muted)] transition-colors"
     >
-      {theme === 'dark' ? <Sun className="size-4" /> : <Moon className="size-4" />}
+      {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
     </button>
   );
 }

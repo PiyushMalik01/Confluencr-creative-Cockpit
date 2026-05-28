@@ -1,0 +1,136 @@
+- generic [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e100] [cursor=pointer]:
+    - img [ref=e101]
+  - alert [ref=e104]
+  - main [ref=e105]:
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]: Confluencr Cockpit
+        - generic [ref=e110]: /p/019e6fb2…
+      - generic [ref=e111]:
+        - button "Connect provider" [ref=e112]:
+          - img [ref=e113]
+          - generic [ref=e116]: Connect provider
+        - button "Toggle theme" [active] [ref=e117]:
+          - img [ref=e293]
+    - generic [ref=e125]:
+      - generic [ref=e126]:
+        - button "1 Brief Tell the cockpit about your product, audience, and brand." [ref=e127]:
+          - generic [ref=e128]: "1"
+          - generic [ref=e129]:
+            - heading "Brief" [level=3] [ref=e131]
+            - paragraph [ref=e132]: Tell the cockpit about your product, audience, and brand.
+          - img [ref=e134]
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - img [ref=e142]
+              - generic [ref=e144]:
+                - generic [ref=e145]: Auto-fill from a URL or brand
+                - generic [ref=e146]: Paste a product URL or type a brand + product name. The cockpit fills every field. You review and tweak.
+            - generic [ref=e147]:
+              - textbox "e.g. https://bewakoof.com/p/friends-pivot-tee · or just · Bewakoof Friends Pivot oversized tee" [ref=e148]:
+                - /placeholder: e.g. https://bewakoof.com/p/friends-pivot-tee  ·  or just  ·  Bewakoof Friends Pivot oversized tee
+              - button "Auto-fill" [disabled] [ref=e149]:
+                - img [ref=e150]
+                - text: Auto-fill
+            - generic [ref=e153]: Connect ChatGPT (top-right Settings) to enable auto-fill
+          - generic [ref=e157]: 1/6 required fields
+          - generic [ref=e160]:
+            - button "Product Name, one-liner, hero photo, category. ▾" [ref=e161]:
+              - generic [ref=e162]:
+                - generic [ref=e163]: Product
+                - generic [ref=e164]: Name, one-liner, hero photo, category.
+              - generic [ref=e165]: ▾
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - generic [ref=e170]: Product name*
+                - textbox "e.g. Bewakoof Friends Pivot Oversized Tee" [ref=e171]
+              - generic [ref=e172]:
+                - generic [ref=e174]: Category
+                - combobox [ref=e175]:
+                  - option "Pick a category…" [selected]
+                  - option "Fashion / apparel"
+                  - option "Beauty / cosmetics"
+                  - option "Wellness / personal care"
+                  - option "Sportswear / outdoor"
+                  - option "Home / lifestyle"
+                  - option "Food / beverage"
+                  - option "Tech / electronics"
+                  - option "Other"
+              - generic [ref=e176]:
+                - generic [ref=e178]: One-liner
+                - textbox "The single sentence you'd put under the product name." [ref=e179]
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - generic [ref=e182]: Hero photo
+                  - generic [ref=e183]: Paste a public URL OR continue without photo
+                - generic [ref=e185]:
+                  - textbox "https://… (direct image URL)" [ref=e186]
+                  - button "Text-only" [ref=e187]:
+                    - img [ref=e188]
+                    - text: Text-only
+              - generic [ref=e192]:
+                - generic [ref=e194]: Price tier
+                - combobox [ref=e195]:
+                  - option "Optional…" [selected]
+                  - option "Value / mass"
+                  - option "Mid-market"
+                  - option "Premium"
+                  - option "Luxury"
+          - button "Audience Who buys this, and why they care. ▾" [ref=e197]:
+            - generic [ref=e198]:
+              - generic [ref=e199]: Audience
+              - generic [ref=e200]: Who buys this, and why they care.
+            - generic [ref=e201]: ▾
+          - button "Strategy The one thing the image must say. ▾" [ref=e203]:
+            - generic [ref=e204]:
+              - generic [ref=e205]: Strategy
+              - generic [ref=e206]: The one thing the image must say.
+            - generic [ref=e207]: ▾
+          - button "Brand Palette, typography, voice. ▾" [ref=e209]:
+            - generic [ref=e210]:
+              - generic [ref=e211]: Brand
+              - generic [ref=e212]: Palette, typography, voice.
+            - generic [ref=e213]: ▾
+          - button "References Competitor visuals + guardrails. ▾" [ref=e215]:
+            - generic [ref=e216]:
+              - generic [ref=e217]: References
+              - generic [ref=e218]: Competitor visuals + guardrails.
+            - generic [ref=e219]: ▾
+          - button "Surfaces Where these will live. ▾" [ref=e221]:
+            - generic [ref=e222]:
+              - generic [ref=e223]: Surfaces
+              - generic [ref=e224]: Where these will live.
+            - generic [ref=e225]: ▾
+          - button "Fill 5 more required to continue" [disabled] [ref=e227]
+      - button "Competitor Style Report AI reads your competitor visuals and extracts patterns." [disabled] [ref=e229]:
+        - img [ref=e231]
+        - generic [ref=e234]:
+          - heading "Competitor Style Report" [level=3] [ref=e236]
+          - paragraph [ref=e237]: AI reads your competitor visuals and extracts patterns.
+        - img [ref=e239]
+      - button "Strategic Angles Five contextual angles. You pick three that span the trifecta." [disabled] [ref=e242]:
+        - img [ref=e244]
+        - generic [ref=e247]:
+          - heading "Strategic Angles" [level=3] [ref=e249]
+          - paragraph [ref=e250]: Five contextual angles. You pick three that span the trifecta.
+        - img [ref=e252]
+      - button "Concept Briefs Three on-brand briefs with prompts for every image-gen tool." [disabled] [ref=e255]:
+        - img [ref=e257]
+        - generic [ref=e260]:
+          - heading "Concept Briefs" [level=3] [ref=e262]
+          - paragraph [ref=e263]: Three on-brand briefs with prompts for every image-gen tool.
+        - img [ref=e265]
+      - button "Image Generation Optional. Bring your own key, or skip to prompts-only." [disabled] [ref=e268]:
+        - img [ref=e270]
+        - generic [ref=e273]:
+          - heading "Image Generation" [level=3] [ref=e275]
+          - paragraph [ref=e276]: Optional. Bring your own key, or skip to prompts-only.
+        - img [ref=e278]
+      - button "Prompt Deck Export Copy any prompt, or download the full PDF." [disabled] [ref=e281]:
+        - img [ref=e283]
+        - generic [ref=e286]:
+          - heading "Prompt Deck Export" [level=3] [ref=e288]
+          - paragraph [ref=e289]: Copy any prompt, or download the full PDF.
+        - img [ref=e291]
