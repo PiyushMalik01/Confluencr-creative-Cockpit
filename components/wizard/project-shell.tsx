@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { StepCard } from './step-card';
 import { Step1Brief } from './step-1-brief';
 import { Step2StyleReport } from './step-2-style-report';
+import { Step3Angles } from './step-3-angles';
+import { Step4Concepts } from './step-4-concepts';
+import { Step5ImageGen } from './step-5-image-gen';
+import { Step6PromptDeck } from './step-6-prompt-deck';
 
 const STEPS = [
   { n: 1, title: 'Brief', subtitle: 'Tell the cockpit about your product, audience, and brand.' },
@@ -50,11 +54,14 @@ export function ProjectShell({ projectId, initialStep }: { projectId: string; in
             {step.n === 2 && (
               <Step2StyleReport projectId={projectId} onContinue={() => advance(3)} />
             )}
-            {step.n > 2 && (
-              <div className="text-xs text-[color:var(--color-muted-foreground)] py-3">
-                Step <span className="font-mono">{step.title}</span> ships in the next iteration.
-              </div>
+            {step.n === 3 && (
+              <Step3Angles projectId={projectId} onContinue={() => advance(4)} />
             )}
+            {step.n === 4 && (
+              <Step4Concepts projectId={projectId} onContinue={() => advance(5)} />
+            )}
+            {step.n === 5 && <Step5ImageGen onContinue={() => advance(6)} />}
+            {step.n === 6 && <Step6PromptDeck projectId={projectId} />}
           </StepCard>
         );
       })}
