@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Sparkles, Wand2, Loader2 } from 'lucide-react';
 import { useSseStream } from '@/lib/hooks/use-sse-stream';
 import { useSession } from '@/lib/session-context';
@@ -17,6 +17,17 @@ export function AutofillBar({
   const { events, busy, start, data } = useSseStream();
   const [seed, setSeed] = useState('');
   const [showTicker, setShowTicker] = useState(false);
+  const lastFilledRef = useRef<unknown>(null);
+
+  // Fire onFilled exactly once when the stream produces a new payload.
+  // Earlier version called onFilled inside the render function, which
+  // could trigger repeatedly. This effect only fires on a fresh result.
+  useEffect(() => {
+    if (data && data !== lastFilledRef.current) {
+      lastFilledRef.current = data;
+      onFilled();
+    }
+  }, [data, onFilled]);
 
   async function go() {
     if (!seed.trim() || !session) return;
@@ -31,12 +42,10 @@ export function AutofillBar({
         accountId: session.accountId,
       }),
     });
-    if (data) onFilled();
-  }
-
-  // When run completes, refresh brief
-  if (data && !busy) {
-    setTimeout(onFilled, 0);
+    // Final fallback: even if SSE didn't deliver a data event for some
+    // reason, the API has written to MongoDB by the time the stream ends.
+    // Refresh once more to be safe.
+    onFilled();
   }
 
   return (
@@ -48,7 +57,7 @@ export function AutofillBar({
         <div className="flex-1 min-w-0">
           <div className="text-sm font-semibold tracking-tight">Auto-fill from a URL or brand</div>
           <div className="text-xs text-[color:var(--color-muted-foreground)] mt-0.5 leading-relaxed">
-            Paste a product URL or type a brand + product name. The cockpit fills every field. You review and tweak.
+            Paste a product URL or type a brand + product name. The cockpit fills every field. You review and tweak. Some sites (Nike, Amazon) block scrapers — the cockpit falls back to gpt-5.4&apos;s training knowledge of the brand in that case.
           </div>
         </div>
       </div>
