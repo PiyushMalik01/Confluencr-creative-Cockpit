@@ -1,0 +1,50 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: Confluencr Cockpit
+        - generic [ref=e7]: /p/019e6fb2…
+      - button "Loading…" [ref=e9]:
+        - img [ref=e10]
+        - generic [ref=e13]: Loading…
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - button "1 Brief Tell the cockpit about your product, audience, and brand." [ref=e18]:
+          - generic [ref=e19]: "1"
+          - generic [ref=e20]:
+            - heading "Brief" [level=3] [ref=e22]
+            - paragraph [ref=e23]: Tell the cockpit about your product, audience, and brand.
+          - img [ref=e25]
+        - generic [ref=e29]: Loading brief…
+      - button "Competitor Style Report AI reads your competitor visuals and extracts patterns." [disabled] [ref=e31]:
+        - img [ref=e33]
+        - generic [ref=e36]:
+          - heading "Competitor Style Report" [level=3] [ref=e38]
+          - paragraph [ref=e39]: AI reads your competitor visuals and extracts patterns.
+        - img [ref=e41]
+      - button "Strategic Angles Five contextual angles. You pick three that span the trifecta." [disabled] [ref=e44]:
+        - img [ref=e46]
+        - generic [ref=e49]:
+          - heading "Strategic Angles" [level=3] [ref=e51]
+          - paragraph [ref=e52]: Five contextual angles. You pick three that span the trifecta.
+        - img [ref=e54]
+      - button "Concept Briefs Three on-brand briefs with prompts for every image-gen tool." [disabled] [ref=e57]:
+        - img [ref=e59]
+        - generic [ref=e62]:
+          - heading "Concept Briefs" [level=3] [ref=e64]
+          - paragraph [ref=e65]: Three on-brand briefs with prompts for every image-gen tool.
+        - img [ref=e67]
+      - button "Image Generation Optional. Bring your own key, or skip to prompts-only." [disabled] [ref=e70]:
+        - img [ref=e72]
+        - generic [ref=e75]:
+          - heading "Image Generation" [level=3] [ref=e77]
+          - paragraph [ref=e78]: Optional. Bring your own key, or skip to prompts-only.
+        - img [ref=e80]
+      - button "Prompt Deck Export Copy any prompt, or download the full PDF." [disabled] [ref=e83]:
+        - img [ref=e85]
+        - generic [ref=e88]:
+          - heading "Prompt Deck Export" [level=3] [ref=e90]
+          - paragraph [ref=e91]: Copy any prompt, or download the full PDF.
+        - img [ref=e93]
+  - button "Open Next.js Dev Tools" [ref=e100] [cursor=pointer]:
+    - img [ref=e101]

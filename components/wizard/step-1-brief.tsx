@@ -19,6 +19,7 @@ import { PaletteEditor } from '@/components/brief/palette-editor';
 import { VoiceOpposites } from '@/components/brief/voice-opposites';
 import { StringList } from '@/components/brief/string-list';
 import { CompetitorRefs } from '@/components/brief/competitor-refs';
+import { AutofillBar } from '@/components/brief/autofill-bar';
 import { cn } from '@/lib/utils';
 import { CheckCircle2, ImageIcon, Save } from 'lucide-react';
 
@@ -82,6 +83,12 @@ export function Step1Brief({ projectId, onContinue }: { projectId: string; onCon
 
   const completeness = useMemo(() => computeCompleteness(brief), [brief]);
 
+  const reloadBrief = useCallback(() => {
+    fetch(`/api/briefs/${projectId}`)
+      .then((r) => r.json())
+      .then(setBrief);
+  }, [projectId]);
+
   if (!brief) {
     return (
       <div className="text-xs text-[color:var(--color-muted-foreground)] py-4">Loading brief…</div>
@@ -92,7 +99,9 @@ export function Step1Brief({ projectId, onContinue }: { projectId: string; onCon
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between text-xs text-[color:var(--color-muted-foreground)]">
+      <AutofillBar projectId={projectId} onFilled={reloadBrief} />
+
+      <div className="flex items-center justify-between text-xs text-[color:var(--color-muted-foreground)] pt-1">
         <div className="flex items-center gap-3">
           <span>{completeness.filled}/{completeness.required} required fields</span>
           <div className="h-1 w-32 rounded-full bg-[color:var(--color-muted)] overflow-hidden">

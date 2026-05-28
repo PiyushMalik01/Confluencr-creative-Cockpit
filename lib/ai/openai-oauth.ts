@@ -1,7 +1,7 @@
 export const OPENAI_CONSTANTS = {
   CLIENT_ID: 'app_EMoamEEZ73f0CkXaXp7hrann',
   DEVICE_CODE_ENDPOINT: 'https://auth.openai.com/api/accounts/deviceauth/usercode',
-  POLL_ENDPOINT: 'https://auth.openai.com/api/accounts/deviceauth/poll',
+  POLL_ENDPOINT: 'https://auth.openai.com/api/accounts/deviceauth/token',
   TOKEN_EXCHANGE_ENDPOINT: 'https://auth.openai.com/oauth/token',
   CODEX_API_ENDPOINT: 'https://chatgpt.com/backend-api/codex/responses',
   VERIFICATION_URL: 'https://auth.openai.com/codex/device',
