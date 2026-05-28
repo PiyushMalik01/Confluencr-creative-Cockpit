@@ -2,73 +2,13 @@ import { NextRequest } from 'next/server';
 import { createSseResponse } from '@/lib/sse/stream';
 import { makeEvent } from '@/lib/schemas/activity-event';
 import { extractJson } from '@/lib/ai/prompt-utils';
-import { OPENAI_CONSTANTS } from '@/lib/ai/openai-oauth';
+import { parseTextRunRequest, providerLabel, runText } from '@/lib/ai/text-runner';
 import { newProjectId } from '@/lib/utils/uuidv7';
 import { fetchUrlMeta } from '@/lib/scraping/url-meta';
 import { briefs, bumpEditEpoch } from '@/lib/db/collections';
 
 export const runtime = 'nodejs';
 export const maxDuration = 300;
-
-function sanitize(text: string): string {
-  return text.replace(/[^\x20-\x7E\n\r\t]/g, '').replace(/\{\{.*?\}\}/g, '');
-}
-
-async function streamCodex({
-  accessToken,
-  accountId,
-  instructions,
-  input,
-  model,
-}: {
-  accessToken: string;
-  accountId: string;
-  instructions: string;
-  input: string;
-  model: string;
-}): Promise<string> {
-  const r = await fetch(OPENAI_CONSTANTS.CODEX_API_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'text/event-stream',
-      Authorization: `Bearer ${accessToken}`,
-      'chatgpt-account-id': accountId,
-    },
-    body: JSON.stringify({
-      model,
-      instructions: sanitize(instructions),
-      input: [{ role: 'user', content: sanitize(input) }],
-      store: false,
-      stream: true,
-    }),
-  });
-  if (!r.ok || !r.body) {
-    const text = await r.text();
-    throw new Error(`Codex failed (${r.status}): ${text.slice(0, 200)}`);
-  }
-  const reader = r.body.getReader();
-  const decoder = new TextDecoder();
-  let buffer = '';
-  let result = '';
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(value, { stream: true });
-    const lines = buffer.split('\n');
-    buffer = lines.pop() ?? '';
-    for (const line of lines) {
-      if (!line.startsWith('data: ')) continue;
-      const data = line.slice(6).trim();
-      if (data === '[DONE]') break;
-      try {
-        const parsed = JSON.parse(data);
-        if (parsed.type === 'response.output_text.delta' && parsed.delta) result += parsed.delta;
-      } catch { /* skip */ }
-    }
-  }
-  return result;
-}
 
 const INSTRUCTIONS = `You are filling a brand brief from a seed input (either a URL, a brand+product name, or both).
 
@@ -115,9 +55,6 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const projectId: string = body.projectId;
   const seed: string = (body.seed ?? '').trim();
-  const accessToken: string | undefined = body.accessToken;
-  const accountId: string | undefined = body.accountId;
-  const model: string = body.model ?? 'gpt-5.4';
 
   const { response, writer } = createSseResponse();
   const requestId = newProjectId();
@@ -129,10 +66,12 @@ export async function POST(req: NextRequest) {
         writer.send(makeEvent(requestId, { kind: 'error', message: 'seed required' }));
         return;
       }
-      if (!accessToken || !accountId) {
+      // Pre-build a stub so parseTextRunRequest knows the shape it needs to fill.
+      const runReqStub = parseTextRunRequest(body as Record<string, unknown>, INSTRUCTIONS, '');
+      if (!runReqStub) {
         writer.send(makeEvent(requestId, {
           kind: 'error',
-          message: 'No ChatGPT session. Connect ChatGPT first.',
+          message: 'No provider connected. Connect ChatGPT or add a BYO API key (top-right Settings).',
           nextAction: 'connect',
         }));
         return;
@@ -158,20 +97,15 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      writer.send(makeEvent(requestId, { kind: 'thinking', modelName: model, elapsedS: 0 }));
-
       const userInput = isUrl
         ? `# SEED URL\n${seed}\n\n# SCRAPED METADATA\n${scraped || '(scrape failed; rely on brand knowledge)'}\n\nFill the brief.`
         : `# SEED PRODUCT / BRAND NAME\n${seed}\n\nUse your training knowledge of this brand to fill the brief.`;
 
+      const runReq = parseTextRunRequest(body as Record<string, unknown>, INSTRUCTIONS, userInput)!;
+      writer.send(makeEvent(requestId, { kind: 'thinking', modelName: providerLabel(runReq), elapsedS: 0 }));
+
       const t0 = Date.now();
-      const raw = await streamCodex({
-        accessToken,
-        accountId,
-        instructions: INSTRUCTIONS,
-        input: userInput,
-        model,
-      });
+      const raw = await runText(runReq);
       const elapsedS = Math.round((Date.now() - t0) / 1000);
       writer.send(makeEvent(requestId, { kind: 'info', message: `Model returned in ${elapsedS}s`, icon: 'model' }));
 

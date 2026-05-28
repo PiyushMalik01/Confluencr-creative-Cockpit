@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Play, RotateCcw } from 'lucide-react';
 import { ActivityTicker } from '@/components/activity-ticker';
 import { useSseStream } from '@/lib/hooks/use-sse-stream';
-import { useSession } from '@/lib/session-context';
+import { useTextCredentials } from '@/lib/hooks/use-credentials';
 import type { StyleReport } from '@/lib/schemas/style-report';
 
 export function Step2StyleReport({
@@ -15,9 +15,9 @@ export function Step2StyleReport({
   onContinue: () => void;
 }) {
   const { events, data, busy, start } = useSseStream();
-  const { session } = useSession();
+  const { creds, ready: providerReady } = useTextCredentials();
   const [existing, setExisting] = useState<StyleReport | null>(null);
-  const needChatgpt = !session;
+  const needChatgpt = !providerReady;
 
   useEffect(() => {
     fetch(`/api/style-extract?projectId=${projectId}`)
@@ -26,17 +26,13 @@ export function Step2StyleReport({
   }, [projectId]);
 
   const runExtract = useCallback(async () => {
-    if (!session) return;
+    if (!creds) return;
     await start('/api/style-extract', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        projectId,
-        accessToken: session.accessToken,
-        accountId: session.accountId,
-      }),
+      body: JSON.stringify({ projectId, ...creds }),
     });
-  }, [projectId, session, start]);
+  }, [projectId, creds, start]);
 
   useEffect(() => {
     if (data) setExisting(data as StyleReport);

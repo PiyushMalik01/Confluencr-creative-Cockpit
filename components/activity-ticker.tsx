@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertCircle, Brain, CheckCircle2, ChevronDown, ChevronUp, Database, Eye, Globe, Loader2 } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { ActivityEvent } from '@/lib/schemas/activity-event';
 import { cn } from '@/lib/utils';
 
@@ -103,6 +103,8 @@ function EventGlyph({ event }: { event: ActivityEvent }) {
 }
 
 function EventText({ event }: { event: ActivityEvent }) {
+  if (event.kind === 'thinking') return <ThinkingText event={event} />;
+
   let text = '';
   let className = 'text-[color:var(--color-foreground)]';
   switch (event.kind) {
@@ -124,10 +126,6 @@ function EventText({ event }: { event: ActivityEvent }) {
       text = event.message;
       className = 'text-rose-600 dark:text-rose-400';
       break;
-    case 'thinking':
-      text = `${event.modelName} · ${event.elapsedS}s`;
-      className = 'text-[color:var(--color-muted-foreground)] font-mono';
-      break;
     case 'done':
       text = event.summary;
       className = 'text-emerald-600 dark:text-emerald-400';
@@ -136,4 +134,29 @@ function EventText({ event }: { event: ActivityEvent }) {
       return null;
   }
   return <span className={cn('truncate', className)}>{text}</span>;
+}
+
+/**
+ * Thinking events should appear to be ticking, not frozen at 0s. We compute
+ * the elapsed time from the event timestamp to "now" every 500ms while the
+ * event is still visible.
+ */
+function ThinkingText({
+  event,
+}: {
+  event: Extract<ActivityEvent, { kind: 'thinking' }>;
+}) {
+  const [elapsedS, setElapsedS] = useState(() => Math.max(0, Math.floor((Date.now() - event.ts) / 1000)));
+  useEffect(() => {
+    const id = setInterval(() => {
+      setElapsedS(Math.max(0, Math.floor((Date.now() - event.ts) / 1000)));
+    }, 500);
+    return () => clearInterval(id);
+  }, [event.ts]);
+
+  return (
+    <span className="truncate text-[color:var(--color-muted-foreground)] font-mono">
+      {event.modelName} · thinking <span className="tabular-nums">{elapsedS}s</span>
+    </span>
+  );
 }

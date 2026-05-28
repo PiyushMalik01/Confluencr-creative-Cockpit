@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Plus, RotateCcw } from 'lucide-react';
 import { ActivityTicker } from '@/components/activity-ticker';
 import { useSseStream } from '@/lib/hooks/use-sse-stream';
-import { useSession } from '@/lib/session-context';
+import { useTextCredentials } from '@/lib/hooks/use-credentials';
 import type { AngleProposal, AngleProposalDoc } from '@/lib/schemas/angle';
 import { TRIFECTA_FAMILY } from '@/lib/schemas/common';
 import { cn } from '@/lib/utils';
@@ -18,9 +18,9 @@ const TRIFECTA_COLOR: Record<string, string> = {
 
 export function Step3Angles({ projectId, onContinue }: { projectId: string; onContinue: () => void }) {
   const { events, data, busy, start } = useSseStream();
-  const { session } = useSession();
+  const { creds, ready: providerReady } = useTextCredentials();
   const [doc, setDoc] = useState<AngleProposalDoc | null>(null);
-  const needChatgpt = !session;
+  const needChatgpt = !providerReady;
 
   useEffect(() => {
     fetch(`/api/angles?projectId=${projectId}`)
@@ -33,17 +33,13 @@ export function Step3Angles({ projectId, onContinue }: { projectId: string; onCo
   }, [data]);
 
   const run = useCallback(async () => {
-    if (!session) return;
+    if (!creds) return;
     await start('/api/angles', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        projectId,
-        accessToken: session.accessToken,
-        accountId: session.accountId,
-      }),
+      body: JSON.stringify({ projectId, ...creds }),
     });
-  }, [projectId, session, start]);
+  }, [projectId, creds, start]);
 
   const togglePick = useCallback(
     async (angleId: string) => {

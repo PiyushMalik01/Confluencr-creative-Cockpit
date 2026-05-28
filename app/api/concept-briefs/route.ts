@@ -8,81 +8,16 @@ import {
   type ConceptGeneratorOutput,
 } from '@/lib/ai/concept-generator';
 import { extractJson } from '@/lib/ai/prompt-utils';
-import { OPENAI_CONSTANTS } from '@/lib/ai/openai-oauth';
+import { parseTextRunRequest, providerLabel, runText } from '@/lib/ai/text-runner';
 import { newProjectId } from '@/lib/utils/uuidv7';
 import { angleProposals, briefs, conceptBriefs, projects, styleReports } from '@/lib/db/collections';
 
 export const runtime = 'nodejs';
 export const maxDuration = 300;
 
-function sanitize(text: string): string {
-  return text.replace(/[^\x20-\x7E\n\r\t]/g, '').replace(/\{\{.*?\}\}/g, '');
-}
-
-async function streamCodexText({
-  accessToken,
-  accountId,
-  instructions,
-  input,
-  model,
-}: {
-  accessToken: string;
-  accountId: string;
-  instructions: string;
-  input: string;
-  model: string;
-}): Promise<string> {
-  const upstream = await fetch(OPENAI_CONSTANTS.CODEX_API_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'text/event-stream',
-      Authorization: `Bearer ${accessToken}`,
-      'chatgpt-account-id': accountId,
-    },
-    body: JSON.stringify({
-      model,
-      instructions: sanitize(instructions),
-      input: [{ role: 'user', content: sanitize(input) }],
-      store: false,
-      stream: true,
-    }),
-  });
-  if (!upstream.ok || !upstream.body) {
-    const text = await upstream.text();
-    throw new Error(`Codex API failed (${upstream.status}): ${text.slice(0, 200)}`);
-  }
-  const reader = upstream.body.getReader();
-  const decoder = new TextDecoder();
-  let buffer = '';
-  let result = '';
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(value, { stream: true });
-    const lines = buffer.split('\n');
-    buffer = lines.pop() ?? '';
-    for (const line of lines) {
-      if (!line.startsWith('data: ')) continue;
-      const data = line.slice(6).trim();
-      if (data === '[DONE]') break;
-      try {
-        const parsed = JSON.parse(data);
-        if (parsed.type === 'response.output_text.delta' && parsed.delta) result += parsed.delta;
-      } catch {
-        /* skip */
-      }
-    }
-  }
-  return result;
-}
-
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const projectId: string = body.projectId;
-  const accessToken: string | undefined = body.accessToken;
-  const accountId: string | undefined = body.accountId;
-  const model: string = body.model ?? 'gpt-5.4';
 
   const { response, writer } = createSseResponse();
 
@@ -111,11 +46,14 @@ export async function POST(req: NextRequest) {
         return;
       }
 
-      if (!accessToken || !accountId) {
+      // Build a stub run-request just to validate provider presence; per-concept
+      // requests are built inside the loop with their own input.
+      const probe = parseTextRunRequest(body as Record<string, unknown>, CONCEPT_GENERATOR_INSTRUCTIONS, '');
+      if (!probe) {
         writer.send(
           makeEvent('orchestrator', {
             kind: 'error',
-            message: 'No ChatGPT session. Connect ChatGPT to generate concepts.',
+            message: 'No provider connected. Connect ChatGPT or add a BYO API key.',
             nextAction: 'connect',
           })
         );
@@ -132,17 +70,12 @@ export async function POST(req: NextRequest) {
       // Fire 3 generations in parallel, each with its own requestId
       const tasks = picked.map(async (angle, idx) => {
         const requestId = `concept-${idx + 1}-${angle.id}`;
-        writer.send(makeEvent(requestId, { kind: 'thinking', modelName: model, elapsedS: 0 }));
         try {
           const prompt = buildConceptPrompt({ brief, style: style ?? null, angle });
+          const runReq = parseTextRunRequest(body as Record<string, unknown>, CONCEPT_GENERATOR_INSTRUCTIONS, prompt)!;
+          writer.send(makeEvent(requestId, { kind: 'thinking', modelName: providerLabel(runReq), elapsedS: 0 }));
           const t0 = Date.now();
-          const raw = await streamCodexText({
-            accessToken,
-            accountId,
-            instructions: CONCEPT_GENERATOR_INSTRUCTIONS,
-            input: prompt,
-            model,
-          });
+          const raw = await runText(runReq);
           const elapsedS = Math.round((Date.now() - t0) / 1000);
           writer.send(
             makeEvent(requestId, {
@@ -162,8 +95,8 @@ export async function POST(req: NextRequest) {
             position: (idx + 1) as 1 | 2 | 3,
             derivedFrom: {
               editEpochAtGeneration: editEpoch,
-              modelUsed: model,
-              provider: 'chatgpt' as const,
+              modelUsed: providerLabel(runReq),
+              provider: runReq.kind === 'chatgpt' ? ('chatgpt' as const) : (runReq.provider as 'openai' | 'anthropic' | 'google'),
               generatedAt: new Date(),
               manualEdits: [] as string[],
             },

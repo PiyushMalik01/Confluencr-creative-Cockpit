@@ -7,7 +7,7 @@ import {
   type AngleProposerOutput,
 } from '@/lib/ai/angle-proposer';
 import { extractJson } from '@/lib/ai/prompt-utils';
-import { OPENAI_CONSTANTS } from '@/lib/ai/openai-oauth';
+import { parseTextRunRequest, providerLabel, runText } from '@/lib/ai/text-runner';
 import { newProjectId } from '@/lib/utils/uuidv7';
 import { angleProposals, briefs, projects, styleReports } from '@/lib/db/collections';
 import type { AngleProposal } from '@/lib/schemas/angle';
@@ -15,74 +15,9 @@ import type { AngleProposal } from '@/lib/schemas/angle';
 export const runtime = 'nodejs';
 export const maxDuration = 300;
 
-function sanitize(text: string): string {
-  return text.replace(/[^\x20-\x7E\n\r\t]/g, '').replace(/\{\{.*?\}\}/g, '');
-}
-
-async function streamCodexText({
-  accessToken,
-  accountId,
-  instructions,
-  input,
-  model,
-}: {
-  accessToken: string;
-  accountId: string;
-  instructions: string;
-  input: string;
-  model: string;
-}): Promise<string> {
-  const upstream = await fetch(OPENAI_CONSTANTS.CODEX_API_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'text/event-stream',
-      Authorization: `Bearer ${accessToken}`,
-      'chatgpt-account-id': accountId,
-    },
-    body: JSON.stringify({
-      model,
-      instructions: sanitize(instructions),
-      input: [{ role: 'user', content: sanitize(input) }],
-      store: false,
-      stream: true,
-    }),
-  });
-  if (!upstream.ok || !upstream.body) {
-    const text = await upstream.text();
-    throw new Error(`Codex API failed (${upstream.status}): ${text.slice(0, 200)}`);
-  }
-  const reader = upstream.body.getReader();
-  const decoder = new TextDecoder();
-  let buffer = '';
-  let result = '';
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(value, { stream: true });
-    const lines = buffer.split('\n');
-    buffer = lines.pop() ?? '';
-    for (const line of lines) {
-      if (!line.startsWith('data: ')) continue;
-      const data = line.slice(6).trim();
-      if (data === '[DONE]') break;
-      try {
-        const parsed = JSON.parse(data);
-        if (parsed.type === 'response.output_text.delta' && parsed.delta) result += parsed.delta;
-      } catch {
-        /* skip */
-      }
-    }
-  }
-  return result;
-}
-
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const projectId: string = body.projectId;
-  const accessToken: string | undefined = body.accessToken;
-  const accountId: string | undefined = body.accountId;
-  const model: string = body.model ?? 'gpt-5.4';
 
   const { response, writer } = createSseResponse();
   const requestId = newProjectId();
@@ -98,28 +33,23 @@ export async function POST(req: NextRequest) {
       }
       const styleReport = await (await styleReports()).findOne({ projectId });
 
-      if (!accessToken || !accountId) {
+      const prompt = buildAnglePrompt(brief, styleReport ?? null);
+      const runReq = parseTextRunRequest(body as Record<string, unknown>, ANGLE_PROPOSER_INSTRUCTIONS, prompt);
+      if (!runReq) {
         writer.send(
           makeEvent(requestId, {
             kind: 'error',
-            message: 'No ChatGPT session. Connect ChatGPT to propose angles.',
+            message: 'No provider connected. Connect ChatGPT or add a BYO API key.',
             nextAction: 'connect',
           })
         );
         return;
       }
 
-      writer.send(makeEvent(requestId, { kind: 'thinking', modelName: model, elapsedS: 0 }));
+      writer.send(makeEvent(requestId, { kind: 'thinking', modelName: providerLabel(runReq), elapsedS: 0 }));
 
-      const prompt = buildAnglePrompt(brief, styleReport ?? null);
       const t0 = Date.now();
-      const raw = await streamCodexText({
-        accessToken,
-        accountId,
-        instructions: ANGLE_PROPOSER_INSTRUCTIONS,
-        input: prompt,
-        model,
-      });
+      const raw = await runText(runReq);
       const elapsedS = Math.round((Date.now() - t0) / 1000);
       writer.send(makeEvent(requestId, { kind: 'info', message: `Model returned in ${elapsedS}s`, icon: 'model' }));
 
@@ -156,8 +86,8 @@ export async function POST(req: NextRequest) {
         projectId,
         derivedFrom: {
           editEpochAtGeneration: editEpoch,
-          modelUsed: model,
-          provider: 'chatgpt' as const,
+          modelUsed: providerLabel(runReq),
+          provider: runReq.kind === 'chatgpt' ? ('chatgpt' as const) : (runReq.provider as 'openai' | 'anthropic' | 'google'),
           generatedAt: new Date(),
           manualEdits: [] as string[],
         },

@@ -5,11 +5,22 @@ import { createPortal } from 'react-dom';
 import { Settings2, X } from 'lucide-react';
 import { useSession } from '@/lib/session-context';
 import { ChatGPTConnect } from './chatgpt-connect';
+import { BYOKeyInputs } from './byo-key-input';
 
 export function ProviderButton() {
-  const { session, ready } = useSession();
+  const { session, keys, ready, hasAnyProvider } = useSession();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const byoCount = Object.keys(keys).length;
+  const buttonLabel = !ready
+    ? 'Loading…'
+    : session
+      ? byoCount > 0
+        ? `ChatGPT + ${byoCount} BYO`
+        : 'ChatGPT connected'
+      : byoCount > 0
+        ? `${byoCount} BYO key${byoCount === 1 ? '' : 's'}`
+        : 'Connect provider';
 
   useEffect(() => setMounted(true), []);
 
@@ -57,17 +68,10 @@ export function ProviderButton() {
               <X className="size-4" />
             </button>
           </div>
-          <div className="px-5 py-4 space-y-4 overflow-y-auto scrollbar-thin">
+          <div className="px-5 py-4 space-y-5 overflow-y-auto scrollbar-thin">
             <ChatGPTConnect />
-            <div className="rounded-lg border border-dashed border-[color:var(--color-border)] px-3 py-3 text-xs text-[color:var(--color-muted-foreground)] leading-relaxed">
-              <strong className="text-[color:var(--color-foreground)] font-medium">
-                Bring your own key
-              </strong>
-              <p className="mt-1">
-                Anthropic, Google (Gemini + Nano Banana), fal.ai (Flux Kontext), Ideogram, and OpenAI
-                direct keys ship in v1.1. ChatGPT auth is the recommended free path for v1.
-              </p>
-            </div>
+            <div className="h-px bg-[color:var(--color-border)]" />
+            <BYOKeyInputs />
           </div>
         </div>
       </div>
@@ -82,10 +86,8 @@ export function ProviderButton() {
         className="inline-flex items-center gap-2 rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-card)]/60 backdrop-blur px-3 py-1.5 text-xs hover:bg-[color:var(--color-muted)] transition-colors"
       >
         <Settings2 className="size-3.5" />
-        <span>
-          {!ready ? 'Loading…' : session ? 'ChatGPT connected' : 'Connect provider'}
-        </span>
-        {session && <span className="size-1.5 rounded-full bg-emerald-500" />}
+        <span>{buttonLabel}</span>
+        {hasAnyProvider && <span className="size-1.5 rounded-full bg-emerald-500" />}
       </button>
 
       {mounted && modal ? createPortal(modal, document.body) : null}

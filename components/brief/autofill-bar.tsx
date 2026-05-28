@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Sparkles, Wand2, Loader2 } from 'lucide-react';
 import { useSseStream } from '@/lib/hooks/use-sse-stream';
-import { useSession } from '@/lib/session-context';
+import { useTextCredentials } from '@/lib/hooks/use-credentials';
 import { ActivityTicker } from '@/components/activity-ticker';
 
 export function AutofillBar({
@@ -13,7 +13,7 @@ export function AutofillBar({
   projectId: string;
   onFilled: () => void;
 }) {
-  const { session } = useSession();
+  const { creds, ready: providerReady, label: providerLabel } = useTextCredentials();
   const { events, busy, start, data } = useSseStream();
   const [seed, setSeed] = useState('');
   const [showTicker, setShowTicker] = useState(false);
@@ -30,7 +30,7 @@ export function AutofillBar({
   }, [data, onFilled]);
 
   async function go() {
-    if (!seed.trim() || !session) return;
+    if (!seed.trim() || !providerReady || !creds) return;
     setShowTicker(true);
     await start('/api/brief-autofill', {
       method: 'POST',
@@ -38,8 +38,7 @@ export function AutofillBar({
       body: JSON.stringify({
         projectId,
         seed: seed.trim(),
-        accessToken: session.accessToken,
-        accountId: session.accountId,
+        ...creds,
       }),
     });
     // Final fallback: even if SSE didn't deliver a data event for some
@@ -75,7 +74,7 @@ export function AutofillBar({
         <button
           type="button"
           onClick={go}
-          disabled={busy || !seed.trim() || !session}
+          disabled={busy || !seed.trim() || !providerReady}
           className="inline-flex items-center gap-1.5 rounded-md bg-[color:var(--color-foreground)] text-[color:var(--color-background)] px-4 text-sm font-medium disabled:opacity-50 hover:opacity-90 transition-opacity whitespace-nowrap"
         >
           {busy ? <Loader2 className="size-3.5 animate-spin" /> : <Wand2 className="size-3.5" />}
@@ -83,10 +82,15 @@ export function AutofillBar({
         </button>
       </div>
 
-      {!session && (
+      {providerReady ? (
+        <div className="text-[10px] font-mono uppercase tracking-wider text-[color:var(--color-muted-foreground)] inline-flex items-center gap-1.5">
+          <span className="size-1.5 rounded-full bg-emerald-500" />
+          using {providerLabel}
+        </div>
+      ) : (
         <div className="text-[11px] text-amber-700 dark:text-amber-300 inline-flex items-center gap-1.5">
           <span className="size-1.5 rounded-full bg-amber-500" />
-          Connect ChatGPT (top-right Settings) to enable auto-fill
+          Connect a provider (top-right Settings) to enable auto-fill
         </div>
       )}
 
