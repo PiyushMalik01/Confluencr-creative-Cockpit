@@ -141,3 +141,46 @@ export async function GET(req: NextRequest) {
     headers: { 'Content-Type': 'application/json' },
   });
 }
+
+export async function PATCH(req: NextRequest) {
+  const body = await req.json();
+  const { projectId, addImageUrls, replaceImages } = body as {
+    projectId?: string;
+    addImageUrls?: string[];
+    replaceImages?: { url: string; source: string; pinned: boolean }[];
+  };
+  if (!projectId) return new Response(JSON.stringify({ error: 'projectId required' }), { status: 400 });
+
+  const col = await styleReports();
+  const existing = await col.findOne({ projectId });
+  if (!existing) return new Response(JSON.stringify({ error: 'no style report yet' }), { status: 404 });
+
+  const baseLen = existing.competitorImages?.length ?? 0;
+  let next = existing.competitorImages ?? [];
+
+  if (Array.isArray(replaceImages)) {
+    next = replaceImages.map((r) => ({
+      ...r,
+      classification: 'hero',
+      confidence: 0.7,
+    }));
+  } else if (Array.isArray(addImageUrls) && addImageUrls.length > 0) {
+    const added = addImageUrls
+      .filter((u) => typeof u === 'string' && u.trim().length > 4)
+      .map((url) => ({
+        url: url.trim(),
+        source: (() => {
+          try { return new URL(url.trim()).hostname; } catch { return 'manual'; }
+        })(),
+        pinned: true,
+        classification: 'hero',
+        confidence: 0.7,
+      }));
+    next = [...next, ...added];
+  }
+
+  await col.updateOne({ projectId }, { $set: { competitorImages: next } });
+  return new Response(JSON.stringify({ ok: true, addedFromBase: next.length - baseLen, total: next.length }), {
+    headers: { 'Content-Type': 'application/json' },
+  });
+}

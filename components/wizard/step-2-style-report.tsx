@@ -65,7 +65,9 @@ export function Step2StyleReport({
 
       <ActivityTicker events={events} />
 
-      {report && <StyleReportCard report={report} />}
+      {report && <StyleReportCard report={report} projectId={projectId} onUpdated={() => {
+        fetch(`/api/style-extract?projectId=${projectId}`).then(r => r.json()).then(d => setExisting(d));
+      }} />}
 
       {report && (
         <div className="flex justify-end pt-2">
@@ -82,27 +84,47 @@ export function Step2StyleReport({
   );
 }
 
-function StyleReportCard({ report }: { report: StyleReport }) {
+function StyleReportCard({ report, projectId, onUpdated }: { report: StyleReport; projectId: string; onUpdated: () => void }) {
   return (
     <div className="grid lg:grid-cols-[1fr_1.4fr] gap-4">
       <div className="space-y-2">
-        <div className="text-xs font-medium text-[color:var(--color-muted-foreground)] uppercase tracking-wider">
-          Competitor visuals
+        <div className="text-xs font-medium text-[color:var(--color-muted-foreground)] uppercase tracking-wider flex items-center justify-between">
+          <span>Competitor visuals</span>
+          <span className="text-[10px] font-mono normal-case tracking-wider text-[color:var(--color-muted-foreground)]">
+            {report.competitorImages.length} image{report.competitorImages.length === 1 ? '' : 's'}
+          </span>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2">
-          {report.competitorImages.map((img, i) => (
-            <div
-              key={i}
-              className="aspect-square rounded-md overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-muted)] relative group"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={img.url} alt="" className="size-full object-cover" loading="lazy" />
-              <div className="absolute top-1 left-1 rounded-sm bg-black/60 text-white text-[10px] font-mono px-1.5 py-0.5">
-                #{i}
-              </div>
+        {report.competitorImages.length === 0 ? (
+          <ScrapeFallbackPanel
+            projectId={projectId}
+            onAdded={onUpdated}
+            message="The scrape did not return any usable images for the URLs in your brief. Paste 3 to 5 direct image URLs of competitor product shots and the report will be regenerated against them."
+          />
+        ) : (
+          <>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2">
+              {report.competitorImages.map((img, i) => (
+                <div
+                  key={i}
+                  className="aspect-square rounded-md overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-muted)] relative group"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={img.url} alt="" className="size-full object-cover" loading="lazy" />
+                  <div className="absolute top-1 left-1 rounded-sm bg-black/60 text-white text-[10px] font-mono px-1.5 py-0.5">
+                    #{i}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+            {report.competitorImages.length < 3 && (
+              <ScrapeFallbackPanel
+                projectId={projectId}
+                onAdded={onUpdated}
+                message="Only a few images came through. Add direct image URLs for a richer reference set."
+              />
+            )}
+          </>
+        )}
       </div>
 
       <div className="space-y-4">
@@ -155,6 +177,62 @@ function StyleReportCard({ report }: { report: StyleReport }) {
             ))}
           </ul>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function ScrapeFallbackPanel({
+  projectId,
+  message,
+  onAdded,
+}: {
+  projectId: string;
+  message: string;
+  onAdded: () => void;
+}) {
+  const [urls, setUrls] = useState('');
+  const [saving, setSaving] = useState(false);
+
+  async function save() {
+    const list = urls
+      .split(/[\s,\n]+/)
+      .map((u) => u.trim())
+      .filter((u) => u.length > 4 && /^https?:\/\//i.test(u));
+    if (list.length === 0) return;
+    setSaving(true);
+    try {
+      await fetch('/api/style-extract', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ projectId, addImageUrls: list }),
+      });
+      setUrls('');
+      onAdded();
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="rounded-md border border-amber-500/30 bg-amber-500/10 p-3 space-y-2">
+      <p className="text-xs text-amber-700 dark:text-amber-300 leading-relaxed">{message}</p>
+      <textarea
+        value={urls}
+        onChange={(e) => setUrls(e.target.value)}
+        rows={3}
+        placeholder={`https://… (one URL per line)\nhttps://…\nhttps://…`}
+        className="w-full rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-input)] px-2.5 py-1.5 text-xs font-mono resize-none"
+      />
+      <div className="flex items-center justify-end gap-2">
+        <button
+          type="button"
+          onClick={save}
+          disabled={saving || urls.trim().length === 0}
+          className="inline-flex items-center gap-1.5 rounded-md bg-[color:var(--color-foreground)] text-[color:var(--color-background)] px-3 py-1 text-xs font-medium disabled:opacity-50"
+        >
+          {saving ? 'Adding…' : 'Add to grid'}
+        </button>
       </div>
     </div>
   );
