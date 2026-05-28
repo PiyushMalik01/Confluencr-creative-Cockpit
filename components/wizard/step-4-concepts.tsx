@@ -5,15 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { AlertCircle, ChevronDown, Copy, Play, RotateCcw } from 'lucide-react';
 import { ActivityTicker } from '@/components/activity-ticker';
 import { useSseStream } from '@/lib/hooks/use-sse-stream';
-import { decryptFromStorage, STORAGE_KEYS } from '@/lib/storage/encrypted-local';
-import type { ChatGPTSession } from '@/lib/ai/codex-stream';
+import { useSession } from '@/lib/session-context';
 import type { ConceptBrief } from '@/lib/schemas/concept-brief';
 import { cn } from '@/lib/utils';
 
 export function Step4Concepts({ projectId, onContinue }: { projectId: string; onContinue: () => void }) {
   const { events, busy, start } = useSseStream();
+  const { session } = useSession();
   const [docs, setDocs] = useState<ConceptBrief[]>([]);
-  const [needChatgpt, setNeedChatgpt] = useState(false);
+  const needChatgpt = !session;
 
   useEffect(() => {
     fetch(`/api/concept-briefs?projectId=${projectId}`)
@@ -32,12 +32,7 @@ export function Step4Concepts({ projectId, onContinue }: { projectId: string; on
   }, [events, projectId]);
 
   const run = useCallback(async () => {
-    const session = await decryptFromStorage<ChatGPTSession>(STORAGE_KEYS.chatgpt);
-    if (!session) {
-      setNeedChatgpt(true);
-      return;
-    }
-    setNeedChatgpt(false);
+    if (!session) return;
     await start('/api/concept-briefs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -47,7 +42,7 @@ export function Step4Concepts({ projectId, onContinue }: { projectId: string; on
         accountId: session.accountId,
       }),
     });
-  }, [projectId, start]);
+  }, [projectId, session, start]);
 
   return (
     <div className="space-y-4">

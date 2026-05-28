@@ -1,0 +1,123 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e28] [cursor=pointer]:
+    - img [ref=e29]
+  - alert [ref=e32]
+  - main [ref=e33]:
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]: Confluencr Cockpit
+        - generic [ref=e38]: /p/019e6fb2…
+      - generic [ref=e39]:
+        - button "Connect provider" [ref=e40]:
+          - img [ref=e41]
+          - generic [ref=e44]: Connect provider
+        - button "Toggle theme" [ref=e45]:
+          - img [ref=e46]
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - button "1 Brief Tell the cockpit about your product, audience, and brand." [ref=e55]:
+          - generic [ref=e56]: "1"
+          - generic [ref=e57]:
+            - heading "Brief" [level=3] [ref=e59]
+            - paragraph [ref=e60]: Tell the cockpit about your product, audience, and brand.
+          - img [ref=e62]
+        - generic [ref=e66]:
+          - generic [ref=e69]: 1/6 required fields
+          - generic [ref=e72]:
+            - button "Product Name, one-liner, hero photo, category. ▾" [ref=e73]:
+              - generic [ref=e74]:
+                - generic [ref=e75]: Product
+                - generic [ref=e76]: Name, one-liner, hero photo, category.
+              - generic [ref=e77]: ▾
+            - generic [ref=e79]:
+              - generic [ref=e80]:
+                - generic [ref=e82]: Product name*
+                - textbox "e.g. Bewakoof Friends Pivot Oversized Tee" [ref=e83]
+              - generic [ref=e84]:
+                - generic [ref=e86]: Category
+                - combobox [ref=e87]:
+                  - option "Pick a category…" [selected]
+                  - option "Fashion / apparel"
+                  - option "Beauty / cosmetics"
+                  - option "Wellness / personal care"
+                  - option "Sportswear / outdoor"
+                  - option "Home / lifestyle"
+                  - option "Food / beverage"
+                  - option "Tech / electronics"
+                  - option "Other"
+              - generic [ref=e88]:
+                - generic [ref=e90]: One-liner
+                - textbox "The single sentence you'd put under the product name." [ref=e91]
+              - generic [ref=e92]:
+                - generic [ref=e93]:
+                  - generic [ref=e94]: Hero photo
+                  - generic [ref=e95]: Paste a public URL OR continue without photo
+                - generic [ref=e97]:
+                  - textbox "https://… (direct image URL)" [ref=e98]
+                  - button "Text-only" [ref=e99]:
+                    - img [ref=e100]
+                    - text: Text-only
+              - generic [ref=e104]:
+                - generic [ref=e106]: Price tier
+                - combobox [ref=e107]:
+                  - option "Optional…" [selected]
+                  - option "Value / mass"
+                  - option "Mid-market"
+                  - option "Premium"
+                  - option "Luxury"
+          - button "Audience Who buys this, and why they care. ▾" [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]: Audience
+              - generic [ref=e112]: Who buys this, and why they care.
+            - generic [ref=e113]: ▾
+          - button "Strategy The one thing the image must say. ▾" [ref=e115]:
+            - generic [ref=e116]:
+              - generic [ref=e117]: Strategy
+              - generic [ref=e118]: The one thing the image must say.
+            - generic [ref=e119]: ▾
+          - button "Brand Palette, typography, voice. ▾" [ref=e121]:
+            - generic [ref=e122]:
+              - generic [ref=e123]: Brand
+              - generic [ref=e124]: Palette, typography, voice.
+            - generic [ref=e125]: ▾
+          - button "References Competitor visuals + guardrails. ▾" [ref=e127]:
+            - generic [ref=e128]:
+              - generic [ref=e129]: References
+              - generic [ref=e130]: Competitor visuals + guardrails.
+            - generic [ref=e131]: ▾
+          - button "Surfaces Where these will live. ▾" [ref=e133]:
+            - generic [ref=e134]:
+              - generic [ref=e135]: Surfaces
+              - generic [ref=e136]: Where these will live.
+            - generic [ref=e137]: ▾
+          - button "Fill 5 more required to continue" [disabled] [ref=e139]
+      - button "Competitor Style Report AI reads your competitor visuals and extracts patterns." [disabled] [ref=e141]:
+        - img [ref=e143]
+        - generic [ref=e146]:
+          - heading "Competitor Style Report" [level=3] [ref=e148]
+          - paragraph [ref=e149]: AI reads your competitor visuals and extracts patterns.
+        - img [ref=e151]
+      - button "Strategic Angles Five contextual angles. You pick three that span the trifecta." [disabled] [ref=e154]:
+        - img [ref=e156]
+        - generic [ref=e159]:
+          - heading "Strategic Angles" [level=3] [ref=e161]
+          - paragraph [ref=e162]: Five contextual angles. You pick three that span the trifecta.
+        - img [ref=e164]
+      - button "Concept Briefs Three on-brand briefs with prompts for every image-gen tool." [disabled] [ref=e167]:
+        - img [ref=e169]
+        - generic [ref=e172]:
+          - heading "Concept Briefs" [level=3] [ref=e174]
+          - paragraph [ref=e175]: Three on-brand briefs with prompts for every image-gen tool.
+        - img [ref=e177]
+      - button "Image Generation Optional. Bring your own key, or skip to prompts-only." [disabled] [ref=e180]:
+        - img [ref=e182]
+        - generic [ref=e185]:
+          - heading "Image Generation" [level=3] [ref=e187]
+          - paragraph [ref=e188]: Optional. Bring your own key, or skip to prompts-only.
+        - img [ref=e190]
+      - button "Prompt Deck Export Copy any prompt, or download the full PDF." [disabled] [ref=e193]:
+        - img [ref=e195]
+        - generic [ref=e198]:
+          - heading "Prompt Deck Export" [level=3] [ref=e200]
+          - paragraph [ref=e201]: Copy any prompt, or download the full PDF.
+        - img [ref=e203]

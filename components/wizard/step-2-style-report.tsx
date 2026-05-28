@@ -4,8 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Play, RotateCcw } from 'lucide-react';
 import { ActivityTicker } from '@/components/activity-ticker';
 import { useSseStream } from '@/lib/hooks/use-sse-stream';
-import { decryptFromStorage, STORAGE_KEYS } from '@/lib/storage/encrypted-local';
-import type { ChatGPTSession } from '@/lib/ai/codex-stream';
+import { useSession } from '@/lib/session-context';
 import type { StyleReport } from '@/lib/schemas/style-report';
 
 export function Step2StyleReport({
@@ -16,8 +15,9 @@ export function Step2StyleReport({
   onContinue: () => void;
 }) {
   const { events, data, busy, start } = useSseStream();
+  const { session } = useSession();
   const [existing, setExisting] = useState<StyleReport | null>(null);
-  const [needChatgpt, setNeedChatgpt] = useState(false);
+  const needChatgpt = !session;
 
   useEffect(() => {
     fetch(`/api/style-extract?projectId=${projectId}`)
@@ -26,12 +26,7 @@ export function Step2StyleReport({
   }, [projectId]);
 
   const runExtract = useCallback(async () => {
-    const session = await decryptFromStorage<ChatGPTSession>(STORAGE_KEYS.chatgpt);
-    if (!session) {
-      setNeedChatgpt(true);
-      return;
-    }
-    setNeedChatgpt(false);
+    if (!session) return;
     await start('/api/style-extract', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -41,7 +36,7 @@ export function Step2StyleReport({
         accountId: session.accountId,
       }),
     });
-  }, [projectId, start]);
+  }, [projectId, session, start]);
 
   useEffect(() => {
     if (data) setExisting(data as StyleReport);

@@ -1,0 +1,141 @@
+- generic [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e9] [cursor=pointer]:
+    - img [ref=e10]
+  - alert [ref=e13]
+  - main [ref=e14]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]: Confluencr Cockpit
+        - generic [ref=e19]: /p/019e6fb2…
+      - generic [ref=e20]:
+        - button "Connect provider" [active] [ref=e21]:
+          - img [ref=e22]
+          - generic [ref=e25]: Connect provider
+        - button "Toggle theme" [ref=e26]:
+          - img [ref=e27]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - button "1 Brief Tell the cockpit about your product, audience, and brand." [ref=e36]:
+          - generic [ref=e37]: "1"
+          - generic [ref=e38]:
+            - heading "Brief" [level=3] [ref=e40]
+            - paragraph [ref=e41]: Tell the cockpit about your product, audience, and brand.
+          - img [ref=e43]
+        - generic [ref=e47]:
+          - generic [ref=e50]: 1/6 required fields
+          - generic [ref=e53]:
+            - button "Product Name, one-liner, hero photo, category. ▾" [ref=e54]:
+              - generic [ref=e55]:
+                - generic [ref=e56]: Product
+                - generic [ref=e57]: Name, one-liner, hero photo, category.
+              - generic [ref=e58]: ▾
+            - generic [ref=e60]:
+              - generic [ref=e61]:
+                - generic [ref=e63]: Product name*
+                - textbox "e.g. Bewakoof Friends Pivot Oversized Tee" [ref=e64]
+              - generic [ref=e65]:
+                - generic [ref=e67]: Category
+                - combobox [ref=e68]:
+                  - option "Pick a category…" [selected]
+                  - option "Fashion / apparel"
+                  - option "Beauty / cosmetics"
+                  - option "Wellness / personal care"
+                  - option "Sportswear / outdoor"
+                  - option "Home / lifestyle"
+                  - option "Food / beverage"
+                  - option "Tech / electronics"
+                  - option "Other"
+              - generic [ref=e69]:
+                - generic [ref=e71]: One-liner
+                - textbox "The single sentence you'd put under the product name." [ref=e72]
+              - generic [ref=e73]:
+                - generic [ref=e74]:
+                  - generic [ref=e75]: Hero photo
+                  - generic [ref=e76]: Paste a public URL OR continue without photo
+                - generic [ref=e78]:
+                  - textbox "https://… (direct image URL)" [ref=e79]
+                  - button "Text-only" [ref=e80]:
+                    - img [ref=e81]
+                    - text: Text-only
+              - generic [ref=e85]:
+                - generic [ref=e87]: Price tier
+                - combobox [ref=e88]:
+                  - option "Optional…" [selected]
+                  - option "Value / mass"
+                  - option "Mid-market"
+                  - option "Premium"
+                  - option "Luxury"
+          - button "Audience Who buys this, and why they care. ▾" [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: Audience
+              - generic [ref=e93]: Who buys this, and why they care.
+            - generic [ref=e94]: ▾
+          - button "Strategy The one thing the image must say. ▾" [ref=e96]:
+            - generic [ref=e97]:
+              - generic [ref=e98]: Strategy
+              - generic [ref=e99]: The one thing the image must say.
+            - generic [ref=e100]: ▾
+          - button "Brand Palette, typography, voice. ▾" [ref=e102]:
+            - generic [ref=e103]:
+              - generic [ref=e104]: Brand
+              - generic [ref=e105]: Palette, typography, voice.
+            - generic [ref=e106]: ▾
+          - button "References Competitor visuals + guardrails. ▾" [ref=e108]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: References
+              - generic [ref=e111]: Competitor visuals + guardrails.
+            - generic [ref=e112]: ▾
+          - button "Surfaces Where these will live. ▾" [ref=e114]:
+            - generic [ref=e115]:
+              - generic [ref=e116]: Surfaces
+              - generic [ref=e117]: Where these will live.
+            - generic [ref=e118]: ▾
+          - button "Fill 5 more required to continue" [disabled] [ref=e120]
+      - button "Competitor Style Report AI reads your competitor visuals and extracts patterns." [disabled] [ref=e122]:
+        - img [ref=e124]
+        - generic [ref=e127]:
+          - heading "Competitor Style Report" [level=3] [ref=e129]
+          - paragraph [ref=e130]: AI reads your competitor visuals and extracts patterns.
+        - img [ref=e132]
+      - button "Strategic Angles Five contextual angles. You pick three that span the trifecta." [disabled] [ref=e135]:
+        - img [ref=e137]
+        - generic [ref=e140]:
+          - heading "Strategic Angles" [level=3] [ref=e142]
+          - paragraph [ref=e143]: Five contextual angles. You pick three that span the trifecta.
+        - img [ref=e145]
+      - button "Concept Briefs Three on-brand briefs with prompts for every image-gen tool." [disabled] [ref=e148]:
+        - img [ref=e150]
+        - generic [ref=e153]:
+          - heading "Concept Briefs" [level=3] [ref=e155]
+          - paragraph [ref=e156]: Three on-brand briefs with prompts for every image-gen tool.
+        - img [ref=e158]
+      - button "Image Generation Optional. Bring your own key, or skip to prompts-only." [disabled] [ref=e161]:
+        - img [ref=e163]
+        - generic [ref=e166]:
+          - heading "Image Generation" [level=3] [ref=e168]
+          - paragraph [ref=e169]: Optional. Bring your own key, or skip to prompts-only.
+        - img [ref=e171]
+      - button "Prompt Deck Export Copy any prompt, or download the full PDF." [disabled] [ref=e174]:
+        - img [ref=e176]
+        - generic [ref=e179]:
+          - heading "Prompt Deck Export" [level=3] [ref=e181]
+          - paragraph [ref=e182]: Copy any prompt, or download the full PDF.
+        - img [ref=e184]
+  - generic [ref=e186]:
+    - dialog:
+      - generic [ref=e188]:
+        - generic [ref=e189]:
+          - heading "AI Providers" [level=3] [ref=e190]
+          - button "Close" [ref=e191]:
+            - img [ref=e192]
+        - generic [ref=e195]:
+          - generic [ref=e196]:
+            - generic [ref=e197]:
+              - img [ref=e199]
+              - generic [ref=e201]:
+                - generic [ref=e202]: Connect ChatGPT — zero marginal cost
+                - generic [ref=e203]: Uses gpt-5.4 via your Plus/Team/Enterprise subscription. No API key, no separate billing. Your token stays in your browser.
+            - button "Connect ChatGPT — 30 seconds" [ref=e205]
+          - generic [ref=e206]:
+            - strong [ref=e207]: Bring your own key
+            - paragraph [ref=e208]: Anthropic, Google (Gemini + Nano Banana), fal.ai (Flux Kontext), Ideogram, and OpenAI direct keys ship in v1.1. ChatGPT auth is the recommended free path for v1.

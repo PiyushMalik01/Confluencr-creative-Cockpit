@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { AmbientBg } from '@/components/ambient-bg';
+import { SessionProvider } from '@/lib/session-context';
 
 export const metadata: Metadata = {
   title: 'Confluencr Creative Cockpit',
@@ -22,8 +23,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <AmbientBg />
-          {children}
+          <SessionProvider>
+            <AmbientBg />
+            {children}
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,0 +1,19 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - button "Toggle theme" [ref=e4]:
+      - img [ref=e5]
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - img [ref=e13]
+        - generic [ref=e15]: Powered by your ChatGPT subscription
+      - heading "Three on-brand image concepts. From one brief." [level=1] [ref=e16]:
+        - text: Three on-brand image concepts.
+        - text: From one brief.
+      - paragraph [ref=e17]: Drop in a product brief. The cockpit researches competitor visuals, extracts style patterns, and ships a Rational, Emotional, Aspirational concept set with execution-ready prompts.
+      - button "Start a new brief" [ref=e19]:
+        - text: Start a new brief
+        - img [ref=e20]
+      - paragraph [ref=e22]: Zero cost from brief to prompt deck. Optional image generation via your own API key.
+  - button "Open Next.js Dev Tools" [ref=e28] [cursor=pointer]:
+    - img [ref=e29]
+  - alert [ref=e32]
