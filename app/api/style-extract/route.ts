@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { createSseResponse } from '@/lib/sse/stream';
 import { makeEvent } from '@/lib/schemas/activity-event';
-import { fetchUrlMeta } from '@/lib/scraping/url-meta';
+import { fetchUrlMeta, searchImagesByQuery } from '@/lib/scraping/url-meta';
 import {
   STYLE_EXTRACTOR_INSTRUCTIONS,
   buildStyleExtractorPrompt,
@@ -34,14 +34,53 @@ export async function POST(req: NextRequest) {
       }
 
       const urlRefs = brief.references.inputs.filter((r) => r.kind === 'url');
+      const uploadRefs = brief.references.inputs.filter((r) => r.kind === 'upload');
       const nameRefs = brief.references.inputs.filter((r) => r.kind === 'name').map((r) => r.value);
 
-      writer.send(makeEvent(requestId, { kind: 'info', message: `Fetching ${urlRefs.length} URL(s)…`, icon: 'fetch' }));
+      writer.send(makeEvent(requestId, {
+        kind: 'info',
+        message: `Fetching ${urlRefs.length} URL(s)${nameRefs.length > 0 ? ` + ${nameRefs.length} brand search(es)` : ''}`,
+        icon: 'fetch',
+      }));
 
       const metas = await Promise.all(urlRefs.map((r) => fetchUrlMeta(r.value)));
       for (const m of metas) {
-        if (m.ok) writer.send(makeEvent(requestId, { kind: 'ok', message: `Loaded ${new URL(m.finalUrl ?? m.url).hostname}` }));
-        else writer.send(makeEvent(requestId, { kind: 'warn', message: `Could not load ${m.url} (${m.error})` }));
+        if (m.ok) {
+          const host = (() => { try { return new URL(m.finalUrl ?? m.url).hostname; } catch { return m.url; } })();
+          writer.send(makeEvent(requestId, { kind: 'ok', message: `Loaded ${host} (${m.candidateImages.length} image candidate${m.candidateImages.length === 1 ? '' : 's'})` }));
+        } else {
+          writer.send(makeEvent(requestId, { kind: 'warn', message: `Could not load ${m.url} (${m.error})` }));
+        }
+      }
+
+      // Collect product / category hint for search fallbacks.
+      const productHint = [brief.product.name, brief.product.category].filter(Boolean).join(' ');
+
+      // Brand-name fallback: when the user supplied competitor brand names
+      // OR no URLs at all OR every URL failed, search for "<brand> product".
+      const searchSeeds = new Set<string>();
+      if (urlRefs.length === 0 || metas.every((m) => !m.ok || m.candidateImages.length === 0)) {
+        if (brief.product.name) searchSeeds.add(`${brief.product.name} product photo`);
+        for (const n of nameRefs) searchSeeds.add(`${n} ${productHint || 'product'}`);
+      } else {
+        // top-up: also issue a name-driven search to enrich the reference set
+        for (const n of nameRefs) searchSeeds.add(`${n} ${productHint || 'product'}`);
+      }
+
+      const searchedImages: { url: string; source: string }[] = [];
+      for (const query of searchSeeds) {
+        writer.send(makeEvent(requestId, { kind: 'info', message: `Searching DuckDuckGo images: ${query}`, icon: 'fetch' }));
+        const urls = await searchImagesByQuery(query, 5);
+        if (urls.length > 0) {
+          writer.send(makeEvent(requestId, { kind: 'ok', message: `Found ${urls.length} from image search "${query}"` }));
+          for (const u of urls) searchedImages.push({ url: u, source: 'duckduckgo-image-search' });
+        } else {
+          writer.send(makeEvent(requestId, { kind: 'warn', message: `No image-search results for "${query}"` }));
+        }
+      }
+
+      if (uploadRefs.length > 0) {
+        writer.send(makeEvent(requestId, { kind: 'ok', message: `Including ${uploadRefs.length} uploaded reference image${uploadRefs.length === 1 ? '' : 's'}` }));
       }
 
       const prompt = buildStyleExtractorPrompt({ brief, metas, brandNameRefs: nameRefs });
@@ -82,13 +121,35 @@ export async function POST(req: NextRequest) {
       const project = await (await projects()).findOne({ _id: projectId });
       const editEpoch = project?.editEpoch ?? 0;
 
-      const competitorImages = metas.map((m) => ({
-        url: m.ogImage ?? m.finalUrl ?? m.url,
-        source: m.finalUrl ?? m.url,
-        pinned: true,
-        classification: m.ok ? 'hero' : undefined,
-        confidence: m.ok ? 0.7 : 0,
-      }));
+      const competitorImages = [
+        ...metas.flatMap((m) => {
+          if (!m.ok) return [];
+          // Prefer 2-3 best candidate images per URL when available.
+          const picks = m.candidateImages.slice(0, 3);
+          if (picks.length === 0 && m.ogImage) picks.push(m.ogImage);
+          return picks.map((url) => ({
+            url,
+            source: m.finalUrl ?? m.url,
+            pinned: true,
+            classification: 'hero',
+            confidence: 0.7,
+          }));
+        }),
+        ...searchedImages.map((s) => ({
+          url: s.url,
+          source: s.source,
+          pinned: true,
+          classification: 'hero',
+          confidence: 0.6,
+        })),
+        ...uploadRefs.map((u) => ({
+          url: u.value,
+          source: 'user-upload',
+          pinned: true,
+          classification: 'hero',
+          confidence: 0.95,
+        })),
+      ];
 
       const doc = {
         _id: newProjectId(),

@@ -50,6 +50,10 @@ export function buildAnglePrompt(brief: Brief, style: StyleReport | null): strin
   lines.push('# BRAND BRIEF');
   lines.push(`Name: ${brief.product.name}`);
   if (brief.product.category) lines.push(`Category: ${brief.product.category}`);
+  const heroPhoto = brief.product.photos[0];
+  if (heroPhoto && heroPhoto.url) {
+    lines.push(`Product hero photo (use this as the visual anchor): ${heroPhoto.url}`);
+  }
   if (brief.audience.description) lines.push(`Audience: ${brief.audience.description}`);
   if (brief.audience.insight) lines.push(`Insight: ${brief.audience.insight}`);
   if (brief.strategy.smp) lines.push(`Single-minded proposition: ${brief.strategy.smp}`);

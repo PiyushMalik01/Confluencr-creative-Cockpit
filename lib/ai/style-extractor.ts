@@ -43,6 +43,11 @@ export function buildStyleExtractorPrompt(input: StyleExtractorInput): string {
   if (brief.product.category) lines.push(`Category: ${brief.product.category}`);
   if (brief.audience.description) lines.push(`Audience: ${brief.audience.description}`);
   if (brief.strategy.smp) lines.push(`Single-minded proposition: ${brief.strategy.smp}`);
+  const heroPhoto = brief.product.photos[0];
+  if (heroPhoto && heroPhoto.url) {
+    lines.push(`Our product hero photo: ${heroPhoto.url}`);
+    lines.push('When proposing tokens, contrast our actual product against the competitors — what visual moves would differentiate THIS product from those?');
+  }
   lines.push('');
 
   lines.push('# COMPETITOR VISUAL EVIDENCE (analyse these and ground every claim to an image index)');
