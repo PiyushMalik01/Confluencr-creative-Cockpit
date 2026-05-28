@@ -23,9 +23,16 @@ next-env.d.ts
 
 # approach doc workspace (has its own deps)
 /approach-doc/node_modules
+/test-run-doc/node_modules
+/walkthrough-video
 
 # test artifacts
 /test-runs
+
+# playwright MCP artifacts
+/.playwright-mcp
+/test-*.png
+/test-run-doc/screens/*.png
 
 # editor
 .vscode
