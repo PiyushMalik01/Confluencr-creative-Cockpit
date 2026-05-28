@@ -8,8 +8,8 @@ const __dirname = path.dirname(__filename);
 const videoDir = path.resolve(__dirname, '..', 'walkthrough-video');
 fs.mkdirSync(videoDir, { recursive: true });
 
-const PROJECT_ID = process.env.PROJECT_ID || '019e6fd5-8543-7b3b-a518-b4d8a3c1b93e';
-const BASE = process.env.BASE_URL || 'http://localhost:3000';
+const PROJECT_ID = process.env.PROJECT_ID || '019e6fe6-a221-77e4-8dd4-8ba36a02d388';
+const BASE = process.env.BASE_URL || 'https://confluencr-creative-cockpit.vercel.app';
 
 const browser = await chromium.launch();
 const context = await browser.newContext({

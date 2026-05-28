@@ -4,14 +4,20 @@ A web cockpit that turns a brand brief into three on-brand product image concept
 
 Submission for the Confluencr / Walnut Folks **Creative Process Engineer** assignment. The strategic bet is that the marginal cost per brief is zero rupees by default, because the recommended path authenticates against the user's own ChatGPT subscription.
 
+## Live deployment
+
+The cockpit is live at **https://confluencr-creative-cockpit.vercel.app**
+
+Open the link, click `Start a new brief`, connect ChatGPT through the Settings button (top-right of the project page), and walk through the six steps. A pre-populated Bewakoof Friends Pivot oversized tee project is available at `/p/019e6fe6-a221-77e4-8dd4-8ba36a02d388` so the test-run state is visible without running every step yourself.
+
 ## Submission packet — what to read in what order
 
 | # | Artefact | Path |
 |---|---|---|
 | 1 | **Approach document** (Deliverable 1) | [`APPROACH.pdf`](APPROACH.pdf) |
-| 2 | **Working tool** (Deliverable 2) | [`app/`](app/), [`components/`](components/), [`lib/`](lib/) — Next.js 16 app you can run locally |
-| 3 | **Test run output** with screenshots, brand brief filled in, 3 concept briefs, prompt deck, commentary (Deliverable 3) | [`TEST-RUN.pdf`](TEST-RUN.pdf) |
-| 4 | **Walkthrough video** of the running cockpit end-to-end | [`walkthrough.mp4`](walkthrough.mp4) |
+| 2 | **Working tool** (Deliverable 2) | Live at [https://confluencr-creative-cockpit.vercel.app](https://confluencr-creative-cockpit.vercel.app) · source in [`app/`](app/), [`components/`](components/), [`lib/`](lib/) |
+| 3 | **Test run output** with screenshots from the deployed app, brand brief filled in, 3 concept briefs, prompt deck, commentary (Deliverable 3) | [`TEST-RUN.pdf`](TEST-RUN.pdf) |
+| 4 | **Walkthrough video** recorded against the deployed link | [`walkthrough.mp4`](walkthrough.mp4) |
 | 5 | System-generated PDF that the app exports at Step 6 for a Bewakoof brief | [`test-run-doc/system-generated.pdf`](test-run-doc/system-generated.pdf) |
 
 ## Source of every artefact
